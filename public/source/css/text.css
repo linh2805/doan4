@@ -324,14 +324,6 @@ img.emoji {
     /* Trở về vị trí ban đầu */
 }
 
-#header {
-    position: fixed;
-    /* Cố định menu */
-    top: 0;
-    left: 0;
-    width: 100%;
-    /* Chiều ngang menu */
-}
 
 .tuition-tilte {
     font-size: 40px;

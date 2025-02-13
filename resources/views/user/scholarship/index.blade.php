@@ -1,4 +1,2 @@
-@extends('user.index')
-@include('user.home.header')
-
+@include('user.index')
 @include('user.home.footer')

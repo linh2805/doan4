@@ -37,6 +37,11 @@
 
 </head>
 
-<!-- @include('user.home.index') -->
+<body>
+    <!-- Nội dung của bạn ở đây -->
+</body>
+
+
+ 
 
 </html>

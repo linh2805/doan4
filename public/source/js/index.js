@@ -530,4 +530,360 @@
     ))
 }();
 
+<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const sections = [
+				{ id: 'element1', fadeClass: 'fade-in-left', duration: 3000 },
+				{ id: 'element2', fadeClass: 'fade-in-right', duration: 3000 },
+				// { id: 'element1', fadeClass: 'fade-in', duration: 3000 }, // Để xuất hiện lần lượt
+				// { id: 'element2', fadeClass: 'fade-in', duration: 3000 }, // Để xuất hiện lần lượt
+
+				{ id: 'element3', fadeClass: 'fade-in', duration: 3000 } // Để xuất hiện lần lượt
+			];
+
+			function checkVisibility() {
+				sections.forEach(section => {
+					const elements = document.querySelectorAll(`#${section.id} .${section.fadeClass}`);
+					elements.forEach((element, index) => {
+						const rect = element.getBoundingClientRect();
+						// Kiểm tra xem phần tử có trong viewport không
+						if (rect.top < window.innerHeight && rect.bottom > 0) {
+							element.classList.add('visible'); // Thêm lớp visible để kích hoạt hiệu ứng
+							if (section.fadeClass === 'fade-in') {
+								element.style.animationDelay = `${index * 0.2}s`; // Thêm độ trễ cho từng div
+							}
+						}
+					});
+				});
+			}
+
+			// Lắng nghe sự kiện cuộn
+			window.addEventListener('scroll', checkVisibility);
+			// Kiểm tra ngay khi tải trang
+			checkVisibility();
+
+			// Lắng nghe sự kiện click trên các liên kết với class scroll-link
+			document.querySelectorAll('.scroll-link').forEach(link => {
+				link.addEventListener('click', function (e) {
+					e.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
+
+					const targetId = this.getAttribute('href'); // Lấy ID từ href
+					const targetElement = document.querySelector(targetId); // Tìm phần tử theo ID
+
+					// Cuộn đến phần tử
+					if (targetElement) {
+						targetElement.scrollIntoView({ behavior: 'smooth' }); // Cuộn đến phần tử
+						checkVisibility(); // Kiểm tra ngay lập tức để áp dụng hiệu ứng
+					}
+				});
+			});
+		});
+	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+
+			const blogEntries = document.querySelectorAll('.blog_entry');
+
+			// Tạo observer để theo dõi khi phần tử vào viewport
+			const observer = new IntersectionObserver((entries, observer) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						// Thêm class 'show' khi phần tử vào viewport
+						entry.target.classList.add('show');
+						observer.unobserve(entry.target); // Ngừng theo dõi phần tử sau khi đã hiển thị
+					}
+				});
+			}, {
+				threshold: 0.5 // Kích hoạt khi 50% phần tử vào viewport
+			});
+
+			// Quan sát tất cả các phần tử blog_entry
+			blogEntries.forEach(entry => {
+				observer.observe(entry);
+			});
+		});
+	</script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const contents = document.querySelectorAll('.about-content');
+			const image = document.getElementById('image1');
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						// Hiện từng phần tử nội dung với độ trễ
+						contents.forEach((content, index) => {
+							setTimeout(() => {
+								content.classList.add('show'); // Thêm lớp show cho nội dung
+							}, index * 300); // Độ trễ 300ms cho mỗi phần tử
+						});
+
+						// Hiện hình ảnh sau khi nội dung đã xuất hiện
+						setTimeout(() => {
+							image.classList.add('show'); // Thêm lớp show cho hình ảnh
+						}, contents.length * 300); // Hiện hình ảnh sau khi đã hiện tất cả nội dung
+
+						observer.unobserve(entry.target); // Ngừng quan sát phần tử sau khi hiển thị
+					}
+				});
+			}, {
+				threshold: 0.1 // Điều chỉnh giá trị này để thay đổi điểm bắt đầu hiện
+			});
+
+			// Quan sát phần tử chứa nội dung
+			observer.observe(document.getElementById('about-us'));
+		});
+	</script>
+
+	<script>
+		// Hàm kiểm tra khi phần tử vào viewport
+		function checkVisibility() {
+			const elements = document.querySelectorAll('.single-box');
+
+			elements.forEach(element => {
+				const rect = element.getBoundingClientRect();
+
+				if (rect.top < window.innerHeight && rect.bottom >= 0) {
+					element.classList.add('show');
+				}
+			});
+		}
+
+		// Gọi hàm khi người dùng cuộn trang
+		window.addEventListener('scroll', checkVisibility);
+
+		// Kiểm tra ngay khi tải trang
+		document.addEventListener('DOMContentLoaded', checkVisibility);
+
+	</script>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const newAboutContents = document.querySelectorAll('.new-about-content');
+			const newAboutImages = document.querySelectorAll('.new-about-image');
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						// Hiện từng phần tử nội dung với độ trễ
+						newAboutContents.forEach((content, index) => {
+							setTimeout(() => {
+								content.classList.add('show'); // Thêm lớp show cho nội dung
+							}, index * 300); // Độ trễ 300ms cho mỗi phần tử
+						});
+
+						// Hiện hình ảnh sau khi nội dung đã xuất hiện
+						setTimeout(() => {
+							newAboutImages.forEach((image, index) => {
+								setTimeout(() => {
+									image.classList.add('show'); // Thêm lớp show cho hình ảnh
+								}, index * 300); // Độ trễ 300ms cho mỗi hình ảnh
+							});
+						}, newAboutContents.length * 300); // Hiện hình ảnh sau khi đã hiện tất cả nội dung
+
+						observer.unobserve(entry.target); // Ngừng quan sát phần tử sau khi hiển thị
+					}
+				});
+			}, {
+				threshold: 0.1 // Điều chỉnh giá trị này để thay đổi điểm bắt đầu hiện
+			});
+
+			// Quan sát phần tử chứa nội dung
+			observer.observe(document.querySelector('.section_why'));
+		});
+	</script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			// Lấy phần section với class '.awe-section-6'
+			const section = document.querySelector('.awe-section-6');
+
+			// Tạo observer để theo dõi khi phần section vào viewport
+			const observer = new IntersectionObserver((entries, observer) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						// Thêm class 'show' khi phần section vào viewport
+						entry.target.classList.add('show');
+						observer.unobserve(entry.target); // Ngừng theo dõi section sau khi đã hiển thị
+					}
+				});
+			}, {
+				threshold: 0.5 // Kích hoạt khi 50% phần tử vào viewport
+			});
+
+			// Quan sát section
+			observer.observe(section);
+		});
+	</script>
+	<script>
+		// Chọn tất cả các thẻ card
+		const cards = document.querySelectorAll('.card');
+
+		// Hàm kiểm tra xem phần tử đã vào viewport chưa
+		const isInViewport = (element) => {
+			const rect = element.getBoundingClientRect();
+			return rect.top <= window.innerHeight && rect.bottom >= 0;
+		};
+
+		// Hàm kích hoạt hiệu ứng
+		const handleScroll = () => {
+			cards.forEach((card) => {
+				if (isInViewport(card)) {
+					card.classList.add('show');
+				}
+			});
+		};
+
+		// Lắng nghe sự kiện scroll
+		window.addEventListener('scroll', handleScroll);
+
+		// Kích hoạt khi load trang
+		handleScroll();
+	</script>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			// Lấy tất cả các phần tử cần hiệu ứng
+			const sections = document.querySelectorAll('.section_effect');
+
+			// Tạo một đối tượng IntersectionObserver để kiểm tra khi phần tử vào viewport
+			const observer = new IntersectionObserver((entries, observer) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('active'); // Thêm class "active" để kích hoạt hiệu ứng
+						observer.unobserve(entry.target); // Dừng quan sát khi đã kích hoạt hiệu ứng
+					}
+				});
+			}, {
+				threshold: 0.5 // Kích hoạt khi phần tử chiếm ít nhất 10% viewport
+			});
+
+			// Quan sát tất cả các phần tử cần hiệu ứng
+			sections.forEach(section => {
+				observer.observe(section);
+			});
+		});
+
+	</script>
+
+	<script>
+
+		window.onscroll = function () {
+			var topLink = document.getElementById("top-link");
+			if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+				topLink.style.display = "block"; // Hiển thị nút khi cuộn xuống
+			} else {
+				topLink.style.display = "none"; // Ẩn nút khi ở đầu trang
+			}
+		};
+	</script>
+	<script>
+		document.getElementById('top-link').addEventListener('click', function (e) {
+			e.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
+
+			const targetPosition = 0; // Vị trí đích
+			const startPosition = window.scrollY; // Vị trí hiện tại
+			const distance = targetPosition - startPosition; // Khoảng cách cần cuộn
+			const duration = 1500; // Thời gian cuộn (3 giây)
+			let startTime = null; // Thời gian bắt đầu
+
+			function animation(currentTime) {
+				if (startTime === null) startTime = currentTime; // Lưu thời gian bắt đầu
+				const timeElapsed = currentTime - startTime; // Thời gian đã trôi qua
+				const progress = Math.min(timeElapsed / duration, 1); // Tính tỷ lệ hoàn thành
+
+				// Tính vị trí hiện tại dựa trên tỷ lệ hoàn thành
+				window.scrollTo(0, startPosition + distance * progress);
+
+				if (timeElapsed < duration) {
+					requestAnimationFrame(animation); // Tiếp tục gọi hàm cho đến khi hoàn thành
+				}
+			}
+
+			requestAnimationFrame(animation); // Bắt đầu hoạt động
+		});
+	</script>
+	<script>
+		// Khởi tạo IntersectionObserver
+		const observer = new IntersectionObserver((entries, observer) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					console.log('Ảnh đã vào khung nhìn'); // Kiểm tra trong console
+					entry.target.classList.add('visible'); // Thêm lớp 'visible' khi ảnh vào khung nhìn
+					observer.unobserve(entry.target); // Ngừng theo dõi ảnh sau khi đã xuất hiện
+				}
+			});
+		}, { threshold: 0.5 });
+
+		const photos = document.querySelectorAll('.footer-photo');
+		photos.forEach(photo => {
+			observer.observe(photo);
+		});
+
+	</script>
+
+	<script>
+		let currentSlide = 0;
+		let isAnimating = false; // Kiểm soát trạng thái animation
+
+		function changeSlide(direction) {
+			if (isAnimating) return; // Nếu đang trong quá trình animation, không cho phép click
+
+			isAnimating = true; // Đánh dấu bắt đầu animation
+			const slides = document.querySelectorAll('.slide');
+			const totalSlides = slides.length;
+
+			// Cập nhật currentSlide
+			if (direction === 1) {
+				currentSlide = (currentSlide + 1) % totalSlides; // Chuyển đến slide tiếp theo
+			} else {
+				currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; // Chuyển về slide trước
+			}
+
+			const offset = -currentSlide * 100; // Tính toán offset
+			const slidesContainer = document.querySelector('.slides');
+
+			// Thêm hiệu ứng chuyển động
+			slidesContainer.style.transition = 'transform 0.5s ease'; // Khôi phục hiệu ứng chuyển động
+			slidesContainer.style.transform = `translateX(${offset}%)`; // Thực hiện chuyển động
+
+			// Cập nhật caption
+			slides.forEach((slide, index) => {
+				slide.classList.remove('active'); // Xóa lớp active
+				if (index === currentSlide) {
+					slide.classList.add('active'); // Thêm lớp active cho slide hiện tại
+				}
+			});
+
+			// Đặt lại trạng thái animation sau khi chuyển động hoàn tất
+			setTimeout(() => {
+				isAnimating = false; // Cho phép click lại
+			}, 300); // Thời gian khớp với thời gian chuyển động
+		}
+
+		// Tự động chuyển slide sau mỗi 5 giây
+		setInterval(() => changeSlide(1), 5000);
+
+		// Khởi động với slide đầu tiên
+		changeSlide(0); // Hiển thị slide đầu tiên
+	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			document.addEventListener("scroll", function () {
+				const elementsRight = document.querySelectorAll(".animate-right");
+
+				// Điểm kích hoạt hiệu ứng
+				const triggerBottom = window.innerHeight / 5 * 4;
+
+				elementsRight.forEach((el) => {
+					const elementTop = el.getBoundingClientRect().top;
+
+					if (elementTop < triggerBottom) {
+						el.classList.add("active"); // Thêm lớp 'active' khi phần tử hiển thị
+					}
+				});
+			});
+		});
+
+	</script>
+
 
