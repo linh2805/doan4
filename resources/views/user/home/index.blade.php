@@ -17,13 +17,13 @@
 					còn tạo ra nhiều cơ hội nghề nghiệp trong tương lai. Hãy cùng chúng tôi khám phá những điều thú vị
 					trong thế giới giáo dục mầm non!
 				</p>
-				<button class="btn">Tìm hiểu thêm</button>
+				<button class="btn-header">Tìm hiểu thêm</button>
 			</div>
 			<div class="image">
-				<img src="/source/images/tre.jpg" alt="Nhà trẻ">
+				<img src="./images/tre.jpg" alt="Nhà trẻ">
 			</div>
 		</section>
-		<section class="awe-section-5 wow bounceInUp animated animated" id="training-program">
+		<section class="awe-section-5" id="training-program">
 			<div class="section_service">
 				<div class="container" id="element3">
 					<div class="section_service_title text-center fade-in">
@@ -132,67 +132,104 @@
 					<div class="left-column">
 						<div class="card">
 							<h2>Hệ thống lớp học</h2>
-							<p>Hệ thống lớp học được trang bị hiện đại, với không gian học tập thoải mái và sáng tạo. Mỗi lớp học đều có đầy đủ thiết bị giảng dạy, đảm bảo môi trường học tập hiệu quả, giúp học sinh phát huy tối đa khả năng sáng tạo và tiếp thu kiến thức.</p>
+							<p>Hệ thống lớp học được trang bị hiện đại, với không gian học tập thoải mái và sáng tạo.
+								Mỗi lớp học đều có đầy đủ thiết bị giảng dạy, đảm bảo môi trường học tập hiệu quả, giúp
+								học sinh phát huy tối đa khả năng sáng tạo và tiếp thu kiến thức.</p>
 						</div>
 					</div>
 					<div class="right-column img-container">
-						<img src="/source/images/classroom.png" alt="Hệ thống lớp học">
-						<img src="/source/images/cl2.jpg" alt="Hệ thống lớp học">
+						<img src="./images/classroom.png" alt="Hệ thống lớp học">
+						<img src="./images/cl2.jpg" alt="Hệ thống lớp học">
 					</div>
 				</div>
 				<div class="section">
 					<div class="left-column img-container">
-						<img src="/source/images/th.jpg" alt="Giáo dục thể chất">
-						<img src="/source/images/sp.jpg" alt="Hệ thống lớp học">
+						<img src="./images/th.jpg" alt="Giáo dục thể chất">
+						<img src="./images/sp.jpg" alt="Hệ thống lớp học">
 					</div>
 					<div class="right-column">
 						<div class="card">
 							<h2>Hệ thống phòng thực hành</h2>
-							<p>Hệ thống phòng thực hành được thiết kế hiện đại, đầy đủ trang thiết bị và tiện nghi, tạo điều kiện tối ưu cho việc học tập và nghiên cứu. Mỗi phòng đều đảm bảo an toàn và đáp ứng tiêu chuẩn chất lượng, giúp sinh viên thực hành hiệu quả và thu được những kiến thức thực tiễn.</p>
+							<p>Hệ thống phòng thực hành được thiết kế hiện đại, đầy đủ trang thiết bị và tiện nghi, tạo
+								điều kiện tối ưu cho việc học tập và nghiên cứu. Mỗi phòng đều đảm bảo an toàn và đáp
+								ứng tiêu chuẩn chất lượng, giúp sinh viên thực hành hiệu quả và thu được những kiến thức
+								thực tiễn.</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-        <div class="container mt-5">
-        <div class="testimonial">
-            <img src="/source/images/mes.webp" alt="Avatar">
-            <h5>Eugene Freeman</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+        <div class="mt-5 ct-testimonial">
+            <div class="testimonial">
+                <img src="./images/mes.webp" alt="Avatar">
+                <h5>Eugene Freeman</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+            </div>
         </div>
-    </div>
-   
 
-		<div class="content-wrapper">
-            <div class="container">
+		<section class="content-wrapper">
 			<div class="gallery-container">
 				<!-- Row 1 -->
 				<div class="gallery-row">
 					<div class="gallery-item">
-						<img src="/source/images/hs.png" alt="Students sitting" class="gallery-img">
+						<img src="./images/hs.png" alt="Students sitting" class="gallery-img">
 					</div>
 					<div class="gallery-item">
-						<img src="/source/images/21.jpg" alt="Students at desk" class="gallery-img">
+						<img src="./images/21.jpg" alt="Students at desk" class="gallery-img">
 					</div>
 					<div class="gallery-item">
-						<img src="/source/images/be.jpg" alt="Stage performance" class="gallery-img">
+						<img src="./images/be.jpg" alt="Stage performance" class="gallery-img">
 					</div>
 				</div>
 				<div class="gallery-row">
 					<div class="gallery-item">
-						<img src="/source/images/co.jpeg" alt="School building" class="gallery-img">
+						<img src="./images/co.jpeg" alt="School building" class="gallery-img">
 					</div>
 					<div class="gallery-item">
-						<img src="/source/images/clb.jpg" alt="Students outside" class="gallery-img">
+						<img src="./images/clb.jpg" alt="Students outside" class="gallery-img">
 					</div>
 					<div class="gallery-item">
-						<img src="/source/images/20.webp" alt="Stage performance" class="gallery-img">
+						<img src="./images/20.webp" alt="Stage performance" class="gallery-img">
 					</div>
 				</div>
-</div>
+
 			</div>
+		</section>
+		<div class="main-container" id="contact">
+			<section class="contact-section mt-5" style="background-color: #ffe0b2; padding: 20px; border-radius: 10px;">
+				<div class="row">
+					<div class="col-md-6 mb-4">
+						<div class="registration-image" style="height: 80%;">
+							<img src="./images/student.jpg" alt="Sinh viên tham gia lớp học">
+						</div>
+					</div>
+					<div class="col-md-6 mb-4">
+						<div class="contact-form">
+							<h3 class="title">Liên Hệ để được tư vấn</h3>
+							<form id="registrationForm">
+								<div class="form-group">
+									<input type="text" name="hoten" class="form-control" placeholder="Họ và tên" required>
+								</div>
+								<div class="form-group">
+									<input type="tel" name="sodienthoai" class="form-control" placeholder="Số điện thoại" required>
+								</div>
+								<div class="form-group">
+									<input type="email" name="diachiemail" class="form-control" placeholder="Email" required>
+								</div>
+								<div class="form-group">
+									<textarea class="form-control" id="message" rows="4" placeholder="Message" required></textarea>
+								</div>
+								<div class="button-container"> <!-- New container -->
+									<button type="submit" class="btn-primary btn-block">Gửi yêu cầu</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
+			
 		</div>
-        
+
 	</div>
 	<!-- Mobile Menu-->
 	<div id="mobile-menu">
@@ -228,15 +265,24 @@
 
 	<div class="chat-section">
 		<div class="chat-icon" onclick="window.open('https://www.facebook.com/DHSPHN2')">
-			<img src="/source/images/mes.webp" alt="Zalo" class="zalo-icon">
+			<img src="./images/mes.webp" alt="Zalo" class="zalo-icon">
 		</div>
 		<div class="chat-icon" onclick="window.open()">
-			<img src="/source/images/zalo.png" alt="Zalo" class="zalo-icon"> <!-- Biểu tượng Zalo -->
+			<img src="./images/zalo.png" alt="Zalo" class="zalo-icon"> <!-- Biểu tượng Zalo -->
 		</div>
 		<div class="chat-icon" onclick="showQR()">
 			<i class="fa-solid fa-phone fa-xl" style="color: #ffffff;"></i>
 		</div>
 	</div>
+    
+
+	<script type='text/javascript'
+		src='https://dv15.mediawz.com/wp-content/plugins/contact-form-7/includes/js/index.js?ver=5.5.1'></script>
+	<script type='text/javascript'>
+		/* <![CDATA[ */
+		var twentyseventeenScreenReaderText = { "quote": "<svg class=\"icon icon-quote-right\" aria-hidden=\"true\" role=\"img\"> <use href=\"#icon-quote-right\" xlink:href=\"#icon-quote-right\"><\/use> <\/svg>" };
+		/* ]]> */
+	</script>
 
 	<script>
 		let currentIndex = 0;
@@ -320,19 +366,40 @@
 
 			// Lắng nghe sự kiện click trên các liên kết với class scroll-link
 			document.querySelectorAll('.scroll-link').forEach(link => {
-				link.addEventListener('click', function (e) {
-					e.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
+    link.addEventListener('click', function (e) {
+        e.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
 
-					const targetId = this.getAttribute('href'); // Lấy ID từ href
-					const targetElement = document.querySelector(targetId); // Tìm phần tử theo ID
+        const targetId = this.getAttribute('href'); // Lấy ID từ href
+        const targetElement = document.querySelector(targetId); // Tìm phần tử theo ID
 
-					// Cuộn đến phần tử
-					if (targetElement) {
-						targetElement.scrollIntoView({ behavior: 'smooth' }); // Cuộn đến phần tử
-						checkVisibility(); // Kiểm tra ngay lập tức để áp dụng hiệu ứng
-					}
-				});
-			});
+        // Cuộn đến phần tử
+        if (targetElement) {
+            const startPosition = window.pageYOffset; // Vị trí hiện tại của cuộn
+            const targetPosition = targetElement.getBoundingClientRect().top + startPosition; // Vị trí mục tiêu
+            const distance = targetPosition - startPosition; // Khoảng cách cần cuộn
+            const duration = 1000; // Thời gian cuộn (3 giây)
+            let startTime = null;
+
+            // Hàm cuộn
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const progress = Math.min(timeElapsed / duration, 1); // Tính tỷ lệ tiến độ
+
+                // Cuộn theo hàm easing
+                window.scrollTo(0, startPosition + distance * progress);
+
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation); // Gọi lại hàm cho lần tiếp theo
+                } else {
+                    checkVisibility(); // Kiểm tra ngay lập tức để áp dụng hiệu ứng
+                }
+            }
+
+            requestAnimationFrame(animation); // Bắt đầu hoạt động cuộn
+        }
+    });
+});
 		});
 	</script>
 	<script>

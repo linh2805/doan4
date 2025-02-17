@@ -18,6 +18,9 @@
 	<link rel="stylesheet" href="/source/css/text.css" type="text/css">
 	<link rel="stylesheet" href="/source/css/responsive.css" type="text/css">
 	<script src="/source/js/index.js" type="text/javascript"></script>
+	<script src="/source/js/programme.js" type="text/javascript"></script>
+
+	
 	<script src="/source/js/jquery.js" type="text/javascript"></script>
 	<script src="/source/js/skip-link-focus-fix.js" type="text/javascript"></script>
 	<script src="/source/js/global.js/" type="text/javascript"></script>

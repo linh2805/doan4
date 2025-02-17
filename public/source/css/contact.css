@@ -1,0 +1,44 @@
+body {
+    background-color: #f8f9fa;
+}
+.registration-container {
+    display: flex; /* Sử dụng Flexbox */
+    align-items: stretch; /* Đảm bảo chiều cao bằng nhau */
+    margin-top: 50px;
+}
+.registration-image img {
+    max-width: 100%; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.registration-form {
+    flex: 1; 
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.form-input {
+    margin-bottom: 15px;
+}
+.submit-btn {
+    background-color: #ff9800;
+    color: white;
+    transition: transform 0.2s, background-color 0.3s;
+}
+.submit-btn:hover {
+    background-color: #fb8c00;
+    transform: scale(1.05);
+    color: white;
+}
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+.submit-btn {
+    animation: pulse 1.5s infinite;
+}
