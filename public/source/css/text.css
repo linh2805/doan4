@@ -116,7 +116,7 @@ img.emoji {
 
 /* Container alignment */
 .container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
@@ -1158,7 +1158,7 @@ img.emoji {
     color: white;
     text-decoration: none;
     animation: scaleEffect 1.5s infinite;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 @keyframes scaleEffect {
@@ -1541,11 +1541,11 @@ img.emoji {
     }
 
 }
-
+/* 
 .header-logo {
     display: flex;
     justify-content: flex-end;
-}
+} */
 
 @keyframes scale-bounce {
 
@@ -1950,7 +1950,7 @@ img.emoji {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #ff7043;
+    /* background-color: #ff7043; */
     color: white;
     padding: 12px 24px;
     font-size: 18px;
@@ -2078,4 +2078,82 @@ img.emoji {
 }
 .menu-item:hover .submenu {
     display: block; /* Hiện submenu khi hover */
+}
+.ct-testimonial {
+    padding: 0px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial {
+    padding: 0px;
+    background-color: #001f3f;
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.ct-testimonial {
+    margin-top: 20px;
+    max-width: 80%;
+}
+.testimonial {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   
+}
+.testimonial img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.testimonial h5 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+.testimonial p {
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 14px;
+}
+.comment-form {
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    text-align: center;
+}
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: none;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.comment-form button {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.comment-form button:hover {
+    background-color: #0056b3;
+}
+#comments-section {
+    margin-top: 20px;
 }
