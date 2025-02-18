@@ -1,0 +1,315 @@
+.thucontainer{
+    margin-top: 51px;
+    background-color: rgba(252, 223, 207, 0.9);
+    color: #000;
+}
+.new-title {
+    color: #FF8C00;
+    text-align: center;
+    display: inline-block;
+    animation: scaleAnimation 2s infinite;
+}
+@keyframes scaleAnimation {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1); /* Scale up to 110% */
+    }
+}
+.appear {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+h1,
+h2 {
+    color: #FF8C00;
+    /* Orange color for headings */
+}
+.animate-section.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #FF8C00;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 20px;
+    display: none;
+    /* Hidden by default */
+    z-index: 1000;
+    transition: background-color 0.3s;
+}
+.back-to-top:hover {
+    background-color: #e07b00;
+}
+.btn-info {
+    color: #FF8C00;
+    /* Orange color for the button */
+}
+.contact-form-section{
+    background-color: #FF8C00;
+    /* Orange background */
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 50px auto;
+    /* Center the form */
+}
+h2 {
+    text-align: center;
+}
+.form-input-group {
+    border-radius: 5px;
+    /* Rounded corners */
+}
+
+.btn-primary {
+    background-color: #0056b3;
+    /* Custom blue color */
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #004494;
+    /* Darker blue on hover */
+}
+.form-input-group{
+    margin-bottom: 15px;
+    /* Spacing between fields */
+}
+.scale {
+    display: inline-block;
+    animation: scale 2s infinite;
+    /* Thay đổi thời gian thành 2 giây */
+}
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.fade-in {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.5s forwards;
+    /* Thay đổi thời gian */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.centered-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.prove {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+.prove-slider {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    /* Chiều rộng tối đa cho khung */
+    overflow: hidden;
+    /* Ẩn phần ngoài khung */
+}
+.prove-content {
+    background-color: #ffcc80;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: none;
+    width: 100%;
+    /* Để khung dài ra */
+    max-width: 800px;
+    /* Tăng chiều rộng tối đa */
+}
+
+.prove-content img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 2px solid white;
+    /* Viền trắng quanh hình */
+}
+
+.pagination {
+    margin-top: 15px;
+}
+
+
+.active {
+    background-color: #717171;
+    /* Màu cho nút đang hoạt động */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #34495e;
+}
+.highlight {
+    background-color: #e7f3fe;
+    border-left: 6px solid #2196F3;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+.mb-5 {
+    margin-bottom: 5rem;
+}
+.scaling-title {
+    font-size: 2rem;
+    animation: scale 2s infinite;
+}
+
+.scaling-title {
+    margin-bottom: 20px; /* Space between title and form */
+}
+
+
+.form-label {
+    display: block; /* Block display for labels */
+    margin-bottom: 5px; /* Space between label and input */
+}
+
+.form-input-group {
+    width: 100%; /* Full width */
+}
+
+.prove-item {
+    display: none; /* Hide all items by default */
+}
+
+.prove-item.active {
+    display: block; /* Show active item */
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #717171; /* Color for active dot */
+}
+
+.form-input {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding for comfort */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Optional: Rounded corners */
+    color: #000; /* Text color */
+    font-size: 16px; /* Font size */
+}
+
+.form-input:focus {
+    outline: none; /* Remove outline on focus */
+}
+html, body {
+    margin: 0; /* Remove default margins */
+    padding: 0; /* Remove default padding */
+    height: 100%; /* Full height */
+}
+
+.faq-section {
+    margin: 0; /* No margin on the section */
+    padding: 10px; /* Adjust padding as needed */
+    background-color: #f5f5f5; /* Background color */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.faq-title {
+    font-size: 24px; /* Title font size */
+    margin-bottom: 10px; /* Space below the title */
+    text-align: center; /* Center align the title */
+}
+
+.faq-card {
+    margin: 0; /* No margin between cards */
+    border: none; /* Remove borders */
+}
+
+.faq-card-header {
+    background-color: white; /* White background for header */
+    border: 1px solid #ccc; /* Border for the card */
+}
+
+.faq-question {
+    display: block; /* Make it a block element */
+    color: blue; /* Text color */
+    text-decoration: underline; /* Underline for links */
+    padding: 10px; /* Padding for the question */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.faq-question:hover {
+    color: darkblue; /* Change color on hover */
+}
+
+.faq-card-body {
+    padding: 10px; /* Padding inside the body */
+    background-color: #fff; /* White background for body */
+}
+
+p {
+    margin: 0; /* Remove margin from paragraphs */
+}
+
+.animate-section {
+    margin: 0 auto;
+    width: 90%;
+    border: 2px solid #ccc; 
+    background-color: #f5f5f5; /* Background color */
+    border-radius: 8px; /* Rounded corners */
+    padding: 2rem; /* Padding for the content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.text-center {
+    text-align: center; /* Center align the text */
+}
+
+.fw-bold {
+    font-weight: bold; /* Bold font */
+}
