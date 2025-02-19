@@ -1306,7 +1306,6 @@ img.emoji {
         transform: translateX(0);
     }
 }
-
 .chat-icon-img {
     width: 50px; /* Kích thước biểu tượng */
     height: auto; /* Tự động điều chỉnh chiều cao */
