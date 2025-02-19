@@ -1,113 +1,234 @@
 @extends('user.index')
 @section('name')
 @include('user.home.header')
-<head>
-<link rel="stylesheet" href="/source/css/intro.css" type="text/css">
 
-</head>
-<div class="container">
-        <div class="row mb-5 justify-content-center align-items-center" style="height: 100%;">
-            <div class="col-lg-6 p-0 d-flex align-items-stretch">
-                <img src="./images/intro.png" alt="Giới thiệu" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;">
+<body>
+    <style>
+    .scholarship {
+        padding-top: 100px;
+        padding-bottom: 20px;
+    }
+
+    .scholarship-section {
+        max-width: 1130px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .scholarship-card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        padding: 15px;
+    }
+
+    .scholarship-header {
+        font-size: 22px;
+        font-weight: bold;
+        padding-bottom: 10px;
+    }
+
+    .btn-detail {
+        width: 100%;
+        background-color: #ffcc00;
+        border: none;
+        padding: 10px;
+        font-weight: bold;
+    }
+
+    .highlight {
+        background-color: #e7f3fe;
+        border-left: 6px solid #2196F3;
+        padding: 10px;
+        margin: 20px 0;
+    }
+
+    .form-scholarship {
+        border: 2px solid #FFA500;
+        border-radius: 10px;
+        padding: 20px;
+        max-width: 450px;
+        margin: auto;
+        background-color: #fff7e6;
+    }
+
+    .form-scholarship h3 {
+        text-align: center;
+        color: #FF8C00;
+        /* Màu cam đậm */
+        font-weight: bold;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        border: none;
+        height: 40px;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+        appearance: none;
+        background-color: #f9f9f9;
+    }
+
+    .form-control:focus {
+        outline: none;
+        box-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
+    }
+
+    .form-control[type="file"] {
+        padding: 5px;
+    }
+
+    .btn-primary {
+        background-color: #FFA500;
+        border: none;
+        font-weight: bold;
+        height: 45px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        animation: pulse 1s infinite;
+    }
+
+    .btn-primary:hover {
+        background-color: #FF8C00;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.05);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+    </style>
+
+    <div class="scholarship">
+        <section class="scholarship-section py-4">
+            <h2 class="text-center text-warning">Chương Trình Học Bổng Sinh Viên</h2>
+            <div class="scholarship-card">
+                <div class="scholarship-header text-primary">Học Bổng Xuất Sắc</div>
+                <p class="highlight">
+                    Hỗ trợ 100% học phí cho sinh viên có thành tích học tập vượt trội, điểm đầu vào cao nhất và tham
+                    gia tích cực vào các hoạt động ngoại khóa.
+                </p>
+                <p>
+                    Chương trình học bổng này nhằm khuyến khích và hỗ trợ những sinh viên có năng lực và đam mê
+                    trong lĩnh vực giáo dục mầm non. Sinh viên được nhận học bổng không chỉ được miễn phí học phí mà
+                    còn có cơ hội tham gia vào các hoạt động phát triển kỹ năng và giao lưu học hỏi.
+                </p>
+                <p>
+                    Để đủ điều kiện nhận học bổng, sinh viên cần đáp ứng các tiêu chí sau:
+                </p>
+                <ul>
+                    <li>Điểm thi đầu vào đạt tối thiểu 25 điểm.</li>
+                    <li>Có thành tích học tập xuất sắc trong các cấp học trước đó.</li>
+                    <li>Tham gia tích cực vào các hoạt động ngoại khóa, câu lạc bộ hoặc các chương trình tình
+                        nguyện.</li>
+                    <li>Được giới thiệu bởi giáo viên hoặc cán bộ trong trường.</li>
+                </ul>
+                <p>
+                    Học bổng này không chỉ giúp sinh viên giảm bớt gánh nặng tài chính mà còn mở ra cơ hội để phát
+                    triển bản thân thông qua các khóa học bổ trợ, hội thảo và sự kiện giao lưu quốc tế. Những sinh
+                    viên nhận học bổng sẽ có cơ hội trở thành những nhà giáo dục mầm non có tâm huyết và tài năng
+                    trong tương lai.
+                </p>
             </div>
-            <div class="col-lg-6 d-flex flex-column justify-content-center" style="height: 100%;">
-                <h2 class="fw-bold">Giới Thiệu Chương Trình</h2>
-                <p>Chào mừng bạn đến với trang học bổng dành cho tuyển sinh mầm non. Chúng tôi cung cấp nhiều cơ hội học bổng cho các em nhỏ để giúp các em có điều kiện học tập tốt nhất.</p>
+
+            <div class="scholarship-card">
+                <div class="scholarship-header text-success">Học Bổng Hỗ Trợ</div>
+                <p class="highlight">
+                    Giảm 50% học phí cho sinh viên có hoàn cảnh khó khăn, đạt thành tích tốt và chứng minh được nhu
+                    cầu hỗ trợ tài chính.
+                </p>
+                <p>
+                    Chương trình học bổng này được thiết lập nhằm hỗ trợ những sinh viên có hoàn cảnh khó khăn nhưng
+                    vẫn nỗ lực học tập để đạt thành tích tốt. Học bổng không chỉ giúp giảm bớt gánh nặng tài chính
+                    cho sinh viên mà còn tạo điều kiện cho họ có thể theo đuổi ước mơ trong lĩnh vực giáo dục mầm
+                    non.
+                </p>
+                <p>
+                    Để đủ điều kiện nhận học bổng, sinh viên cần đáp ứng các tiêu chí sau:
+                </p>
+                <ul>
+                    <li>Đạt điểm trung bình học tập từ 7.0 trở lên trong các kỳ học trước.</li>
+                    <li>Có hoàn cảnh gia đình khó khăn, cần hỗ trợ tài chính.</li>
+                    <li>Cung cấp các giấy tờ chứng minh hoàn cảnh và nhu cầu hỗ trợ.</li>
+                    <li>Tham gia các hoạt động ngoại khóa hoặc tình nguyện trong cộng đồng.</li>
+                </ul>
+                <p>
+                    Sinh viên nhận học bổng sẽ không chỉ được giảm học phí mà còn có cơ hội tham gia vào các chương
+                    trình đào tạo kỹ năng, hội thảo và sự kiện giao lưu. Chương trình này hướng đến việc phát triển
+                    toàn diện sinh viên, giúp họ trở thành những nhà giáo dục mầm non có tâm huyết và năng lực trong
+                    tương lai.
+                </p>
             </div>
-        </div>
-        
-        <div class="scholarship-slider">
-            <div class="scholarship-slides">
-                <div class="scholarship-slide">
-                    <div class="scholarship-slider-text" >
-                        <h2>Học bổng xuất sắc</h2>
-                    <p>Hỗ trợ toàn bộ học phí cho học sinh xuất sắc.</p>
-                    <p><strong>Tiêu chí:</strong> Học sinh đạt điểm trung bình tối thiểu 9.0 trong năm học trước.</p>
-                    <p><strong>Cách thức đăng ký:</strong> Nộp đơn đăng ký kèm bảng điểm và thư giới thiệu từ giáo viên.</p>
-                    <p><strong>Thời hạn đăng ký:</strong> Từ 1/6 đến 31/7 hàng năm.</p>
+
+            <div class="scholarship-card">
+                <div class="scholarship-header text-warning">Học Bổng Khuyến Khích</div>
+                <p class="highlight">
+                    Học bổng khuyến khích dành cho sinh viên có thành tích học tập xuất sắc và tích cực tham gia các
+                    hoạt động ngoại khóa.
+                </p>
+                <p>
+                    Chương trình học bổng khuyến khích được thiết lập nhằm ghi nhận và hỗ trợ những sinh viên có
+                    thành tích học tập nổi bật cũng như những đóng góp tích cực cho cộng đồng và các hoạt động
+                    trường lớp. Học bổng này không chỉ giúp sinh viên giảm bớt gánh nặng tài chính mà còn tạo động
+                    lực để họ tiếp tục phát huy năng lực học tập và tham gia hoạt động xã hội.
+                </p>
+                <p>
+                    Để đủ điều kiện nhận học bổng, sinh viên cần đáp ứng các tiêu chí sau:
+                </p>
+                <ul>
+                    <li>Điểm trung bình học tập từ 8.0 trở lên trong các học kỳ trước.</li>
+                    <li>Tham gia tích cực vào các câu lạc bộ, tổ chức sự kiện hoặc hoạt động tình nguyện.</li>
+                    <li>Có thư giới thiệu từ giáo viên hoặc cán bộ trường học.</li>
+                    <li>Thể hiện tinh thần cầu tiến và đam mê trong lĩnh vực giáo dục mầm non.</li>
+                </ul>
+                <p>
+                    Học bổng khuyến khích không chỉ giúp sinh viên giảm bớt chi phí học tập mà còn tạo cơ hội cho họ
+                    tham gia vào các khóa học nâng cao, hội thảo chuyên đề và các chương trình phát triển bản thân.
+                    Điều này sẽ góp phần giúp sinh viên trở thành những nhà giáo dục mầm non xuất sắc trong tương
+                    lai.
+                </p>
+            </div>
+            <h3 class="text-warning mt-4">Điều Kiện Nhận Học Bổng</h3>
+            <ul>
+                <li>Thành tích học tập xuất sắc</li>
+                <li>Hoàn cảnh khó khăn có giấy tờ chứng minh</li>
+                <li>Tham gia các hoạt động ngoại khóa</li>
+            </ul>
+            <div class="form-scholarship">
+                <h3>Hồ Sơ Đăng Ký</h3>
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Bản sao học bạ</label>
+                        <input type="file" class="form-control">
                     </div>
-                </div>
-                <div class="scholarship-slide">
-                    <h2>Học bổng hỗ trợ</h2>
-                    <p>Giảm 50% học phí cho học sinh có hoàn cảnh khó khăn.</p>
-                    <p><strong>Tiêu chí:</strong> Học sinh có hoàn cảnh gia đình khó khăn được xác nhận bởi địa phương.</p>
-                    <p><strong>Cách thức đăng ký:</strong> Nộp đơn đăng ký cùng giấy tờ xác nhận hoàn cảnh.</p>
-                    <p><strong>Thời hạn đăng ký:</strong> Từ 1/6 đến 31/7 hàng năm.</p>
-                </div>
-                <div class="scholarship-slide">
-                    <h2>Học bổng Khuyến khích</h2>
-                    <p>Thưởng 1 triệu đồng cho học sinh đạt thành tích cao.</p>
-                    <p><strong>Tiêu chí:</strong> Học sinh đạt giải trong các cuộc thi học thuật hoặc thể thao.</p>
-                    <p><strong>Cách thức đăng ký:</strong> Nộp đơn đăng ký kèm bằng khen hoặc giấy chứng nhận thành tích.</p>
-                    <p><strong>Thời hạn đăng ký:</strong> Từ 1/6 đến 31/7 hàng năm.</p>
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label">Giấy báo nhập học</label>
+                        <input type="file" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Giấy chứng nhận hoàn cảnh khó khăn</label>
+                        <input type="file" class="form-control">
+                    </div>
+                    <div class="text-center">
+                        <!-- Căn giữa -->
+                        <button type="submit" class="btn btn-primary">Nộp Đơn</button>
+                    </div>
+                </form>
             </div>
-            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-            <button class="next" onclick="changeSlide(1)">&#10095;</button>
-        </div>
-    
-        <h2>Thông Tin Liên Hệ</h2>
-        
-        <div class="main-container">
-			<section class="contact-section mt-5" style="background-color: #ffe0b2; padding: 20px; border-radius: 10px;">
-				<div class="row">
-					<div class="col-md-6 mb-4">
-						<div class="registration-image" style="height: 75%;">
-							<img src="./images/tuvan.jpg" alt="Sinh viên tham gia lớp học">
-						</div>
-					</div>
-					<div class="col-md-6 mb-4">
-						<div class="contact-form">
-							<h3 class="title">Liên Hệ để được tư vấn</h3>
-							<form id="registrationForm">
-								<div class="form-group">
-									<input type="text" name="hoten" class="form-control" placeholder="Họ và tên" required>
-								</div>
-								<div class="form-group">
-									<input type="tel" name="sodienthoai" class="form-control" placeholder="Số điện thoại" required>
-								</div>
-								<div class="form-group">
-									<input type="email" name="diachiemail" class="form-control" placeholder="Email" required>
-								</div>
-								<div class="form-group">
-									<textarea class="form-control" id="message" rows="4" placeholder="Message" required></textarea>
-								</div>
-								<div class="button-container"> <!-- New container -->
-									<button type="submit" class="btn-primary btn-block">Gửi yêu cầu</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</section>
-			
-		</div>
-            
-        
+        </section>
     </div>
-    <script>
-        let currentSlide = 0;
-    
-        function showSlide(index) {
-            const slides = document.querySelector('.scholarship-slides');
-            const totalSlides = document.querySelectorAll('.scholarship-slide').length;
-            
-            if (index >= totalSlides) {
-                currentSlide = 0;
-            } else if (index < 0) {
-                currentSlide = totalSlides - 1;
-            } else {
-                currentSlide = index;
-            }
-    
-            slides.style.transform = 'translateX(' + (-currentSlide * 100) + '%)';
-        }
-    
-        function changeSlide(direction) {
-            showSlide(currentSlide + direction);
-        }
-    
-        // Tự động chuyển slide mỗi 5 giây
-        
-    </script>
+
+</body>
+
 @include('user.home.footer')
