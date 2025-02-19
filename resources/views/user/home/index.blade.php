@@ -220,44 +220,44 @@
         </div>
     </section>
     <div class="main-container" id="contact">
-        <section class="contact-section mt-5" style="background-color: #ffe0b2; padding: 20px; border-radius: 10px;">
+        <section class="contact-section mt-5">
             <div class="row">
                 <div class="col-md-6 mb-4">
-                    <div class="registration-image" style="height: 80%;">
+                    <div class="contact-image">
                         <img src="./images/student.jpg" alt="Sinh viên tham gia lớp học">
                     </div>
                 </div>
                 <div class="col-md-6 mb-4">
-                    <div class="contact-form">
-                        <h3 class="title">Liên Hệ để được tư vấn</h3>
-                        <form id="registrationForm">
+                    <div class="contact-form"
+                        style="border: 2px solid #ff9800; border-radius: 10px; padding: 20px; background-color: white;">
+                        <h3 class="contact-title">Liên Hệ để được tư vấn</h3>
+                        <form id="contactForm">
                             <div class="form-group">
-                                <input type="text" name="hoten" class="form-control" placeholder="Họ và tên" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="tel" name="sodienthoai" class="form-control" placeholder="Số điện thoại"
+                                <input type="text" name="fullname" class="form-control" placeholder="Họ và tên"
                                     required>
                             </div>
                             <div class="form-group">
-                                <input type="email" name="diachiemail" class="form-control" placeholder="Email"
+                                <input type="tel" name="phone" class="form-control" placeholder="Số điện thoại"
                                     required>
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" id="message" rows="4" placeholder="Message"
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" id="message" rows="4" placeholder="Tin nhắn"
                                     required></textarea>
                             </div>
                             <div class="button-container">
-                                <!-- New container -->
-                                <button type="submit" class="btn-primary btn-block">Gửi yêu cầu</button>
+                                <button type="submit" class="btn-submit">Gửi yêu cầu</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
-
     </div>
 
+    
 </div>
 <!-- Mobile Menu-->
 <div id="mobile-menu">
