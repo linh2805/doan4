@@ -284,7 +284,7 @@
 		/* ]]> */
 	</script>
 
-	<script>
+	<!-- <script>
 		let currentIndex = 0;
 		const slides = document.querySelectorAll('.slide');
 		const totalSlides = slides.length;
@@ -305,7 +305,7 @@
 		}
 
 		setInterval(nextSlide, 55000); // Chuyển slide mỗi 3 giây
-	</script>
+	</script> -->
 	<!-- 
 	<script>
 		document.addEventListener('DOMContentLoaded', () => {
