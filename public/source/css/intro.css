@@ -1,0 +1,173 @@
+.intro-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* 1 cột */
+    gap: 20px;
+    /* Khoảng cách giữa các phần */
+    padding: 20px;
+    background-color: #fff3e0;
+    /* Màu nền nhẹ */
+    border-radius: 10px;
+    /* Bo góc */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Bóng cho phần giới thiệu */
+}
+
+.intro-text {
+    grid-column: 1 / -1;
+    /* Chiếm toàn bộ cột */
+}
+
+.intro-image {
+    grid-column: 1 / -1;
+    /* Chiếm toàn bộ cột */
+}
+
+h1 {
+    color: #d45d00;
+    /* Màu tiêu đề */
+}
+
+p {
+    line-height: 1.6;
+    /* Khoảng cách dòng cho đoạn văn */
+    color: #333;
+    /* Màu chữ */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    /* Bo góc cho hình ảnh */
+}
+
+.section-bao {
+    padding-top: 30px;
+    background-color: antiquewhite;
+}
+
+.bao {
+    max-width: 1080px;
+    margin: 0 auto;
+    border: 2px solid #d45d00;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.intro-container {
+    padding: 20px;
+}
+
+h1 {
+    color: #d45d00;
+}
+
+h2 {
+    color: #333;
+    margin-top: 20px;
+}
+
+p {
+    line-height: 1.6;
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 10px 0;
+}
+
+.footer-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+h2 {
+    color: #d45d00;
+    margin-bottom: 20px;
+}
+
+p {
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.co-hoi-anh .img-fluid {
+    transition: transform 0.3s;
+}
+
+.co-hoi-anh .img-fluid:hover {
+    transform: scale(1.05);
+}
+.job{
+    padding-top: 30px;
+}
+.contact-section {
+    background-color: #fff3e0;
+    border-radius: 10px; 
+    padding: 20px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    display: flex; 
+    height: auto;
+    max-height: 400px; 
+}
+
+.contact-details, .contact-form {
+    flex: 1; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+ }
+
+.contact-item {
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 10px; 
+}
+
+.contact-icon {
+    font-size: 1.5rem; 
+    margin-right: 10px;
+    color: #d45d00;
+}
+
+.btn-submit {
+    background-color: #d45d00; 
+    color: white;
+    border: none; 
+    transition: background-color 0.3s; 
+}
+
+.btn-submit:hover {
+    background-color: #b45d00; 
+}
+.lienhe{
+    padding-top: 50px;
+}
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: orange;
+    animation: pulse 2s infinite;
+}
+h1 {
+    color: orange;
+    animation: pulse 2s infinite;
+    margin-bottom: 1rem;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}

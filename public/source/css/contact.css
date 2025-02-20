@@ -1,0 +1,71 @@
+body {
+    background-color: #f8f9fa;
+}
+.registration-container {
+    display: flex; /* Sử dụng Flexbox */
+    align-items: stretch; /* Đảm bảo chiều cao bằng nhau */
+    margin-top: 50px;
+}
+.registration-image img {
+    max-width: 100%; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.registration-form {
+    flex: 1; 
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.registration-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration-title {
+    color: #ff9800;
+    font-size: 2rem;
+    animation: pulse 1.5s infinite;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-field {
+    margin-bottom: 10px;
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.submit-button {
+    width: 100%;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    animation: pulse 1s infinite;
+}
+
+.submit-button:hover {
+    background-color: #e68a00;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
