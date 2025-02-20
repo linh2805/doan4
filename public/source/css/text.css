@@ -116,7 +116,7 @@ img.emoji {
 
 /* Container alignment */
 .container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
@@ -1158,7 +1158,7 @@ img.emoji {
     color: white;
     text-decoration: none;
     animation: scaleEffect 1.5s infinite;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 @keyframes scaleEffect {
@@ -1276,43 +1276,6 @@ img.emoji {
     }
 }
 
-.job-section a.btn {
-    display: inline-block;
-    background-color: #f08233;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    animation: scaleEffect 1.5s infinite;
-    will-change: transform;
-    position: relative;
-}
-
-.job-section a.btn:hover {
-    transform: scale(1.1);
-
-    color: white;
-}
-
-/* Hiệu ứng co giãn */
-@keyframes scaleEffect {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-
 .chat-section {
     position: fixed;
     right: 5px;
@@ -1320,6 +1283,33 @@ img.emoji {
     z-index: 1000;
 }
 
+
+.chat-icon {
+    cursor: pointer; /* Thay đổi con trỏ khi di chuột qua */
+    animation: shake 1s infinite; /* Hiệu ứng lắc liên tục */
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+.chat-icon-img {
+    width: 50px; /* Kích thước biểu tượng */
+    height: auto; /* Tự động điều chỉnh chiều cao */
+}
 .chat-icon {
     border-radius: 50%;
     margin: 10px;
@@ -1335,16 +1325,12 @@ img.emoji {
 
 .chat-icon:hover {
     transform: scale(1.15);
-    /* Phóng to khi hover */
     opacity: 0.9;
-    /* Độ mờ khi hover */
 }
 
 .zalo-icon {
     width: 30px;
-    /* Kích thước biểu tượng Zalo */
     height: 30px;
-    /* Kích thước biểu tượng Zalo */
 }
 
 @keyframes strong-bobbing {
@@ -1358,17 +1344,14 @@ img.emoji {
         transform: translateY(-10px);
     }
 
-    /* Nhấc lên mạnh hơn */
     50% {
         transform: translateY(5px);
     }
 
-    /* Nhấc xuống nhẹ nhàng */
     75% {
         transform: translateY(-5px);
     }
 
-    /* Nhấc lên nhẹ nhàng */
 }
 
 .qr-modal {
@@ -1542,10 +1525,11 @@ img.emoji {
 
 }
 
+/* 
 .header-logo {
     display: flex;
     justify-content: flex-end;
-}
+} */
 
 @keyframes scale-bounce {
 
@@ -1950,7 +1934,7 @@ img.emoji {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #ff7043;
+    /* background-color: #ff7043; */
     color: white;
     padding: 12px 24px;
     font-size: 18px;
@@ -1994,41 +1978,56 @@ img.emoji {
         margin-top: 20px;
     }
 }
+
 .section {
     display: flex;
-    flex-wrap: wrap; /* Cho phép các phần tử xuống dòng khi không đủ không gian */
+    flex-wrap: wrap;
+    /* Cho phép các phần tử xuống dòng khi không đủ không gian */
     margin: 20px 0;
 }
-.left-column, .right-column {
+
+.left-column,
+.right-column {
     flex: 1;
     margin: 10px;
 }
+
 .card {
-    background-color: #ffcc80; /* Màu cam nhạt */
+    background-color: #ffcc80;
+    /* Màu cam nhạt */
     border-radius: 8px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: left;
 }
+
 .card h2 {
     color: #333;
     margin: 0 0 10px 0;
 }
+
 .card p {
     color: #666;
 }
+
 .img-container {
     display: flex;
-    justify-content: space-between; /* Căn giữa các ảnh */
+    justify-content: space-between;
+    /* Căn giữa các ảnh */
     gap: 10px;
-    margin-top: 10px; /* Tạo khoảng cách với nội dung */
+    margin-top: 10px;
+    /* Tạo khoảng cách với nội dung */
 }
+
 .img-container img {
-    width: 48%; /* Đảm bảo ảnh chiếm gần hết chiều rộng */
+    width: 48%;
+    /* Đảm bảo ảnh chiếm gần hết chiều rộng */
     border-radius: 8px;
 }
+
 .facility-title {
-    color: #f5741d; /* Màu cam nhạt */
+    color: #f5741d;
+    /* Màu cam nhạt */
     text-align: center;
     margin-bottom: 20px;
     font-weight: 600;
@@ -2036,15 +2035,23 @@ img.emoji {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .left-column, .right-column {
-        flex: 100%; /* Chiếm toàn bộ chiều rộng */
+
+    .left-column,
+    .right-column {
+        flex: 100%;
+        /* Chiếm toàn bộ chiều rộng */
     }
+
     .img-container {
-        flex-direction: column; /* Đặt ảnh theo chiều dọc */
-        align-items: center; /* Căn giữa ảnh */
+        flex-direction: column;
+        /* Đặt ảnh theo chiều dọc */
+        align-items: center;
+        /* Căn giữa ảnh */
     }
+
     .img-container img {
-        width: 90%; /* Ảnh chiếm 90% chiều rộng */
+        width: 90%;
+        /* Ảnh chiếm 90% chiều rộng */
     }
 }
 
@@ -2055,27 +2062,217 @@ img.emoji {
     border-radius: 10px;
     text-align: center;
 }
+
 .testimonial img {
     width: 60px;
     border-radius: 50%;
 }
+
 .testimonial h5 {
     margin: 20px 0 10px 0;
 }
 
 .menu-item {
-    position: relative; /* Để sử dụng tuyệt đối cho ul bên dưới */
+    position: relative;
+    /* Để sử dụng tuyệt đối cho ul bên dưới */
 }
+
 .submenu {
-    display: none; /* Ẩn submenu */
-    position: absolute; /* Đưa submenu vào vị trí tuyệt đối */
-    top: 100%; /* Đặt submenu dưới mục menu */
+    display: none;
+    /* Ẩn submenu */
+    position: absolute;
+    /* Đưa submenu vào vị trí tuyệt đối */
+    top: 100%;
+    /* Đặt submenu dưới mục menu */
     left: 0;
-    background-color: white; /* Màu nền cho submenu */
-    border: 1px solid #ddd; /* Đường viền cho submenu */
+    background-color: white;
+    /* Màu nền cho submenu */
+    border: 1px solid #ddd;
+    /* Đường viền cho submenu */
     padding: 10px;
-    z-index: 1000; /* Đưa submenu lên trên các phần tử khác */
+    z-index: 1000;
+    /* Đưa submenu lên trên các phần tử khác */
 }
+
 .menu-item:hover .submenu {
-    display: block; /* Hiện submenu khi hover */
+    display: block;
+    /* Hiện submenu khi hover */
+}
+
+.ct-testimonial {
+    padding: 0px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial {
+    padding: 0px;
+    background-color: #001f3f;
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.ct-testimonial {
+    margin-top: 20px;
+    max-width: 80%;
+}
+
+.testimonial {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+.testimonial img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.testimonial h5 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.testimonial p {
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.comment-form {
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    text-align: center;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: none;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.comment-form button {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.comment-form button:hover {
+    background-color: #0056b3;
+}
+
+#comments-section {
+    margin-top: 20px;
+}
+
+.contact-section {
+    background-color: #ffe0b2;
+    padding: 20px;
+    /* border-radius: 10px; */
+}
+
+.contact-title {
+    color: #ff9800;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #ff9800;
+    outline: none;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    animation: pulse 1s infinite;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.contact-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.btn-header {
+    background-color: #ff5722; 
+    color: white;
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 10px; 
+    font-size: 2.2rem;
+    cursor: pointer; 
+    animation: pulse 1s infinite; 
+    transition: background-color 0.3s; 
+}
+
+.btn-header:hover {
+    background-color: #e64a19;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

@@ -1,0 +1,305 @@
+.thucontainer{
+    margin-top: 51px;
+    background-color: rgba(252, 223, 207, 0.9);
+    color: #000;
+}
+.new-title {
+    color: #FF8C00;
+    text-align: center;
+    display: inline-block;
+    animation: scaleAnimation 2s infinite;
+}
+@keyframes scaleAnimation {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+.appear {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+h1,
+h2 {
+    color: #FF8C00;
+}
+.animate-section.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #FF8C00;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 20px;
+    display: none;
+    z-index: 1000;
+    transition: background-color 0.3s;
+}
+.back-to-top:hover {
+    background-color: #e07b00;
+}
+.btn-info {
+    color: #FF8C00;
+}
+.contact-form-section{
+    background-color: #FF8C00;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 50px auto;
+}
+h2 {
+    text-align: center;
+}
+.form-input-group {
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #0056b3;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #004494;
+}
+.form-input-group{
+    margin-bottom: 15px;
+}
+.scale {
+    display: inline-block;
+    animation: scale 2s infinite;
+}
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.fade-in {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.5s forwards;
+    /* Thay đổi thời gian */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.centered-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.prove {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+.prove-slider {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    /* Chiều rộng tối đa cho khung */
+    overflow: hidden;
+    /* Ẩn phần ngoài khung */
+}
+.prove-content {
+    background-color: #ffcc80;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: none;
+    width: 100%;
+    /* Để khung dài ra */
+    max-width: 800px;
+    /* Tăng chiều rộng tối đa */
+}
+
+.prove-content img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 2px solid white;
+    /* Viền trắng quanh hình */
+}
+
+.pagination {
+    margin-top: 15px;
+}
+
+
+.active {
+    background-color: #717171;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #34495e;
+}
+.highlight {
+    background-color: #e7f3fe;
+    border-left: 6px solid #2196F3;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+.mb-5 {
+    margin-bottom: 5rem;
+}
+.scaling-title {
+    font-size: 2rem;
+    animation: scale 2s infinite;
+}
+
+.scaling-title {
+    margin-bottom: 20px; 
+}
+
+
+.form-label {
+    display: block; 
+    margin-bottom: 5px; 
+}
+
+.form-input-group {
+    width: 100%; 
+}
+
+.prove-item {
+    display: none; 
+}
+
+.prove-item.active {
+    display: block; 
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #717171; 
+}
+
+.form-input {
+    width: 100%; 
+    padding: 10px; 
+    border: none; 
+    border-radius: 5px; 
+    color: #000; 
+    font-size: 16px;
+}
+
+.form-input:focus {
+    outline: none; 
+}
+html, body {
+    margin: 0; 
+    padding: 0; 
+    height: 100%; 
+}
+
+.faq-section {
+    margin: 0; 
+    padding: 10px; 
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+.faq-title {
+    font-size: 24px;
+    margin-bottom: 10px; 
+    text-align: center; 
+}
+
+.faq-card {
+    margin: 0;
+    border: none; 
+}
+
+.faq-card-header {
+    background-color: white; 
+    border: 1px solid #ccc;
+}
+
+.faq-question {
+    display: block;
+    color: blue;
+    padding: 10px; 
+    cursor: pointer; 
+    text-decoration: none; 
+    cursor: pointer; 
+}
+
+.faq-question:hover {
+    color: darkblue; 
+}
+
+.faq-card-body {
+    padding: 10px;
+    background-color: #fff; 
+}
+
+p {
+    margin: 0; 
+}
+
+.animate-section {
+    margin: 0 auto;
+    width: 90%;
+    border: 2px solid #ccc; 
+    background-color: #f5f5f5; 
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-center {
+    text-align: center; 
+}
+
+.fw-bold {
+    font-weight: bold;
+}

@@ -25,7 +25,6 @@
 									<a href="#scholarship">Học bổng</a>
 									<a href="#quality">Tin tức</a>
 									<a href="#job">Đăng kí</a>
-									<a href="#contact">Liên hệ</a>
 								</div>
 							</div>
 						</div>
