@@ -11,22 +11,23 @@ return new class extends Migration
      */
     public function up()
 {
-    Schema::create('contacts', function (Blueprint $table) {
+    Schema::create('registrations', function (Blueprint $table) {
         $table->id();
-        $table->string('fullname');
-        $table->string('phone');
+        $table->string('full_name');
+        $table->string('phone_number');
         $table->string('email');
-        $table->text('message');
+        $table->string('school');
+        $table->string('residence');
+        $table->string('major');
         $table->timestamps();
     });
 }
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('registrations');
     }
 };

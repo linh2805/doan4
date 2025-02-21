@@ -44,7 +44,7 @@
                                         style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #666;"></i>
                                 </div>
                                 <div class="header-button" style="margin-left: 250px;">
-                                    <a href="{{ url('/contact') }}" class="button primary is-large" style="border-radius:5px">
+                                    <a href="{{ url('/register') }}" class="button primary is-large" style="border-radius:5px">
                                         <span>Đăng kí</span>
                                     </a>
                                 </div>

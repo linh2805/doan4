@@ -17,26 +17,26 @@
 	<link rel="stylesheet" href="/source/css/style.css" type="text/css">
 	<link rel="stylesheet" href="/source/css/text.css" type="text/css">
 	<link rel="stylesheet" href="/source/css/responsive.css" type="text/css">
-	<script src="/source/js/index.js" type="text/javascript"></script>
-	<script src="/source/js/programme.js" type="text/javascript"></script>
+	<script src="/source/js/index.js" type="text/javascript" defer></script>
+	<script src="/source/js/programme.js" type="text/javascript" defer></script>
 
 	
-	<script src="/source/js/jquery.js" type="text/javascript"></script>
-	<script src="/source/js/skip-link-focus-fix.js" type="text/javascript"></script>
-	<script src="/source/js/global.js/" type="text/javascript"></script>
-	<script src="/source/js/jquery.scrollTo.js" type="text/javascript"></script>
-	<script src="/source/js/noConflict.js" type="text/javascript"></script>
-	<script src="/source/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="/source/js/bootstrap-select.min.js" type="text/javascript"></script>
+	<script src="/source/js/jquery.js" type="text/javascript" defer></script>
+	<script src="/source/js/skip-link-focus-fix.js" type="text/javascript" defer></script>
+	<script src="/source/js/global.js/" type="text/javascript" defer></script>
+	<script src="/source/js/jquery.scrollTo.js" type="text/javascript" defer></script>
+	<script src="/source/js/noConflict.js" type="text/javascript" defer></script>
+	<script src="/source/js/bootstrap.min.js" type="text/javascript" defer></script>
+	<script src="/source/js/bootstrap-select.min.js" type="text/javascript" defer></script>
 	<!--  -->
-	<script src="/source/js/bootstrap-slider.min.js" type="text/javascript"></script>
-	<script src="/source/js/common.js" type="text/javascript"></script>
-	<script src="/source/js/placeholderTypewriter.js" type="text/javascript"></script>
-	<script src="/source/js/owl.carousel.min.js" type="text/javascript"></script>
-	<script src="/source/js/parallax.js" type="text/javascript"></script>
-	<script src="/source/js/revslider.js" type="text/javascript"></script>
-	<script src="/source/js/jquery.mobile-menu.min.js" type="text/javascript"></script>
-	<script src="/source/js/wp-embed.min.js" type="text/javascript"></script>
+	<script src="/source/js/bootstrap-slider.min.js" type="text/javascript" defer></script>
+	<script src="/source/js/common.js" type="text/javascript" defer></script>
+	<script src="/source/js/placeholderTypewriter.js" type="text/javascript" defer></script>
+	<script src="/source/js/owl.carousel.min.js" type="text/javascript" defer></script>
+	<script src="/source/js/parallax.js" type="text/javascript" defer></script>
+	<script src="/source/js/revslider.js" type="text/javascript" defer></script>
+	<script src="/source/js/jquery.mobile-menu.min.js" type="text/javascript" defer></script>
+	<script src="/source/js/wp-embed.min.js" type="text/javascript" defer></script>
 
 </head>
 

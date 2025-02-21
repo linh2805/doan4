@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Registration extends Model
 {
-    // Define the table name if necessary
-    protected $table = 'registrations';  // This is optional because Laravel will assume 'registrations'
+    // Định nghĩa tên bảng nếu cần thiết
+    protected $table = 'registrations';  // Điều này là tùy chọn vì Laravel sẽ mặc định là 'registrations'
 
-    // Specify the fillable attributes to allow mass-assignment
+    // Chỉ định các thuộc tính có thể gán hàng loạt
     protected $fillable = [
         'full_name',
-        'phone',
+        'phone_number',  // Sửa tên trường ở đây
         'email',
-        'high_school',
+        'school',        // Sửa tên trường ở đây
         'residence',
         'major',
     ];
