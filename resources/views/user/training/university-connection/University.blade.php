@@ -19,7 +19,7 @@
         <!-- Giới Thiệu -->
         <div class="row align-items-stretch mb-5">
             <div class="col-lg-6 p-0">
-                <img src="./images/intro.png" alt="Giới thiệu" class="img-fluid"
+                <img src="/source/images/1.png" alt="Giới thiệu" class="img-fluid"
                     style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div class="col-lg-6 d-flex flex-column justify-content-center" style="height: 100%;">
@@ -98,21 +98,21 @@
             <div class="prove-slider">
                 <div class="prove-item active">
                     <div class="prove-content">
-                        <img src="./images/Ellipse 1.png" alt="Nguyễn Văn A" class="rounded-circle">
+                        <img src="/source/images/2.png" alt="Nguyễn Văn A" class="rounded-circle">
                         <h5>Nguyễn Văn A</h5>
                         <p>“Chương trình rất bổ ích và giúp tôi tự tin hơn trong việc giảng dạy!”</p>
                     </div>
                 </div>
                 <div class="prove-item">
                     <div class="prove-content">
-                        <img src="./images/Ellipse 2.png" alt="Trần Thị B" class="rounded-circle">
+                        <img src="/source/images/2.png" alt="Trần Thị B" class="rounded-circle">
                         <h5>Trần Thị B</h5>
                         <p>“Đội ngũ giảng viên rất nhiệt tình và chuyên nghiệp!”</p>
                     </div>
                 </div>
                 <div class="prove-item">
                     <div class="prove-content">
-                        <img src="./images/Ellipse 3.png" alt="Lê Văn C" class="rounded-circle">
+                        <img src="/source/images/2.png" alt="Lê Văn C" class="rounded-circle">
                         <h5>Lê Văn C</h5>
                         <p>“Chương trình đã giúp tôi tìm ra niềm đam mê thực sự của mình.”</p>
                     </div>

@@ -17,10 +17,10 @@
                 còn tạo ra nhiều cơ hội nghề nghiệp trong tương lai. Hãy cùng chúng tôi khám phá những điều thú vị
                 trong thế giới giáo dục mầm non!
             </p>
-            <button class="btn-header">Tìm hiểu thêm</button>
+            <button class="btn-header"><a href="#training-program">Tìm hiểu thêm</a></button>
         </div>
         <div class="image">
-            <img src="./images/tre.jpg" alt="Nhà trẻ">
+            <img src="/source/images/tre.jpg" alt="Nhà trẻ">
         </div>
     </section>
     <section class="awe-section-5" id="training-program">
@@ -42,8 +42,8 @@
                                 giảng dạy, chăm sóc trẻ trong môi trường giáo dục mầm non. Sinh viên tốt nghiệp được cấp
                                 bằng cử nhân cao đẳng, đủ điều kiện giảng dạy tại các trường mầm non công lập và tư
                                 thục.</p>
-                            <a href="#" onclick="showInfo('primaryEducationModal')" title="Xem thêm"
-                                class="scroll-link">xem thêm</a>
+                            <a href="{{ url('/college') }}" title="Xem thêm"
+                                >xem thêm</a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 fade-in" style="animation-delay: 0.8s;">
@@ -57,8 +57,8 @@
                                 chăm sóc và nuôi dạy trẻ nhỏ. Thời gian học ngắn, phù hợp với người muốn nhanh chóng ra
                                 trường và làm việc trong lĩnh vực giáo dục mầm non.
                             </p>
-                            <a href="#" onclick="showInfo('englishEducationModal')" title="Xem thêm"
-                                class="scroll-link">xem thêm</a>
+                            <a href="{{ url('/intermediate') }}" title="Xem thêm"
+                    >xem thêm</a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 fade-in" style="animation-delay: 0.8s;">
@@ -71,8 +71,7 @@
                             <p>Chương trình đào tạo dành cho người đã tốt nghiệp trung cấp mầm non muốn nâng cao trình
                                 độ lên bậc cao đẳng. Khóa học giúp mở rộng kiến thức chuyên ngành và tăng cơ hội thăng
                                 tiến trong sự nghiệp giảng dạy.</p>
-                            <a href="#" onclick="showInfo('mathEducationModal')" title="Xem thêm"
-                                class="scroll-link">xem thêm</a>
+                            <a href="{{ url('/connection') }}" title="Xem thêm">xem thêm</a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 fade-in" style="animation-delay: 0.8s;">
@@ -86,8 +85,8 @@
                                 thiện bằng cử nhân đại học. Khóa học tập trung vào nâng cao kiến thức chuyên sâu và kỹ
                                 năng giảng dạy, đồng thời đáp ứng yêu cầu chuẩn hóa trình độ giáo viên theo quy định
                                 ngành giáo dục.</p>
-                            <a href="#" onclick="showInfo('physicsEducationModal')" title="Xem thêm"
-                                class="scroll-link">xem thêm</a>
+                            <a href="{{ url('/university') }}" title="Xem thêm"
+                                >xem thêm</a>
                         </div>
                     </div>
                 </div>
@@ -107,7 +106,7 @@
                         <p>Ưu đãi 100% học phí cho sinh viên đạt điểm đầu vào cao nhất hoặc có thành tích học
                             tập
                             xuất sắc.</p>
-                        <a href="#contact" title="Xem thêm" class="scroll-link">xem thêm</a>
+                        <a href="{{ url('/scholarship') }}" title="Xem thêm" >xem thêm</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-4">
@@ -118,8 +117,8 @@
                         <h3>Học Bổng Hỗ Trợ</h3>
                         <p>Giảm 50% học phí cho sinh viên có hoàn cảnh đặc biệt khó khăn nhưng đạt yêu cầu xét
                             tuyển.</p>
-                        <a href="#contact" title="Xem thêm" class="scroll-link">xem thêm</a>
-                    </div>
+                            <a href="{{ url('/scholarship') }}" title="Xem thêm" >xem thêm</a>
+                            </div>
                 </div>
                 <div class="col-lg-4 col-sm-4">
                     <div class="single-box-item">
@@ -128,7 +127,7 @@
                         </div>
                         <h3>Học Bổng Khuyến Khích</h3>
                         <p>Giảm 30% học phí cho sinh viên đăng ký sớm trước ngày X và đáp ứng đủ điều kiện.</p>
-                        <a href="#contact" title="Xem thêm" class="scroll-link">xem thêm</a>
+                        <a href="{{ url('/scholarship') }}" title="Xem thêm" >xem thêm</a>
                     </div>
                 </div>
             </div>
@@ -148,14 +147,14 @@
                     </div>
                 </div>
                 <div class="right-column img-container">
-                    <img src="./images/classroom.png" alt="Hệ thống lớp học">
-                    <img src="./images/cl2.jpg" alt="Hệ thống lớp học">
+                    <img src="/source/images/classroom.png" alt="Hệ thống lớp học">
+                    <img src="/source/images/cl2.jpg" alt="Hệ thống lớp học">
                 </div>
             </div>
             <div class="section">
                 <div class="left-column img-container">
-                    <img src="./images/th.jpg" alt="Giáo dục thể chất">
-                    <img src="./images/sp.jpg" alt="Hệ thống lớp học">
+                    <img src="/source/images/th.jpg" alt="Giáo dục thể chất">
+                    <img src="/source/images/sp.jpg" alt="Hệ thống lớp học">
                 </div>
                 <div class="right-column">
                     <div class="card">
@@ -173,7 +172,7 @@
         <h2 style="text-align: center;">Bình luận</h2>
         <div class="mt-5 ct-testimonial">
             <div class="testimonial">
-                <img src="./images/Ellipse 2.png" alt="Avatar">
+                <img src="/source/images/2.png" alt="Avatar">
                 <h5>Eugene Freeman</h5>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed diam nonummy nibh euismod tincidunt
                     ut
@@ -196,24 +195,24 @@
             <!-- Row 1 -->
             <div class="gallery-row">
                 <div class="gallery-item">
-                    <img src="./images/hs.png" alt="Students sitting" class="gallery-img">
+                    <img src="/source/images/hs.png" alt="Students sitting" class="gallery-img">
                 </div>
                 <div class="gallery-item">
-                    <img src="./images/21.jpg" alt="Students at desk" class="gallery-img">
+                    <img src="/source/images/21.jpg" alt="Students at desk" class="gallery-img">
                 </div>
                 <div class="gallery-item">
-                    <img src="./images/be.jpg" alt="Stage performance" class="gallery-img">
+                    <img src="/source/images/be.jpg" alt="Stage performance" class="gallery-img">
                 </div>
             </div>
             <div class="gallery-row">
                 <div class="gallery-item">
-                    <img src="./images/co.jpeg" alt="School building" class="gallery-img">
+                    <img src="/source/images/co.jpeg" alt="School building" class="gallery-img">
                 </div>
                 <div class="gallery-item">
-                    <img src="./images/clb.jpg" alt="Students outside" class="gallery-img">
+                    <img src="/source/images/clb.jpg" alt="Students outside" class="gallery-img">
                 </div>
                 <div class="gallery-item">
-                    <img src="./images/20.webp" alt="Stage performance" class="gallery-img">
+                    <img src="/source/images/20.webp" alt="Stage performance" class="gallery-img">
                 </div>
             </div>
 
@@ -224,7 +223,7 @@
             <div class="row">
                 <div class="col-md-6 mb-4">
                     <div class="contact-image">
-                        <img src="./images/student.jpg" alt="Sinh viên tham gia lớp học">
+                        <img src="/source/images/student.jpg" alt="Sinh viên tham gia lớp học">
                     </div>
                 </div>
                 <div class="col-md-6 mb-4">
@@ -291,24 +290,17 @@
     </ul>
 </div>
 
-<<<<<<< HEAD
-	<!-- <script>
-		let currentIndex = 0;
-		const slides = document.querySelectorAll('.slide');
-		const totalSlides = slides.length;
-=======
 <div class="chat-section">
     <div class="chat-icon" onclick="window.open('https://www.facebook.com/DHSPHN2')">
-        <img src="./images/mes.webp" alt="Zalo" class="zalo-icon">
+        <img src="/source/images/mes.webp" alt="Zalo" class="zalo-icon">
     </div>
     <div class="chat-icon" onclick="window.open()">
-        <img src="./images/zalo.png" alt="Zalo" class="zalo-icon"> <!-- Biểu tượng Zalo -->
+        <img src="/source/images/zalo.png" alt="Zalo" class="zalo-icon"> <!-- Biểu tượng Zalo -->
     </div>
     <div class="chat-icon" onclick="showQR()">
         <i class="fa-solid fa-phone fa-xl" style="color: #ffffff;"></i>
     </div>
 </div>
->>>>>>> 58ee25ef7acbeb0faeeacdc9e23cd1b59c7303d4
 
 
 <script type='text/javascript'
@@ -326,11 +318,6 @@ let currentIndex = 0;
 const slides = document.querySelectorAll('.slide');
 const totalSlides = slides.length;
 
-<<<<<<< HEAD
-		setInterval(nextSlide, 55000); // Chuyển slide mỗi 3 giây
-	</script> -->
-	<!-- 
-=======
 function showSlide(index) {
     const offset = -index * 100; // Tính toán vị trí để chuyển đổi
     document.querySelector('.slides').style.transform = `translateX(${offset}%)`; // Di chuyển slides

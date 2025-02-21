@@ -23,7 +23,7 @@
                     đội ngũ giảng viên tận tâm.</p>
             </div>
             <div class="intro-image">
-                <img src="./images/via.webp" alt="Tuyển sinh Cao Đẳng XYZ"
+                <img src="/source/images/sp.jpg" alt="Tuyển sinh Cao Đẳng XYZ"
                     class="w-full h-auto object-cover rounded-lg shadow-lg">
             </div>
         </section>
@@ -85,7 +85,7 @@
                         giáo dục đa dạng. Chúng tôi tin rằng, với định hướng rõ ràng và sự tận tâm, chúng tôi sẽ đóng
                         góp tích cực vào sự phát triển của ngành giáo dục mầm non tại Việt Nam.</p>
                 </div>
-                <img src="./images/gd.jpg" alt="Hình ảnh giáo dục mầm non" class="footer-img">
+                <img src="/source/images/slider1.jpg" alt="Hình ảnh giáo dục mầm non" class="footer-img">
             </section>
         </div>
         <div class="job">
@@ -100,16 +100,16 @@
 
                 <div class="co-hoi-anh row g-2">
                     <div class="col-6 col-md-3 mb-2">
-                        <img src="./images/vc1.jpg" alt="Dịch vụ chăm sóc học sinh 1" class="img-fluid rounded-circle">
+                        <img src="/source/images/slider2.jpg" alt="Dịch vụ chăm sóc học sinh 1" class="img-fluid rounded-circle">
                     </div>
                     <div class="col-6 col-md-3 mb-2">
-                        <img src="./images/cv2.jpg" alt="Dịch vụ chăm sóc học sinh 2" class="img-fluid rounded-circle">
+                        <img src="/source/images/student.jpg" alt="Dịch vụ chăm sóc học sinh 2" class="img-fluid rounded-circle">
                     </div>
                     <div class="col-6 col-md-3 mb-2">
-                        <img src="./images/cv3.jpg" alt="Dịch vụ chăm sóc học sinh 3" class="img-fluid rounded-circle">
+                        <img src="/source/images/th.jpg" alt="Dịch vụ chăm sóc học sinh 3" class="img-fluid rounded-circle">
                     </div>
                     <div class="col-6 col-md-3 mb-2">
-                        <img src="./images/cv4.jpg" alt="Dịch vụ chăm sóc học sinh 4" class="img-fluid rounded-circle">
+                        <img src="/source/images/tre.jpg" alt="Dịch vụ chăm sóc học sinh 4" class="img-fluid rounded-circle">
                     </div>
                 </div>
             </section>

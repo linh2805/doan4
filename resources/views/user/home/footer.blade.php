@@ -20,11 +20,11 @@
 							<div class="footer-widget">
 								<h3 class="widget-title">Menu</h3>
 								<div class="menu">
-									<a href="#about-us">Giới thiệu</a>
+									<a href="{{ url('/intro') }}">Giới thiệu</a>
 									<a href="#training-program">Chương trình đào tạo</a>
-									<a href="#scholarship">Học bổng</a>
-									<a href="#quality">Tin tức</a>
-									<a href="#job">Đăng kí</a>
+									<a href="{{ url('/scholarship') }}">Học bổng</a>
+									<a href="{{ url('/news') }}">Tin tức</a>
+									<a href="{{ url('/contact') }}">Đăng kí</a>
 								</div>
 							</div>
 						</div>

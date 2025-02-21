@@ -15,7 +15,7 @@
     </div>
     <div class="registration-container" style="margin-top: 30px;padding-bottom: 30px;">
         <div class="registration-image col-md-7 mb-4">
-            <img src="./images/tuvan.jpg" style="height: 100%; width: 100%; object-fit: cover;"
+            <img src="/source/images/tre.jpg" style="height: 100%; width: 100%; object-fit: cover;"
                 alt="Sinh viên tham gia lớp học">
         </div>
         <div class="registration-form col-md-5 d-flex flex-column justify-content-between">
