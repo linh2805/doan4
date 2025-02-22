@@ -171,26 +171,161 @@
     </section>
     <section>
         <h2 style="text-align: center;">Bình luận</h2>
-        <div class="mt-5 ct-testimonial">
-            <div class="testimonial">
-                <img src="./images/Ellipse 2.png" alt="Avatar">
-                <h5>Eugene Freeman</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed diam nonummy nibh euismod tincidunt
-                    ut
-                    laoreet dolore magna aliquam erat volutpat.</p>
+        <div id="comments-section" class="mt-5 ct-testimonial">
+            @if(isset($comments) && count($comments) > 0)
+            @foreach ($comments as $comment)
+            <div class="comment-box"
+                style="display: flex; align-items: center; padding: 10px; border-bottom: 1px solid #ccc;">
+                <!-- Ảnh đại diện -->
+                <img src="{{ $comment->user->avatar ?? '/default-avatar.png' }}" alt="Avatar"
+                    style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
+
+                <!-- Nội dung bình luận -->
+                <div style="flex: 1;">
+                    <p style="margin: 0;">{{ $comment->content }}</p>
+                </div>
+
+                <!-- Nút 3 chấm (Dropdown) -->
+                <div class="dropdown" style="position: relative;">
+                    <button onclick="toggleDropdown({{ $comment->id }})"
+                        style="background: none; border: none; cursor: pointer;">
+                        &#x22EE;
+                        <!-- Biểu tượng 3 chấm dọc -->
+                    </button>
+                    <div id="dropdown-{{ $comment->id }}" class="dropdown-menu"
+                        style="display: none; position: absolute; right: 0; background: white; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                        <button onclick="editComment({{ $comment->id }})"
+                            style="display: block; padding: 5px 10px; width: 100%;">Sửa</button>
+                        <button onclick="deleteComment({{ $comment->id }})"
+                            style="display: block; padding: 5px 10px; width: 100%; color: red;">Xóa</button>
+                    </div>
+                </div>
             </div>
+            @endforeach
+            @else
+            <p>Chưa có bình luận nào.</p>
+            @endif
         </div>
 
-        <!-- New Comments Will Appear Here -->
-        <div id="comments-section" class="ct-testimonial"></div>
-
-        <!-- Comment Form -->
+        <!-- Form Viết Bình Luận -->
         <div class="comment-form">
-            <h3>Write a Comment</h3>
-            <textarea id="comment-input" rows="4" placeholder="Write your comment here..."></textarea>
-            <button onclick="addComment()">Post Comment</button>
+            <h3>Viết bình luận</h3>
+            <textarea id="comment-input" rows="4" placeholder="Nhập bình luận..."></textarea>
+            <button onclick="addComment()">Gửi</button>
         </div>
     </section>
+
+
+    <script>
+    document.addEventListener("DOMContentLoaded", loadComments);
+
+
+    function toggleDropdown(commentId) {
+        let dropdown = document.getElementById("dropdown-" + commentId);
+        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    }
+
+    // Ẩn dropdown khi click ra ngoài
+    document.addEventListener("click", function(event) {
+        if (!event.target.closest(".dropdown")) {
+            document.querySelectorAll(".dropdown-menu").forEach(menu => {
+                menu.style.display = "none";
+            });
+        }
+    });
+
+    function loadComments() {
+        fetch('/comments')
+            .then(response => response.json())
+            .then(comments => {
+                const section = document.getElementById('comments-section');
+                section.innerHTML = '';
+                comments.forEach(comment => {
+                    section.innerHTML += `
+                    <div class="testimonial" data-id="${comment.id}">
+                        <h5>${comment.user.name}</h5>
+                        <p>${comment.content}</p>
+                        <div class="options">
+                            <button onclick="editComment(${comment.id}, '${comment.content}')">Sửa</button>
+                            <button onclick="deleteComment(${comment.id})">Xóa</button>
+                        </div>
+                    </div>
+                `;
+                });
+            });
+    }
+
+    function addComment() {
+        let content = document.getElementById('comment-input').value;
+
+        fetch('/comments/store', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify({
+                    content: content
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Hiển thị alert thành công
+                    alert(data.message);
+
+                    // Tạo phần tử bình luận mới trên giao diện
+                    let commentSection = document.getElementById('comments-section');
+                    let newComment = document.createElement('div');
+                    newComment.classList.add('comment-box');
+                    newComment.innerHTML = `
+                <img src="/default-avatar.png" alt="Avatar">
+                <p>${data.comment.content}</p>
+            `;
+                    commentSection.prepend(newComment);
+
+                    // Xóa nội dung ô nhập bình luận
+                    document.getElementById('comment-input').value = "";
+                }
+            })
+            .catch(error => console.error('Lỗi:', error));
+    }
+
+    function editComment(id, content) {
+        const newContent = prompt('Chỉnh sửa bình luận:', content);
+        if (newContent) {
+            fetch(`/comments/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({
+                    content: newContent
+                })
+            }).then(loadComments);
+        }
+    }
+
+    function deleteComment(commentId) {
+        if (confirm("Bạn có chắc muốn xóa bình luận này?")) {
+            fetch(`/admin/comments/delete/${commentId}`, {
+                    method: "DELETE",
+                    headers: {
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    // Chỉ reload trang admin, không quay về trang user
+                    window.location.href = "/admin/comments";
+                })
+                .catch(error => console.error("Lỗi:", error));
+        }
+    }
+    </script>
+
     <section class="content-wrapper">
         <div class="gallery-container">
             <!-- Row 1 -->
@@ -257,7 +392,7 @@
         </section>
     </div>
 
-    
+
 </div>
 <!-- Mobile Menu-->
 <div id="mobile-menu">
