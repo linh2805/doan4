@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
-{
-    // Define the table name if necessary
+{    // Define the table name if necessary
     protected $table = 'contacts';  // This is optional because Laravel assumes 'contact_forms'
 
     // Specify the fillable attributes to allow mass-assignment
     protected $fillable = [
-        'full_name',  // Tên trường này không khớp với form
-        'phone_number',
+        'fullname',  // Tên trường này không khớp với form
+        'phone',
         'email',
         'message',
     ];

@@ -3,7 +3,7 @@
 
 </head>       
        <div class="header-container" style="display: flex; align-items: center; justify-content: space-between; ">
-            <h2 style="padding-bottom: 10px; white-space: nowrap;">Quản lý thông thông tin liên hệ</h2>
+            <h2 style="padding-bottom: 10px; white-space: nowrap;">Quản lý tài khoản admin</h2>
             <div class="input-group" style="position: relative; width: 30%;">
     <input type="text" id="search-content" class="search-input" placeholder="Tìm kiếm nội dung"
         oninput="searchContent()" style="
@@ -27,23 +27,30 @@
             <th>Họ và tên</th>
             <th>Số điện thoại</th>
             <th>Email</th>
-            <th>Message</th>
-            <th>Xem</th>
+            <th>Vai trò</th>
+            <!-- <th>Xem</th> -->
+            <th>Chấp nhận</th>
+            <th>Từ chối</th>
             <th>Xoá</th>
         </tr>
     </thead>
     <tbody>
-    @foreach ($contacts as $index => $contact)
-            <tr>
-                <td>{{ $index + 1 }}</td>
-                <td>{{ $contact->fullname }}</td>
-                <td>{{ $contact->phone }}</td>
-                <td>{{ $contact->email }}</td>
-                <td>{{ $contact->message }}</td>
-                <td><button class="">Xem</button></td>
-                <td><button class="">Xoá</button></td>
-            </tr>
-        @endforeach
+    @foreach ($accounts as $key => $account)
+                <tr>
+                    <td>{{ $key + 1 }}</td>
+                    <td>{{ $account->fullname }}</td>
+                    <td>{{ $account->phone }}</td>
+                    <td>{{ $account->email }}</td>
+                    <td>{{ $account->role}}</td> 
+                    <td><a href="">chấp nhận</a></td> 
+                    <td>
+                            <button type="submit">từ chối</button>
+                        
+                    </td>
+                    <td><a href="">xoá</a></td> 
+
+                </tr>
+            @endforeach
     </tbody>
 </table>
     

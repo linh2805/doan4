@@ -229,18 +229,19 @@
                 <div class="col-md-6 mb-4">
                     <div class="contact-form"
                         style="border: 2px solid #ff9800; border-radius: 10px; padding: 20px; background-color: white;">
-                       @if (session('success'))
+                       
+                        <h3 class="contact-title">Liên Hệ để được tư vấn</h3>
+                        @if (session('success'))
     <div style="color: green;">
         {{ session('success') }}
     </div>
 @endif
-                        <h3 class="contact-title">Liên Hệ để được tư vấn</h3>
                         <form id="contactForm" action="{{ route('contact.store') }}" method="POST">
     @csrf <!-- Thêm token CSRF để bảo mật -->
     <div class="form-group">
-    <input type="text" name="full_name" class="form-control" placeholder="Họ và tên" required>    </div>
+    <input type="text" name="fullname" class="form-control" placeholder="Họ và tên" required>    </div>
     <div class="form-group">
-        <input type="tel" name="phone_number" class="form-control" placeholder="Số điện thoại" required>
+        <input type="tel" name="phone" class="form-control" placeholder="Số điện thoại" required>
     </div>
     <div class="form-group">
         <input type="email" name="email" class="form-control" placeholder="Email" required>

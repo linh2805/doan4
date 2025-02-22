@@ -9,15 +9,15 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'full_name' => 'required|string|max:255',
-            'phone_number' => 'required|string|max:15',
+            'fullname' => 'required|string|max:255',
+            'phone' => 'required|string|max:15',
             'email' => 'required|email|max:255',
             'message' => 'required|string',
         ]);
 
         Contact::create([
-            'full_name' => $request->full_name,
-            'phone_number' => $request->phone_number,
+            'fullname' => $request->fullname,
+            'phone' => $request->phone,
             'email' => $request->email,
             'message' => $request->message,
         ]);
