@@ -171,13 +171,21 @@
     <section>
         <h2 style="text-align: center;">Bình luận</h2>
         <div class="mt-5 ct-testimonial">
-            <div class="testimonial">
-                <img src="/source/images/2.png" alt="Avatar">
+            <!-- <div class="testimonial">
                 <h5>Eugene Freeman</h5>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed diam nonummy nibh euismod tincidunt
                     ut
                     laoreet dolore magna aliquam erat volutpat.</p>
-            </div>
+            </div> -->
+            <div class="testimonials">
+    @foreach ($comments as $comment)
+        <div class="testimonial">
+            <!-- Nếu bạn có hình ảnh của người dùng, hãy bỏ comment dòng dưới -->
+            <h5>{{ $comment->name }}</h5>
+            <p>{{ $comment->comment }}</p>
+        </div>
+    @endforeach
+</div>
         </div>
 
         <!-- New Comments Will Appear Here -->
@@ -186,8 +194,19 @@
         <!-- Comment Form -->
         <div class="comment-form">
             <h3>Write a Comment</h3>
-            <textarea id="comment-input" rows="4" placeholder="Write your comment here..."></textarea>
-            <button onclick="addComment()">Post Comment</button>
+            <!-- <textarea id="comment-input" rows="4" placeholder="Write your comment here..."></textarea>
+            <button type="submit">Post Comment</button> -->
+            @if(session('success'))
+    <div>{{ session('success') }}</div>
+@endif
+
+<form method="POST" action="{{ route('comments.store') }}">
+    @csrf
+    <input type="text" name="name" placeholder="Tên bạn" required>
+
+    <textarea id="comment-input" name="comment" rows="4" placeholder="Write your comment here..."></textarea>
+    <button type="submit">Post Comment</button>
+</form>
         </div>
     </section>
     <section class="content-wrapper">

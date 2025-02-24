@@ -50,6 +50,8 @@
 
         <a href="" id="registerLink"><i class="fas fa-user-edit"></i>Đăng ký của sinh viên</a>
         <a href="" id=""><i class="fas fa-user-edit"></i>Giới thiệu</a>
+        <a href="" id="registerLink3"><i class="fas fa-user-edit"></i>Bình luận</a>
+
 
         <a href="" id="registerLink1"><i class="fas fa-user-edit"></i>Liên hệ tư vấn</a>
 
@@ -132,6 +134,26 @@
                 </tr>
             </tbody>
         </table>
+        <!-- <table class="table table-bordered table-hover mt-3">
+            <thead class="table-dark">
+                <tr>
+                    <th>Tên người dùng</th>
+                    <th>Bình luận</th>
+                    <th>Thời gian</th>
+                    <th>Xoá</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cao đẳng mầm non</td>
+                    <td>Chương trình đào tạo hệ cao đẳng</td>
+                    <td>Cao đẳng mầm non</td>
+                    <td><button class="btn btn-primary">Xoá</button></td>
+
+                </tr>
+            </tbody>
+        </table> -->
+
         
     </div>
 </body>
@@ -158,6 +180,14 @@
         $('#registerLink2').click(function (e) {
             e.preventDefault(); // Ngăn chặn hành động mặc định
             $('#content').load('/account'); // Tải nội dung từ /ad-contact vào div content
+        });
+    });
+</script>
+<script>
+   $(document).ready(function () {
+        $('#registerLink3').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/comments'); // Tải nội dung từ /ad-contact vào div content
         });
     });
 </script>

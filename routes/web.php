@@ -5,12 +5,21 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Auth\AccountController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\AdminController;
 
+Route::get('/comments', function () {
+    return view('admin.comment.index');
+});
 
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+Route::get('/comments', action: [CommentController::class, 'showComment'])->name('comments.index');
+Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
 // routes/web.php
 Route::get('/user', function () {
     return view('user.home.index');
 });
+Route::get('/user', [CommentController::class, 'index'])->name('home');
 
 Route::get('/university', function () {
     return view('user.training.university-connection.University'); // Đường dẫn đến view
