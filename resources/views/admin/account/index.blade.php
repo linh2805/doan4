@@ -20,37 +20,24 @@
     </div>
         </div>
         <div id="search-result"></div>
-        <table class="table table-bordered table-hover mt-3">
+    <table class="table table-bordered table-hover mt-3">
     <thead class="table-dark">
-        <tr>
-            <th>STT</th>
-            <th>Họ và tên</th>
-            <th>Số điện thoại</th>
-            <th>Email</th>
-            <th>Vai trò</th>
-            <!-- <th>Xem</th> -->
-            <th>Chấp nhận</th>
-            <th>Từ chối</th>
-            <th>Xoá</th>
-        </tr>
+    <tr>
+        <th>STT</th>
+        <th>Họ và tên</th>
+        <th>Số điện thoại</th>
+        <th>Email</th>
+        <th>Vai trò</th>
+    </tr>
     </thead>
-    <tbody>
-    @foreach ($accounts as $key => $account)
-                <tr>
-                    <td>{{ $key + 1 }}</td>
-                    <td>{{ $account->fullname }}</td>
-                    <td>{{ $account->phone }}</td>
-                    <td>{{ $account->email }}</td>
-                    <td>{{ $account->role}}</td> 
-                    <td><a href="">chấp nhận</a></td> 
-                    <td>
-                            <button type="submit">từ chối</button>
-                        
-                    </td>
-                    <td><a href="">xoá</a></td> 
-
-                </tr>
-            @endforeach
-    </tbody>
+    @foreach ($accounts as $index => $account)
+    <tr>
+        <td>{{ $index + 1 }}</td>
+        <td>{{ $account->fullname }}</td>
+        <td>{{ $account->phone }}</td>
+        <td>{{ $account->email }}</td>
+        <td>{{ $account->role }}</td>
+    </tr>
+    @endforeach
 </table>
     

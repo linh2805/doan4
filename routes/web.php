@@ -4,10 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Auth\AccountController;
-
-
-
-
+use App\Http\Controllers\Auth\LoginController;
 
 
 // routes/web.php
@@ -51,7 +48,8 @@ Route::get('/register', function () {
 
 Route::get('/admin', function () {
     return view('admin.index'); // Đường dẫn đến view admin.index
-})->name('admin');
+})->name('admin.index');
+
 
 Route::get('/ad-register', function () {
     return view('admin.register.index'); // Đường dẫn đến view
@@ -65,17 +63,26 @@ Route::get('/account', function () {
     return view('admin.account.index'); // Đường dẫn đến view
 });
 
+Route::get('/regis-ad', function () {
+    return view('admin.regis-ad'); // Thay 'register' bằng tên tệp blade của bạn
+});
 
+
+// get, post liên hệ user 
 Route::get('/ad-contact', action: [ContactController::class, 'showContact'])->name('contacts.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
+// get, post đky user 
 Route::get('/ad-register', [RegistrationController::class, 'showRegistrations'])->name('registrations.index');
 Route::post('/register', [RegistrationController::class, 'store'])->name('register');
 
-Route::get('/', function () {
-    return view('admin.regis-ad'); // Thay 'register' bằng tên tệp blade của bạn
-});
+// đăng ký tk admin 
 Route::post('/registerAd', [AccountController::class, 'registerAd'])->name('registerAd');
 Route::get('/account', [AccountController::class, 'index'])->name('account.index');
+
+// đăng nhập 
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 

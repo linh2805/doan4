@@ -12,84 +12,7 @@
     <link rel="stylesheet" href="/source/css/admin.css" type="text/css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- <script>
-        let currentCategory = '';
-
-        function loadContent(category) {
-            let content = {
-                'home': ['Trang chủ', 'Nơi quản lý thông tin chính'],
-                'cao-dang-mam-non': ['Cao đẳng mầm non', 'Chương trình đào tạo hệ cao đẳng'],
-                'trung-cap-mam-non': ['Trung cấp mầm non', 'Chương trình đào tạo hệ trung cấp'],
-                'lien-thong-dai-hoc-mam-non': ['Liên thông đại học mầm non', 'Chương trình liên thông đại học'],
-                'lien-thong-cao-dang-mam-non': ['Liên thông cao đẳng mầm non', 'Chương trình cao đẳng đại học'],
-                'hoc-bong': ['Học bổng', 'Các gói học bổng dành cho sinh viên'],
-                'tin-tuc': ['Tin tức', 'Cập nhật thông tin mới nhất về ngành học'],
-                'dang-ky-sinh-vien': ['Đăng ký của sinh viên', 'Thông tin đăng ký và xét tuyển'],
-                'gioi-thieu': ['Giới thiệu', 'Thông tin về trường và chương trình đào tạo'],
-                'lien-he': ['Liên hệ tư vấn', 'Hỗ trợ tư vấn tuyển sinh'],
-                'dang-nhap': ['Đăng nhập', 'Màn hình đăng nhập cho quản trị viên'],
-                'dang-xuat': ['Đăng xuất', 'Thoát khỏi hệ thống quản lý']
-            };
-
-            currentCategory = category; // Store the current category
-            if (content[category]) {
-                let tableBody = document.querySelector('tbody');
-                tableBody.innerHTML = `<tr>
-                    <td>1</td>
-                    <td>${content[category][0]}</td>
-                    <td>${content[category][1]}</td>
-                    <td><button class="btn btn-primary">Xem</button></td>
-                </tr>`;
-                document.getElementById('search-content').value = ''; // Clear search input
-                document.getElementById('search-result').innerHTML = ''; // Clear previous search results
-            } else {
-                console.error("Category not found:", category);
-            }
-        }
-
-        function searchCategories() {
-            const input = document.getElementById('search-input').value.toLowerCase();
-            const links = document.querySelectorAll('.sidebar a');
-            links.forEach(link => {
-                const text = link.textContent.toLowerCase();
-                link.style.display = text.includes(input) ? 'flex' : 'none';
-            });
-        }
-
-        function searchContent() {
-            const input = document.getElementById('search-content').value.toLowerCase();
-            const contentDiv = document.getElementById('search-result');
-            let content = {
-                'home': ['Trang chủ', 'Nơi quản lý thông tin chính'],
-                'cao-dang-mam-non': ['Cao đẳng mầm non', 'Chương trình đào tạo hệ cao đẳng'],
-                'trung-cap-mam-non': ['Trung cấp mầm non', 'Chương trình đào tạo hệ trung cấp'],
-                'lien-thong-dai-hoc-mam-non': ['Liên thông đại học mầm non', 'Chương trình liên thông đại học'],
-                'lien-thong-cao-dang-mam-non': ['Liên thông cao đẳng mầm non', 'Chương trình cao đẳng đại học'],
-                'hoc-bong': ['Học bổng', 'Các gói học bổng dành cho sinh viên'],
-                'tin-tuc': ['Tin tức', 'Cập nhật thông tin mới nhất về ngành học'],
-                'dang-ky-sinh-vien': ['Đăng ký của sinh viên', 'Thông tin đăng ký và xét tuyển'],
-                'gioi-thieu': ['Giới thiệu', 'Thông tin về trường và chương trình đào tạo'],
-                'lien-he': ['Liên hệ tư vấn', 'Hỗ trợ tư vấn tuyển sinh'],
-                'dang-nhap': ['Đăng nhập', 'Màn hình đăng nhập cho quản trị viên'],
-                'dang-xuat': ['Đăng xuất', 'Thoát khỏi hệ thống quản lý']
-            };
-
-            // Clear previous results
-            contentDiv.innerHTML = '';
-
-            // Check if current category content matches the search
-            if (currentCategory && content[currentCategory]) {
-                const title = content[currentCategory][0].toLowerCase();
-                const description = content[currentCategory][1].toLowerCase();
-
-                if (title.includes(input) || description.includes(input)) {
-                    contentDiv.innerHTML = `<h5>${content[currentCategory][0]}</h5><p>${content[currentCategory][1]}</p>`;
-                } else {
-                    contentDiv.innerHTML = '<p>No results found.</p>';
-                }
-            }
-        }
-    </script> -->
+    
 </head>
 
 <body>
@@ -135,7 +58,7 @@
 
         <div class="settings">
             <h5>Cài đặt</h5>
-            <a><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
+            <a {{ url('/logout') }}><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
         </div>
     </div>
 
@@ -231,7 +154,7 @@
 </script>
 
 <script>
-    $(document).ready(function () {
+   $(document).ready(function () {
         $('#registerLink2').click(function (e) {
             e.preventDefault(); // Ngăn chặn hành động mặc định
             $('#content').load('/account'); // Tải nội dung từ /ad-contact vào div content

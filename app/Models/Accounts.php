@@ -2,17 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable; // Kế thừa từ Authenticatable
 
-class Accounts extends Model
+class Accounts extends Authenticatable
 {
-    // use HasFactory;
+    protected $table = 'accounts'; // Đảm bảo chỉ định bảng đúng
 
-    // Chỉ định tên bảng nếu tên không phải là số nhiều
-    protected $table = 'accounts';
-
-    // Chỉ định các thuộc tính có thể được gán hàng loạt
     protected $fillable = [
         'fullname',
         'email',
@@ -20,6 +15,10 @@ class Accounts extends Model
         'username',
         'password',
         'role',
-        // 'avatar', // Đã xóa cột avatar
     ];
+    protected $casts = [
+        'role' => 'string',
+    ];
+    // Nếu bạn muốn sử dụng username để xác thực
+    
 }

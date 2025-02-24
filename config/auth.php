@@ -12,6 +12,12 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
+    'providers' => [
+    'accounts' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Accounts::class,
+    ],
+],
 
     'defaults' => [
         'guard' => env('AUTH_GUARD', 'web'),
@@ -35,12 +41,18 @@ return [
     |
     */
 
+    // 'guards' => [
+    //     'web' => [
+    //         'driver' => 'session',
+    //         'provider' => 'users',
+    //     ],
+    // ],
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
+    'web' => [
+        'driver' => 'session',
+        'provider' => 'accounts', // Đổi từ 'users' thành 'accounts'
     ],
+],
 
     /*
     |--------------------------------------------------------------------------
@@ -59,17 +71,12 @@ return [
     |
     */
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
-        ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
-    ],
+    // 'providers' => [
+    //     'users' => [
+    //         'driver' => 'eloquent',
+    //         'model' => env('AUTH_MODEL', App\Models\User::class),
+    //     ],
+    // ],
 
     /*
     |--------------------------------------------------------------------------
@@ -90,15 +97,22 @@ return [
     |
     */
 
-    'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
-            'expire' => 60,
-            'throttle' => 60,
-        ],
+    // 'passwords' => [
+    //     'users' => [
+    //         'provider' => 'users',
+    //         'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+    //         'expire' => 60,
+    //         'throttle' => 60,
+    //     ],
+    // ],
+'passwords' => [
+    'accounts' => [
+        'provider' => 'accounts', // Đảm bảo đây là provider của bạn
+        'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+        'expire' => 60,
+        'throttle' => 60,
     ],
-
+],
     /*
     |--------------------------------------------------------------------------
     | Password Confirmation Timeout
