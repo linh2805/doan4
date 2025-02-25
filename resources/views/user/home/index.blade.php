@@ -178,6 +178,9 @@
                     laoreet dolore magna aliquam erat volutpat.</p>
             </div> -->
             <div class="testimonials">
+                
+            @isset($comments)
+
     @foreach ($comments as $comment)
         <div class="testimonial">
             <!-- Nếu bạn có hình ảnh của người dùng, hãy bỏ comment dòng dưới -->
@@ -185,6 +188,8 @@
             <p>{{ $comment->comment }}</p>
         </div>
     @endforeach
+    @endisset
+
 </div>
         </div>
 

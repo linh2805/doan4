@@ -7,19 +7,23 @@ use App\Http\Controllers\Auth\AccountController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\IntroController;
+
 
 Route::get('/comments', function () {
     return view('admin.comment.index');
 });
 
 Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+
 Route::get('/comments', action: [CommentController::class, 'showComment'])->name('comments.index');
+Route::get('/user', action: [CommentController::class, 'showCommentUser'])->name('home');
+
 Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
 // routes/web.php
 Route::get('/user', function () {
     return view('user.home.index');
 });
-Route::get('/user', [CommentController::class, 'index'])->name('home');
 
 Route::get('/university', function () {
     return view('user.training.university-connection.University'); // Đường dẫn đến view
@@ -76,6 +80,13 @@ Route::get('/regis-ad', function () {
     return view('admin.regis-ad'); // Thay 'register' bằng tên tệp blade của bạn
 });
 
+Route::get('/ad-intro', function () {
+    return view('admin.intro.index'); // Thay 'register' bằng tên tệp blade của bạn
+});
+
+Route::get('/ad-news', function () {
+    return view('admin.ad-news.index'); // Thay 'register' bằng tên tệp blade của bạn
+});
 
 // get, post liên hệ user 
 Route::get('/ad-contact', action: [ContactController::class, 'showContact'])->name('contacts.index');
@@ -94,4 +105,7 @@ Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
+// giới thiệu 
+Route::get('/ad-intro/{id}', [IntroController::class, 'show'])->name('intros.index'); // Hiển thị danh sách tất cả bản ghi
+Route::get('/ad-intro/{id}/edit', [IntroController::class, 'edit'])->name('intros.edit'); // Hiển thị form chỉnh sửa
+Route::put('/ad-intro/{id}', [IntroController::class, 'update'])->name('intros.update'); // Cập nhật bản ghiRoute::get('/ad-intro', [IntroController::class, 'index'])->name('intros.index'); // Hiển thị danh sách tất cả bản ghi

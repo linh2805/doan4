@@ -45,11 +45,11 @@
         <!-- <a onclick="loadContent('tin-tuc')"><i class="fas fa-newspaper"></i>Tin tức</a> -->
         <a href="" id="registerLink2"><i class="fas fa-user-edit"></i>Account</a>
 
-        <a href="" id=""><i class="fas fa-user-edit"></i>Học bổng</a>
-        <a href="" id=""><i class="fas fa-user-edit"></i>Tin tức</a>
+        <!-- <a href="" id=""><i class="fas fa-user-edit"></i>Học bổng</a> -->
+        <a href="" id="registerLink5"><i class="fas fa-user-edit"></i>Tin tức</a>
 
         <a href="" id="registerLink"><i class="fas fa-user-edit"></i>Đăng ký của sinh viên</a>
-        <a href="" id=""><i class="fas fa-user-edit"></i>Giới thiệu</a>
+        <a href="" id="registerLink4"><i class="fas fa-user-edit"></i>Giới thiệu</a>
         <a href="" id="registerLink3"><i class="fas fa-user-edit"></i>Bình luận</a>
 
 
@@ -191,5 +191,22 @@
         });
     });
 </script>
+<script>
+   $(document).ready(function () {
+        $('#registerLink4').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-intro'); // Tải nội dung từ /ad-contact vào div content
+        });
+    });
+</script>
+<script>
+   $(document).ready(function () {
+        $('#registerLink5').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-news'); // Tải nội dung từ /ad-contact vào div content
+        });
+    });
+</script>
+
 
 </html>

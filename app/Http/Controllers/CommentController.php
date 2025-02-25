@@ -30,9 +30,10 @@ class CommentController extends Controller
         return view('admin.comment.index', compact('comments'));
     }
 
-    public function index()
+    public function showCommentUser()
 {
-    $comments = Comment::latest()->take(2)->get(); // Lấy 2 bình luận mới nhất
+    $comments = Comment::add(); // Lấy 2 bình luận mới nhất
+
     return view('user.home.index', compact('comments')); // Truyền bình luận vào view
 }
 

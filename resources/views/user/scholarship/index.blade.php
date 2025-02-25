@@ -205,7 +205,7 @@
                 <li>Hoàn cảnh khó khăn có giấy tờ chứng minh</li>
                 <li>Tham gia các hoạt động ngoại khóa</li>
             </ul>
-            <div class="form-scholarship">
+            <!-- <div class="form-scholarship">
                 <h3>Hồ Sơ Đăng Ký</h3>
                 <form>
                     <div class="mb-3">
@@ -221,11 +221,10 @@
                         <input type="file" class="form-control">
                     </div>
                     <div class="text-center">
-                        <!-- Căn giữa -->
                         <button type="submit" class="btn btn-primary">Nộp Đơn</button>
                     </div>
                 </form>
-            </div>
+            </div> -->
         </section>
     </div>
 

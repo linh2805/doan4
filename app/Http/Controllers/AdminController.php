@@ -11,12 +11,5 @@ class AdminController extends Controller
         $news = News::all();
         return view('admin.ad-news.index', compact('news'));
     }
-    public function index()
-    {
-        // Lấy tất cả bình luận từ cơ sở dữ liệu
-        $comments = Comment::all();
-
-        // Trả về view cùng với dữ liệu bình luận
-        return view('admin.index', compact('comments'));
-    }
+    
 }
