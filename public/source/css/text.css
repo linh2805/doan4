@@ -604,14 +604,6 @@ img.emoji {
 }
 
 /* Hiệu ứng cho hình ảnh */
-#image1 {
-    opacity: 0;
-    /* Ẩn hình ảnh ban đầu */
-    transform: translateX(-50px);
-    /* Di chuyển sang trái */
-    transition: opacity 0.6s ease, transform 0.6s ease;
-    /* Hiệu ứng chuyển tiếp */
-}
 
 #image1.show {
     opacity: 1;

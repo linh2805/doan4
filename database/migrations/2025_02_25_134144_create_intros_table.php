@@ -15,11 +15,11 @@ return new class extends Migration
         $table->id();
         $table->string('title');
         $table->text('description');
-        $table->string('image1')->default('source/images/13.jpg'); // Đường dẫn ảnh mặc định
-        $table->string('image2')->default('source/images/13.jpg');
-        $table->string('image3')->default('source/images/13.jpg');
-        $table->string('image4')->default('source/images/13.jpg');
-        $table->string('image5')->default('source/images/13.jpg');
+        $table->string('image1'); // Đường dẫn ảnh mặc định
+        $table->string('image2');
+        $table->string('image3');
+        $table->string('image4');
+        $table->string('image5');
         $table->timestamps();
     });
 }

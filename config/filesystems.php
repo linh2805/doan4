@@ -29,6 +29,10 @@ return [
     */
 
     'disks' => [
+        'source' => [
+    'driver' => 'local',
+    'root' => public_path('source'), // Đảm bảo rằng thư mục này tồn tại
+],
 
         'local' => [
             'driver' => 'local',

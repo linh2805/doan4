@@ -8,12 +8,10 @@ use Illuminate\Support\Facades\Storage;
 
 class IntroController extends Controller
 {
-    public function show($id)
+    public function index()
 {
-    $intros = Intro::findOrFail($id); // Lấy tất cả bản ghi
-    dd($intros); // Dừng lại và in ra nội dung của biến $thu
-
-    return view('admin.intro.index', compact('intros')); // Truyền tất cả bản ghi vào view
+    $intros = Intro::all(); // Lấy tất cả bản ghi
+    return view('admin.intro.index', compact('intros')); // Truyền vào view
 }
 
     
@@ -25,34 +23,54 @@ class IntroController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
+{
+    try {
+        // Xác thực dữ liệu
         $request->validate([
-            'image1' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'image2' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'image3' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'image4' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'image5' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'image1' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+            'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+            'image3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+            'image4' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+            'image5' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
+        // Tìm bản ghi Intro
         $intro = Intro::findOrFail($id);
 
-        // Cập nhật ảnh nếu có
-        foreach (range(1, 5) as $index) {
-            $imageField = 'image' . $index;
+        // Cập nhật ảnh
+        $imagePaths = []; // Mảng để lưu đường dẫn ảnh
+
+        foreach (['image1', 'image2', 'image3', 'image4', 'image5'] as $imageField) {
             if ($request->hasFile($imageField)) {
-                // Xóa ảnh cũ nếu cần
+                // Xóa ảnh cũ nếu có
                 if ($intro->$imageField) {
-                    Storage::delete(public_path($intro->$imageField));
+                    @unlink(public_path($intro->$imageField)); // Xóa ảnh cũ từ public
                 }
-                $file = $request->file($imageField);
-                $filename = time() . '_' . $index . '.' . $file->getClientOriginalExtension();
-                $file->move(public_path('uploads'), $filename);
-                $intro->$imageField = 'uploads/' . $filename;
+
+                // Định danh file ảnh
+                $fileName = $request->get('title') . '_' . $imageField . '.' . $request->file($imageField)->extension();
+
+                // Lưu ảnh mới vào thư mục source/images
+                $path = $request->file($imageField)->storeAs('images', $fileName, 'source'); // Lưu vào source/images
+
+                // Lưu đường dẫn vào mảng
+                $imagePaths[$imageField] = 'source/images/' . $fileName;
             }
         }
 
-        $intro->save();
+        // Cập nhật dữ liệu intro
+        $intro->update(array_merge($imagePaths, [
+            'title' => $request->title,
+            'description' => $request->description,
+        ]));
 
-        return redirect()->route('intros.index')->with('success', 'Ảnh đã được cập nhật thành công!');
+        return response()->json(['success' => true, 'message' => 'Cập nhật thành công!']);
+    } catch (\Exception $e) {
+        // Ghi lại lỗi để kiểm tra
+        \Log::error($e->getMessage());
+        return response()->json(['error' => 'Đã xảy ra lỗi, vui lòng thử lại!'], 500);
     }
+}
 }

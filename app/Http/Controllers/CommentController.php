@@ -32,8 +32,8 @@ class CommentController extends Controller
 
     public function showCommentUser()
 {
-    $comments = Comment::add(); // Lấy 2 bình luận mới nhất
-
+    $comments = Comment::all(); 
+    // dd($comments);
     return view('user.home.index', compact('comments')); // Truyền bình luận vào view
 }
 
