@@ -177,27 +177,27 @@
             <!-- Contact Form -->
             <div class="contact-form-section">
                 <h3 class="form-title" style="text-align: center;">Liên Hệ để được tư vấn</h3>
-                <form id="registrationForm">
-
-                    <div class="form-input-group">
-                        <input type="text" name="hoten" class="form-input" placeholder="Họ và tên" required>
-                    </div>
-
-                    <div class="form-input-group">
-                        <input type="tel" name="sodienthoai" class="form-input" placeholder="Số điện thoại" required>
-                    </div>
-
-                    <div class="form-input-group">
-                        <input type="email" name="diachiemail" class="form-input" placeholder="Email" required>
-                    </div>
-
-                    <div class="form-input-group">
-                        <textarea class="form-input" id="message" rows="4" placeholder="Message" required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-block"
-                        style="animation: pulse 2s infinite ease-in-out;">Gửi yêu cầu</button>
-                </form>
+                <form id="contactForm" action="{{ route('contact.store') }}" method="POST">
+                            @csrf <!-- Thêm token CSRF để bảo mật -->
+                            <div class="form-group">
+                                <input type="text" name="fullname" class="form-control" placeholder="Họ và tên"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="phone" class="form-control" placeholder="Số điện thoại"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="message" rows="4" placeholder="Tin nhắn"
+                                    required></textarea>
+                            </div>
+                            <div class="button-container">
+                                <button type="submit" class="btn-submit">Gửi yêu cầu</button>
+                            </div>
+                        </form>
             </div>
     </section>
     @include('user.home.footer')

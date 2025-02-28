@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/source/css/admin.css" type="text/css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    
+
 </head>
 
 <body>
@@ -24,7 +24,7 @@
             <!-- <i class="fas fa-search search-icon"></i> -->
         </div>
         <!-- <a onclick="loadContent('home')"><i class="fas fa-home"></i>Home</a> -->
-        <a href="{{ url('/user') }}"><i class="fas fa-home"></i>Home</a>
+        <a href="{{ url('/admin') }}"><i class="fas fa-home"></i>Home</a>
 
 
         <section class="training-section">
@@ -43,12 +43,12 @@
         <h5>Quản lý khác</h5>
         <!-- <a onclick="loadContent('hoc-bong')"><i class="fas fa-gift"></i>Học bổng</a> -->
         <!-- <a onclick="loadContent('tin-tuc')"><i class="fas fa-newspaper"></i>Tin tức</a> -->
-        <a href="" id="registerLink2"><i class="fas fa-user-edit"></i>Account</a>
+        <!-- <a href="" id="registerLink2"><i class="fas fa-user-edit"></i>Account</a> -->
 
         <!-- <a href="" id=""><i class="fas fa-user-edit"></i>Học bổng</a> -->
         <a href="" id="registerLink5"><i class="fas fa-user-edit"></i>Tin tức</a>
 
-        <a href="" id="registerLink"><i class="fas fa-user-edit"></i>Đăng ký của sinh viên</a>
+        <!-- <a href="" id="registerLink"><i class="fas fa-user-edit"></i>Đăng ký của sinh viên</a> -->
         <a href="" id="registerLink4"><i class="fas fa-user-edit"></i>Giới thiệu</a>
         <a href="" id="registerLink3"><i class="fas fa-user-edit"></i>Bình luận</a>
 
@@ -70,10 +70,10 @@
             <thead class="table-dark">
                 <tr>
                     <th>Hệ thống lớp học</th>
-                    <th>Ảnh 1</th>
-                    <th>Ảnh 2</th>
-                    <th>Ảnh 3</th>
-                    <th>Ảnh 4</th>
+                    <th>Ảnh trường 1</th>
+                    <th>Ảnh trường 2</th>
+                    <th>Ảnh trường 3</th>
+                    <th>Ảnh trường 4</th>
                     <th>Hệ thống phòng thực hành</th>
                     <th>Quản lý</th>
 
@@ -154,17 +154,9 @@
             </tbody>
         </table> -->
 
-        
+
     </div>
 </body>
-<script>
-    $(document).ready(function () {
-        $('#registerLink').click(function (e) {
-            e.preventDefault(); // Ngăn chặn hành động mặc định
-            $('#content').load('/ad-register'); // Tải nội dung từ /ad-contact vào div content
-        });
-    });
-</script>
 
 <script>
     $(document).ready(function () {
@@ -174,17 +166,8 @@
         });
     });
 </script>
-
 <script>
-   $(document).ready(function () {
-        $('#registerLink2').click(function (e) {
-            e.preventDefault(); // Ngăn chặn hành động mặc định
-            $('#content').load('/account'); // Tải nội dung từ /ad-contact vào div content
-        });
-    });
-</script>
-<script>
-   $(document).ready(function () {
+    $(document).ready(function () {
         $('#registerLink3').click(function (e) {
             e.preventDefault(); // Ngăn chặn hành động mặc định
             $('#content').load('/comments'); // Tải nội dung từ /ad-contact vào div content
@@ -192,7 +175,7 @@
     });
 </script>
 <script>
-   $(document).ready(function () {
+    $(document).ready(function () {
         $('#registerLink4').click(function (e) {
             e.preventDefault(); // Ngăn chặn hành động mặc định
             $('#content').load('/ad-intro'); // Tải nội dung từ /ad-contact vào div content
@@ -200,7 +183,7 @@
     });
 </script>
 <script>
-   $(document).ready(function () {
+    $(document).ready(function () {
         $('#registerLink5').click(function (e) {
             e.preventDefault(); // Ngăn chặn hành động mặc định
             $('#content').load('/ad-news'); // Tải nội dung từ /ad-contact vào div content

@@ -253,11 +253,6 @@
                         style="border: 2px solid #ff9800; border-radius: 10px; padding: 20px; background-color: white;">
 
                         <h3 class="contact-title">Liên Hệ để được tư vấn</h3>
-                        @if (session('success'))
-                            <div style="color: green;">
-                                {{ session('success') }}
-                            </div>
-                        @endif
                         <form id="contactForm" action="{{ route('contact.store') }}" method="POST">
                             @csrf <!-- Thêm token CSRF để bảo mật -->
                             <div class="form-group">

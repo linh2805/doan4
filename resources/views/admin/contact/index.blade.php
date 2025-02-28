@@ -28,7 +28,7 @@
             <th>Số điện thoại</th>
             <th>Email</th>
             <th>Message</th>
-            <th>Xem</th>
+            <!-- <th>Xem</th> -->
             <th>Xoá</th>
         </tr>
     </thead>
@@ -40,9 +40,14 @@
                 <td>{{ $contact->phone }}</td>
                 <td>{{ $contact->email }}</td>
                 <td>{{ $contact->message }}</td>
-                <td><button class="">Xem</button></td>
-                <td><button class="">Xoá</button></td>
-            </tr>
+                <!-- <td><button class="">Xem</button></td> -->
+                <td>
+    <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST" style="display:inline;">
+        @csrf
+        @method('DELETE')
+        <button class="btn-danger" type="submit">Xóa</button>
+    </form>
+</td>            </tr>
         @endforeach
     </tbody>
 </table>

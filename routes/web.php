@@ -80,6 +80,9 @@ Route::get('/ad-intro', function () {
 Route::get('/ad-intro-edit', function () {
     return view('admin.intro.edit'); // Thay 'register' bằng tên tệp blade của bạn
 });
+// Route::get('/ad-intro-create', function () {
+//     return view('admin.intro.create');
+// });
 
 Route::get('/ad-news', function () {
     return view('admin.ad-news.index'); // Thay 'register' bằng tên tệp blade của bạn
@@ -88,6 +91,7 @@ Route::get('/ad-news', function () {
 // get, post liên hệ user 
 Route::get('/ad-contact', action: [ContactController::class, 'showContact'])->name('contacts.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::delete('/contacts/{id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
 // get, post đky user 
 Route::get('/ad-register', [RegistrationController::class, 'showRegistrations'])->name('registrations.index');
@@ -106,7 +110,9 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/ad-intro', [IntroController::class, 'index'])->name('intros.index'); // Hiển thị danh sách tất cả bản ghi
 Route::get('/ad-intro-edit/{id}', [IntroController::class, 'edit'])->name('intros.edit'); // Hiển thị form chỉnh sửa
 Route::post('/ad-intro-edit/{id}', [IntroController::class, 'update'])->name('intros.update'); // Cập nhật bản ghiRoute::get('/ad-intro', [IntroController::class, 'index'])->name('intros.index'); // Hiển thị danh sách tất cả bản ghi
-Route::post('/ad-intro-edit/{id}', [IntroController::class, 'update'])->name('intros.update');
+Route::get('/ad-create', [IntroController::class, 'create'])->name('ad-intro-create');
+Route::post('/ad-create', [IntroController::class, 'store'])->name('intros.store');
+Route::get('/intro', [IntroController::class, 'showIntroUser'])->name('user.introduce.index');
 
 // bình luận
 Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');

@@ -29,4 +29,11 @@ class ContactController extends Controller
     $contacts = Contact::all(); // Lấy tất cả dữ liệu từ bảng contacts
     return view('admin.contact.index', compact('contacts')); // Truyền dữ liệu tới view
 }
+public function destroy($id)
+{
+    $contact = Contact::findOrFail($id); // Tìm contact theo ID
+    $contact->delete(); // Xóa contact
+
+    return redirect()->back()->with('success', 'Contact đã được xóa thành công!'); // Chuyển hướng với thông báo
+}
 }

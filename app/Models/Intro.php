@@ -14,8 +14,8 @@ class Intro extends Model
 
     // Các thuộc tính có thể gán
     protected $fillable = [
-        'title',
-        'description',
+        'intro_school',
+        'job',
         'image1',
         'image2',
         'image3',

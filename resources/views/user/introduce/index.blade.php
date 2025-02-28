@@ -7,11 +7,18 @@
 </head>
 
 <body>
+@if($intros->isEmpty())
+    <!-- <p>Không có dữ liệu.</p> -->
+    <h2>k có dl</h2>
+    <div><h2>k có dl</h2></div>
+@else
+@foreach($intros as $intro)
     <div class="introduction mt-5" style="padding-top:50px;">
         <section class="intro-section">
             <div class="intro-text">
                 <h1 class="title" style="font-size:36px;">Giới Thiệu Về Trường</h1>
-                <p>Chào mừng bạn đến với chương trình tuyển sinh của Trường Cao Đẳng XYZ – nơi xây dựng tương lai của
+
+                <!-- <p>Chào mừng bạn đến với chương trình tuyển sinh của Trường Cao Đẳng XYZ – nơi xây dựng tương lai của
                     bạn với nền tảng học vấn vững chắc và cơ hội nghề nghiệp rộng mở.</p>
                 <p>Cao đẳng Mầm non là các cơ sở đào tạo giáo viên mầm non trình độ cao đẳng, trang bị kiến thức và kỹ
                     năng cần thiết trong việc chăm sóc, giáo dục trẻ từ 0 đến 6 tuổi. Sinh viên được học về tâm lý trẻ
@@ -20,10 +27,11 @@
                     trẻ hoặc tiếp tục học lên đại học. Điều kiện tuyển sinh thường là tốt nghiệp THPT và một số trường
                     yêu cầu thêm bài kiểm tra năng khiếu.</p>
                 <p>Chúng tôi tự hào mang đến các chương trình đào tạo chất lượng cao, môi trường học tập hiện đại, và
-                    đội ngũ giảng viên tận tâm.</p>
+                    đội ngũ giảng viên tận tâm.</p> -->
+                    <p>{{ $intro->intro_school }}</p>
             </div>
             <div class="intro-image">
-                <img src="/source/images/sp.jpg" alt="Tuyển sinh Cao Đẳng XYZ"
+                <img src="{{ $intro->image1 }}" alt="Tuyển sinh Cao Đẳng XYZ"
                     class="w-full h-auto object-cover rounded-lg shadow-lg">
             </div>
         </section>
@@ -91,25 +99,20 @@
         <div class="job">
             <section class="co-hoi-viec-lam" style="width: 80%; margin: 0 auto; text-align: center;">
                 <h1 style="color:orange;">Cơ Hội Việc Làm</h1>
-                <p>Sinh viên tốt nghiệp Cao đẳng Mầm non có nhiều cơ hội việc làm đa dạng như trở thành giáo viên mầm
-                    non tại các trường công lập, tư thục, quốc tế hoặc các nhóm trẻ, trung tâm giáo dục sớm. Ngoài ra,
-                    cử nhân ngành này có thể đảm nhận vai trò quản lý, điều hành các cơ sở giáo dục mầm non, làm việc
-                    tại các trung tâm tư vấn, phát triển giáo dục trẻ nhỏ hoặc tham gia nghiên cứu trong lĩnh vực giáo
-                    dục mầm non. Sinh viên cũng có thể tiếp tục học liên thông lên đại học để nâng cao trình độ chuyên
-                    môn và mở rộng cơ hội nghề nghiệp trong tương lai.</p>
+                <p>{{ $intro->job }}</p>
 
                 <div class="co-hoi-anh row g-2">
                     <div class="col-6 col-md-3 mb-2">
-                        <img src="/source/images/slider2.jpg" alt="Dịch vụ chăm sóc học sinh 1" class="img-fluid rounded-circle">
+                        <img src="{{ $intro->image2 }}" alt="Dịch vụ chăm sóc học sinh 1" class="img-fluid rounded-circle">
                     </div>
                     <div class="col-6 col-md-3 mb-2">
-                        <img src="/source/images/student.jpg" alt="Dịch vụ chăm sóc học sinh 2" class="img-fluid rounded-circle">
+                        <img src="{{ $intro->image3 }}" alt="Dịch vụ chăm sóc học sinh 2" class="img-fluid rounded-circle">
                     </div>
                     <div class="col-6 col-md-3 mb-2">
-                        <img src="/source/images/th.jpg" alt="Dịch vụ chăm sóc học sinh 3" class="img-fluid rounded-circle">
+                        <img src="{{ $intro->image4 }}" alt="Dịch vụ chăm sóc học sinh 3" class="img-fluid rounded-circle">
                     </div>
                     <div class="col-6 col-md-3 mb-2">
-                        <img src="/source/images/tre.jpg" alt="Dịch vụ chăm sóc học sinh 4" class="img-fluid rounded-circle">
+                        <img src="{{ $intro->image5 }}" alt="Dịch vụ chăm sóc học sinh 4" class="img-fluid rounded-circle">
                     </div>
                 </div>
             </section>
@@ -150,26 +153,35 @@
                 </div>
                 <div class="contact-form w-50 d-flex flex-column justify-content-center">
                     <h3 class="text-center mb-4 fw-bold">Liên Hệ để được tư vấn</h3>
-                    <form class="space-y-4">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Họ và tên" required />
-                        </div>
-                        <div class="mb-3">
-                            <input type="tel" class="form-control" placeholder="Số điện thoại" required />
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Email" required />
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="3" placeholder="Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-submit w-50 py-2 rounded-lg">Gửi yêu cầu</button>
-                    </form>
+                    <form id="contactForm" action="{{ route('contact.store') }}" method="POST">
+                            @csrf <!-- Thêm token CSRF để bảo mật -->
+                            <div class="form-group">
+                                <input type="text" name="fullname" class="form-control" placeholder="Họ và tên"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="phone" class="form-control" placeholder="Số điện thoại"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="message" rows="4" placeholder="Tin nhắn"
+                                    required></textarea>
+                            </div>
+                            <div class="button-container">
+                                <button type="submit" class="btn-submit">Gửi yêu cầu</button>
+                            </div>
+                        </form>
                 </div>
             </section>
         </div>
     </div>
 </body>
+@endforeach
+@endif
+
 
 
 @include('user.home.footer')
