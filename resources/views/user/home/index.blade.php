@@ -131,6 +131,8 @@
         </div>
     </section>
     <!-- HTML -->
+    @foreach ($homeQualities as $homeQuality)
+
     <section class="container py-5 facility-section">
         <div class="facility">
             <h1 class="facility-title">CHẤT LƯỢNG TRƯỜNG HỌC</h1>
@@ -138,33 +140,30 @@
                 <div class="left-column">
                     <div class="card">
                         <h2>Hệ thống lớp học</h2>
-                        <p>Hệ thống lớp học được trang bị hiện đại, với không gian học tập thoải mái và sáng tạo.
-                            Mỗi lớp học đều có đầy đủ thiết bị giảng dạy, đảm bảo môi trường học tập hiệu quả, giúp
-                            học sinh phát huy tối đa khả năng sáng tạo và tiếp thu kiến thức.</p>
+                        <p>{{ $homeQuality->classroom_system }}</p>
                     </div>
                 </div>
                 <div class="right-column img-container">
-                    <img src="/source/images/classroom.png" alt="Hệ thống lớp học">
-                    <img src="/source/images/cl2.jpg" alt="Hệ thống lớp học">
+                    <img src="{{ asset($homeQuality->image1) }}" alt="Hệ thống lớp học">
+                    <img src="{{ asset($homeQuality->image2) }}" alt="Hệ thống lớp học">
                 </div>
             </div>
             <div class="section">
                 <div class="left-column img-container">
-                    <img src="/source/images/th.jpg" alt="Giáo dục thể chất">
-                    <img src="/source/images/sp.jpg" alt="Hệ thống lớp học">
+                    <img src="{{ asset($homeQuality->image3) }}" alt="Giáo dục thể chất">
+                    <img src="{{ asset($homeQuality->image4) }}" alt="Hệ thống lớp học">
                 </div>
                 <div class="right-column">
                     <div class="card">
                         <h2>Hệ thống phòng thực hành</h2>
-                        <p>Hệ thống phòng thực hành được thiết kế hiện đại, đầy đủ trang thiết bị và tiện nghi, tạo
-                            điều kiện tối ưu cho việc học tập và nghiên cứu. Mỗi phòng đều đảm bảo an toàn và đáp
-                            ứng tiêu chuẩn chất lượng, giúp sinh viên thực hành hiệu quả và thu được những kiến thức
-                            thực tiễn.</p>
+                        <p>{{ $homeQuality->lab_system }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    @endforeach
+
     <section>
         <h2 style="text-align: center;">Bình luận</h2>
         <div class="mt-5 ct-testimonial">
@@ -212,41 +211,49 @@
             </form>
         </div>
     </section>
+    @foreach ($schoolPhotos as $schoolPhoto)
+
     <section class="content-wrapper">
         <div class="gallery-container">
             <!-- Row 1 -->
             <div class="gallery-row">
                 <div class="gallery-item">
-                    <img src="/source/images/hs.png" alt="Students sitting" class="gallery-img">
+                    <img src="{{ asset($schoolPhoto->image1) }}" alt="Students sitting" class="gallery-img">
                 </div>
                 <div class="gallery-item">
-                    <img src="/source/images/21.jpg" alt="Students at desk" class="gallery-img">
+                    <img src="{{ asset($schoolPhoto->image2) }}" alt="Students at desk" class="gallery-img">
                 </div>
                 <div class="gallery-item">
-                    <img src="/source/images/be.jpg" alt="Stage performance" class="gallery-img">
+                    <img src="{{ asset($schoolPhoto->image3) }}" alt="Stage performance" class="gallery-img">
                 </div>
             </div>
             <div class="gallery-row">
                 <div class="gallery-item">
-                    <img src="/source/images/co.jpeg" alt="School building" class="gallery-img">
+                    <img src="{{ asset($schoolPhoto->image4) }}" alt="School building" class="gallery-img">
                 </div>
                 <div class="gallery-item">
-                    <img src="/source/images/clb.jpg" alt="Students outside" class="gallery-img">
+                    <img src="{{ asset($schoolPhoto->image5) }}" alt="Students outside" class="gallery-img">
                 </div>
                 <div class="gallery-item">
-                    <img src="/source/images/20.webp" alt="Stage performance" class="gallery-img">
+                    <img src="{{ asset($schoolPhoto->image6) }}" alt="Stage performance" class="gallery-img">
                 </div>
             </div>
 
         </div>
     </section>
+    @endforeach
+
     <div class="main-container" id="contact">
         <section class="contact-section mt-5">
             <div class="row">
                 <div class="col-md-6 mb-4">
+                @foreach ($schoolPhotos as $schoolPhoto)
+
                     <div class="contact-image">
-                        <img src="/source/images/student.jpg" alt="Sinh viên tham gia lớp học">
+                        <img src="{{ asset($schoolPhoto->image7) }}" alt="Sinh viên tham gia lớp học">
                     </div>
+                    @endforeach
+
                 </div>
                 <div class="col-md-6 mb-4">
                     <div class="contact-form"

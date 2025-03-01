@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IntroController;
 
 
+
 Route::get('/comments', function () {
     return view('admin.comment.index');
 });
@@ -57,7 +58,12 @@ Route::get('/admin', function () {
     return view('admin.index'); // Đường dẫn đến view admin.index
 })->name('admin.index');
 
-
+Route::get('/ad-home-edit', function () {
+    return view('admin.edit'); // Đường dẫn đến view
+});
+Route::get('/ad-home-edit-photo', function () {
+    return view('admin.editPhoto'); // Đường dẫn đến view
+});
 Route::get('/ad-register', function () {
     return view('admin.register.index'); // Đường dẫn đến view
 });
@@ -111,7 +117,7 @@ Route::get('/ad-intro', [IntroController::class, 'index'])->name('intros.index')
 Route::get('/ad-intro-edit/{id}', [IntroController::class, 'edit'])->name('intros.edit'); // Hiển thị form chỉnh sửa
 Route::post('/ad-intro-edit/{id}', [IntroController::class, 'update'])->name('intros.update'); // Cập nhật bản ghiRoute::get('/ad-intro', [IntroController::class, 'index'])->name('intros.index'); // Hiển thị danh sách tất cả bản ghi
 Route::get('/ad-create', [IntroController::class, 'create'])->name('ad-intro-create');
-Route::post('/ad-create', [IntroController::class, 'store'])->name('intros.store');
+Route::post('/admin', [IntroController::class, 'store'])->name('intros.store');
 Route::get('/intro', [IntroController::class, 'showIntroUser'])->name('user.introduce.index');
 
 // bình luận
@@ -119,3 +125,11 @@ Route::post('/comments', [CommentController::class, 'store'])->name('comments.st
 Route::get('/comments', action: [CommentController::class, 'showComment'])->name('comments.index');
 Route::get('/user', action: [CommentController::class, 'showCommentUser'])->name('home');
 Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+// admin home
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/ad-home-edit/{id}', [AdminController::class, 'edit'])->name('admin.edit');
+Route::post('/ad-home-edit/{id}', [AdminController::class, 'update'])->name('home-quality.update');
+Route::get('/ad-home-edit-photo/{id}', [AdminController::class, 'editPhoto'])->name('admin.editPhoto');
+Route::post('/ad-home-edit-photo/{id}', [AdminController::class, 'updatePhoto'])->name('school_photo.update');
+Route::get('/user', [AdminController::class, 'showHomeUser'])->name('user.index');

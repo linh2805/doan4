@@ -80,31 +80,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Hệ thống lớp học được trang bị hiện đại, với không gian học tập thoải mái và sáng tạo. Mỗi lớp
-                        học đều có đầy đủ thiết bị giảng dạy, đảm bảo môi trường học tập hiệu quả, giúp học sinh phát
-                        huy tối đa khả năng sáng tạo và tiếp thu kiến thức.</td>
-                    <td>Cao đẳng mầm non</td>
-                    <td>Chương trình đào tạo hệ cao đẳng</td>
-                    <td>Cao đẳng mầm non</td>
-                    <td>Cao đẳng mầm non</td>
-                    <td>Hệ thống phòng thực hành được thiết kế hiện đại, đầy đủ trang thiết bị và tiện nghi, tạo điều
-                        kiện tối ưu cho việc học tập và nghiên cứu. Mỗi phòng đều đảm bảo an toàn và đáp ứng tiêu chuẩn
-                        chất lượng, giúp sinh viên thực hành hiệu quả và thu được những kiến thức thực tiễn.
+                @foreach($homeQualities as $homeQuality)
+                    <tr>
+                        <td>{{ $homeQuality->classroom_system }}</td>
+                        <td> <img src="{{ asset($homeQuality->image1) }}" alt="Ảnh 1" style="max-width: 200px;">
+                        </td>
 
-                    </td>
-                    <!-- <td><button class="btn btn-primary">Xem</button></td> -->
-                    <td><button class="btn btn-primary">Sửa</button></td>
-
-                </tr>
+                        <td> <img src="{{ asset($homeQuality->image2) }}" alt="Ảnh 2" style="max-width: 200px;">
+                        </td>
+                        <td> <img src="{{ asset($homeQuality->image3) }}" alt="Ảnh 3" style="max-width: 200px;">
+                        </td>
+                        <td> <img src="{{ asset($homeQuality->image4) }}" alt="Ảnh 4" style="max-width: 200px;">
+                        </td>
+                        <td>{{ $homeQuality->lab_system }}</td>
+                        <td>
+                            <button id="HomeQualityBtn" onclick="editIntro({{ $homeQuality->id }})">Sửa</button>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
-
         <h2>Ảnh trường</h2>
         <table class="table table-bordered table-hover mt-3">
             <thead class="table-dark">
                 <tr>
-                    <!-- <th>Hệ thống lớp họ</th> -->
                     <th>Ảnh 1</th>
                     <th>Ảnh 2</th>
                     <th>Ảnh 3</th>
@@ -117,46 +116,35 @@
                 </tr>
             </thead>
             <tbody>
+            @foreach($schoolPhotos as $schoolPhoto)
+
                 <tr>
-                    <td>Cao đẳng mầm non</td>
-                    <td>Chương trình đào tạo hệ cao đẳng</td>
-                    <td>Cao đẳng mầm non</td>
-                    <td>Cao đẳng mầm non</td>
-                    <td>Cao đẳng mầm non</td>
-                    <td>Cao đẳng mầm non</td>
-                    <td>Cao đẳng mầm non</td>
-
-
-
-                    <!-- <td><button class="btn btn-primary">Xem</button></td> -->
-                    <td><button class="btn btn-primary">Sửa</button></td>
-
+                <td> <img src="{{ asset($schoolPhoto->image1) }}" alt="Ảnh 1" style="max-width: 100px;">
+                        </td>
+                        <td> <img src="{{ asset($schoolPhoto->image2) }}" alt="Ảnh 2" style="max-width: 100px;">
+                        </td>
+                        <td> <img src="{{ asset($schoolPhoto->image3) }}" alt="Ảnh 3" style="max-width: 100px;">
+                        </td>
+                        <td> <img src="{{ asset($schoolPhoto->image4) }}" alt="Ảnh 4" style="max-width: 100px;">
+                        </td>
+                        <td> <img src="{{ asset($schoolPhoto->image5) }}" alt="Ảnh 5" style="max-width: 100px;">
+                        </td>
+                        <td> <img src="{{ asset($schoolPhoto->image6) }}" alt="Ảnh 6" style="max-width: 100px;">
+                        </td>
+                        <td> <img src="{{ asset($schoolPhoto->image7) }}" alt="Ảnh 7" style="max-width: 100px;">
+                        </td>
+<td>                            <button onclick="editPhoto({{ $schoolPhoto->id }})">Sửa</button>
+</td>
                 </tr>
+@endforeach
             </tbody>
         </table>
-        <!-- <table class="table table-bordered table-hover mt-3">
-            <thead class="table-dark">
-                <tr>
-                    <th>Tên người dùng</th>
-                    <th>Bình luận</th>
-                    <th>Thời gian</th>
-                    <th>Xoá</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Cao đẳng mầm non</td>
-                    <td>Chương trình đào tạo hệ cao đẳng</td>
-                    <td>Cao đẳng mầm non</td>
-                    <td><button class="btn btn-primary">Xoá</button></td>
-
-                </tr>
-            </tbody>
-        </table> -->
+        <div id="editContent"></div>
 
 
     </div>
 </body>
+
 
 <script>
     $(document).ready(function () {
@@ -190,6 +178,45 @@
         });
     });
 </script>
+<script>
+    function editIntro(introId) {
+        var url = '/ad-home-edit/' + introId; // Tạo URL từ ID
 
+        $('#editContent').load(url, function (response, status, xhr) {
+            if (status === "error") {
+                var msg = "Lỗi: " + xhr.status + " " + xhr.statusText;
+                $('#editContent').html(msg); // Hiển thị thông báo lỗi
+            } else {
+                // Cập nhật URL
+                history.pushState(null, '', url);
+            }
+        });
+
+        // Ẩn hàng tương ứng trong bảng (tuỳ chọn)
+        $('#row-' + introId).hide();
+    }
+
+
+</script>
+<script>
+    function editPhoto(introId) {
+        var url = '/ad-home-edit-photo/' + introId; // Tạo URL từ ID
+
+        $('#editContent').load(url, function (response, status, xhr) {
+            if (status === "error") {
+                var msg = "Lỗi: " + xhr.status + " " + xhr.statusText;
+                $('#editContent').html(msg); // Hiển thị thông báo lỗi
+            } else {
+                // Cập nhật URL
+                history.pushState(null, '', url);
+            }
+        });
+
+        // Ẩn hàng tương ứng trong bảng (tuỳ chọn)
+        $('#row-' + introId).hide();
+    }
+
+
+</script>
 
 </html>
