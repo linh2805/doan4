@@ -37,11 +37,18 @@ class CommentController extends Controller
     return view('user.home.index', compact('comments')); // Truyền bình luận vào view
 }
 
+
     public function destroy($id)
 {
     $comment = Comment::findOrFail($id);
     $comment->delete();
 
     return redirect()->back()->with('success', 'Comment deleted successfully!');
+}
+public function showCommentCollege()
+{
+    $comments = Comment::all(); 
+    // dd($comments);
+    return view('user.training.preschool-college.PreschoolCollege', compact('comments')); // Truyền bình luận vào view
 }
 }

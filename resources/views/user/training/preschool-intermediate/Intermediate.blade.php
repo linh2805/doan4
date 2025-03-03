@@ -17,25 +17,27 @@
         </section>
 
         <!-- Giới Thiệu -->
-        <div class="row align-items-stretch mb-5">
-            <div class="col-lg-6 p-0">
-                <img src="/source/images/1.png" alt="Giới thiệu" class="img-fluid"
-                    style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-            <div class="col-lg-6 d-flex flex-column justify-content-center" style="height: 100%;">
-                <h2 class="fw-bold" style="font-size: 30px;  color: #FF8C00;">Giới Thiệu Chương Trình</h2>
-                <p style="font-size: 20px;">Cao Đẳng Mầm Non hướng tới
-                    việc nâng cao trình độ cho những người đã có bằng trung cấp hoặc cao đẳng trong lĩnh vực
-                    giáo
-                    dục.</p>
-                <ul class="list-group">
-                    <li class="list-group-item">⏳ Thời gian: 2 năm (học sinh tốt nghiệp THPT) hoặc 2,5 - 3 năm (học sinh
-                        tốt nghiệp THCS).</li>
-                    <li class="list-group-item">🎓 Bằng cấp:Nhận bằng trung cấp chính quy chuyên ngành sư phạm mầmnon.
-                    </li>
-                    <li class="list-group-item">📍Địa điểm: Trường Cao đẳng Sư phạm Mầm non.</li>
-                </ul>
-            </div>
+        <div style="display: flex;">
+            <div class="row align-items-stretch mb-5">
+                @foreach($intermediates as $intermediate)
+                    <div class="col-lg-6 p-0">
+                        <img src="{{ asset($intermediate->introductory_photo) }}" alt="Giới thiệu" class="img-fluid"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                @endforeach
+            </div> <!-- Đóng div row ở đây -->
+            @foreach($intermediates as $intermediate)
+
+                <div class="col-lg-6 d-flex flex-column justify-content-center" style="height: 100%;">
+                    <h2 class="fw-bold" style="font-size: 30px;  color: #FF8C00;">Giới Thiệu Chương Trình</h2>
+                    <p style="font-size: 20px;">{{ $intermediate->introduce }}</p>
+                    <ul class="list-group">
+                        <li class="list-group-item">⏳ Thời gian: {{ $intermediate->time }}</li>
+                        <li class="list-group-item">🎓 Bằng cấp: Cao đẳng Sư phạm Mầm non</li>
+                        <li class="list-group-item">📍 Địa điểm: {{ $intermediate->location }}</li>
+                    </ul>
+                </div>
+            @endforeach
         </div>
         <!-- Mục Tiêu & Đối Tượng -->
         <div class="mb-5 animate-section">
@@ -73,10 +75,9 @@
         <div class="mb-5 " style="margin-left: 60px;">
             <h2 class="fw-bold " style="font-size: 30px;">Nội Dung Chương Trình Học</h2>
             <ul>
-                <li style="font-size: 20px;">💡 Tâm lý trẻ em và phát triển lứa tuổi</li>
-                <li style="font-size: 20px;">📚 Phương pháp giảng dạy và thiết kế bài giảng</li>
-                <li style="font-size: 20px;">🎨 Kỹ năng tổ chức hoạt động vui chơi, sáng tạo</li>
-                <li style="font-size: 20px;">📝 Thực tập sư phạm tại các trường mầm non</li>
+                @foreach($intermediate->curriculum_content as $content)
+                    <li>{{ $content }}</li>
+                @endforeach
             </ul>
         </div>
         <!-- Cơ Hội Nghề Nghiệp -->
@@ -94,28 +95,17 @@
         <div class="prove ">
             <h2 class="fw-bold ">Những Lời Chứng Thực</h2>
             <div class="prove-slider">
-                <div class="prove-item active">
-                    <div class="prove-content">
-                        <img src="/source/images/2.png" alt="Nguyễn Văn A" class="rounded-circle">
-                        <h5>Nguyễn Văn A</h5>
-                        <p>“Chương trình rất bổ ích và giúp tôi tự tin hơn trong việc giảng dạy!”</p>
-                    </div>
-                </div>
-                <div class="prove-item">
-                    <div class="prove-content">
-                        <img src="/source/images/2.png" alt="Trần Thị B" class="rounded-circle">
-                        <h5>Trần Thị B</h5>
-                        <p>“Đội ngũ giảng viên rất nhiệt tình và chuyên nghiệp!”</p>
-                    </div>
-                </div>
-                <div class="prove-item">
-                    <div class="prove-content">
-                        <img src="/source/images/2.png" alt="Lê Văn C" class="rounded-circle">
-                        <h5>Lê Văn C</h5>
-                        <p>“Chương trình đã giúp tôi tìm ra niềm đam mê thực sự của mình.”</p>
-                    </div>
+        @foreach ($comments as $index => $comment)
+            <div class="prove-item {{ $index === 0 ? 'active' : '' }}">
+                <div class="prove-content">
+                    <h5>Name: {{ $comment->name }}</h5>
+                    <h4>Comment: {{ $comment->comment }}</h4>
                 </div>
             </div>
+        @endforeach
+
+    </div>
+
 
             <!-- Navigation Dots -->
             <div class="pagination">
@@ -182,76 +172,73 @@
     <div class="contact-form-section">
         <h3 class="form-title" style="text-align: center;">Liên Hệ để được tư vấn</h3>
         <form id="contactForm" action="{{ route('contact.store') }}" method="POST">
-                            @csrf <!-- Thêm token CSRF để bảo mật -->
-                            <div class="form-group">
-                                <input type="text" name="fullname" class="form-control" placeholder="Họ và tên"
-                                    required>
-                            </div>
-                            <div class="form-group">
-                                <input type="tel" name="phone" class="form-control" placeholder="Số điện thoại"
-                                    required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" name="email" class="form-control" placeholder="Email" required>
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control" name="message" rows="4" placeholder="Tin nhắn"
-                                    required></textarea>
-                            </div>
-                            <div class="button-container">
-                                <button type="submit" class="btn-submit">Gửi yêu cầu</button>
-                            </div>
-                        </form>
+            @csrf <!-- Thêm token CSRF để bảo mật -->
+            <div class="form-group">
+                <input type="text" name="fullname" class="form-control" placeholder="Họ và tên" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" name="phone" class="form-control" placeholder="Số điện thoại" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="message" rows="4" placeholder="Tin nhắn" required></textarea>
+            </div>
+            <div class="button-container">
+                <button type="submit" class="btn-submit">Gửi yêu cầu</button>
+            </div>
+        </form>
     </div>
     @include('user.home.footer')
     <script>
-    document.addEventListener("scroll", function() {
-        document.querySelectorAll(".animate-section").forEach(el => {
-            if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-                el.classList.add("appear");
-            }
+        document.addEventListener("scroll", function () {
+            document.querySelectorAll(".animate-section").forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                    el.classList.add("appear");
+                }
+            });
         });
-    });
-    let currentIndex = 1;
+        let currentIndex = 1;
 
-    function showProve(index) {
-        const items = document.querySelectorAll('.prove-item');
-        const dots = document.querySelectorAll('.dot');
+        function showProve(index) {
+            const items = document.querySelectorAll('.prove-item');
+            const dots = document.querySelectorAll('.dot');
 
-        // Loop through items and dots to hide/show accordingly
-        items.forEach((item, i) => {
-            item.classList.remove('active');
-            dots[i].classList.remove('active');
-            if (i === index - 1) {
-                item.classList.add('active');
-                dots[i].classList.add('active');
-            }
-        });
-    }
-
-    // Function to handle dot clicks
-    function currentProve(index) {
-        currentIndex = index;
-        showProve(currentIndex);
-    }
-    window.onscroll = function() {
-        const button = document.getElementById("backToTop");
-        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-            button.style.display = "block";
-        } else {
-            button.style.display = "none";
+            // Loop through items and dots to hide/show accordingly
+            items.forEach((item, i) => {
+                item.classList.remove('active');
+                dots[i].classList.remove('active');
+                if (i === index - 1) {
+                    item.classList.add('active');
+                    dots[i].classList.add('active');
+                }
+            });
         }
-    };
 
-    document.getElementById("backToTop").onclick = function() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    };
-    $(document).ready(function() {
-        $('.collapse').collapse('hide'); // Hide all collapsible items initially
-        $('.faq-card-header').on('click', function() {
-            $(this).next('.collapse').collapse('toggle'); // Toggle the collapse on click
+        // Function to handle dot clicks
+        function currentProve(index) {
+            currentIndex = index;
+            showProve(currentIndex);
+        }
+        window.onscroll = function () {
+            const button = document.getElementById("backToTop");
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                button.style.display = "block";
+            } else {
+                button.style.display = "none";
+            }
+        };
+
+        document.getElementById("backToTop").onclick = function () {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+        $(document).ready(function () {
+            $('.collapse').collapse('hide'); // Hide all collapsible items initially
+            $('.faq-card-header').on('click', function () {
+                $(this).next('.collapse').collapse('toggle'); // Toggle the collapse on click
+            });
         });
-    });
     </script>
 </div>

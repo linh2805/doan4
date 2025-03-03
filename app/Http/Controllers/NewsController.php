@@ -1,80 +1,97 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\News;
 use Illuminate\Http\Request;
+use App\Models\News;
 
 class NewsController extends Controller
 {
     public function index()
     {
-        $news = News::all(); // Lấy danh sách tin tức từ database
+        $news = News::all();
+        return view('admin.ad-news.index', compact('news'));
+    }
+    
+    public function list()
+    {
+        $news = News::paginate(10); // Phân trang 10 bài mỗi trang
         return view('user.news.index', compact('news'));
     }
-    
     public function show($id)
     {
-        $news = News::find($id);
-        
-        if (!$news) {
-            abort(404); // Trả về lỗi 404 nếu không tìm thấy tin
+        $newsItem = News::find($id); // Hoặc News::where('id', $id)->first();
+
+        if (!$newsItem) {
+            return abort(404); // Nếu không tìm thấy thì báo lỗi 404
         }
-    
-        return view('user.news.detail', compact('news'));
+
+        return view('user.news.detail', compact('newsItem'));
     }
-    
-    public function create()
-    {
-        return view('admin.ad-news.create');
-    }
-    
+
 
     public function store(Request $request)
     {
         $request->validate([
             'title' => 'required',
             'content' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|max:2048',
+            'extra_content' => 'nullable|string',
         ]);
-
-        $imagePath = $request->file('image')->store('images', 'public');
-
+    
+        $imagePath = $request->hasFile('image') ? $request->file('image')->store('news_images', 'public') : null;
+    
         News::create([
             'title' => $request->title,
             'content' => $request->content,
-            'image' => $imagePath,
+            'extra_content' => $request->extra_content,
+            'image' => $imagePath
         ]);
-
-        return redirect()->route('news.index')->with('success', 'Tin tức đã được tạo!');
-    }
-
-    public function edit($id)
-    {
-        $news = News::findOrFail($id);
-        return view('admin.ad-news.edit', compact('news'));
-    }
     
-
-    public function update(Request $request, $id)
-    {
-        $news = News::findOrFail($id);
-
-        $news->update([
-            'title' => $request->title,
-            'content' => $request->content,
-        ]);
-
-        return redirect()->route('news.index')->with('success', 'Tin tức đã được cập nhật!');
+        // Chuyển hướng về trang admin.index sau khi thêm thành công
+        return redirect()->route('admin.index')->with('success', 'Tin tức đã được thêm!');
     }
 
     public function destroy($id)
     {
-        News::destroy($id);
-        return redirect()->route('news.index')->with('success', 'Tin tức đã được xóa!');
+        $newsItem = News::find($id);
+        if ($newsItem) {
+            $newsItem->delete();
+            return response()->json(['success' => 'Xóa thành công!']);
+        }
+        return response()->json(['error' => 'Không tìm thấy mục!'], 404);
     }
-    public function showAdDetail()
+
+    public function edit($id)
     {
-        $news = News::all();
-        return view('admin.ad-news.index', compact('news'));
+        $news = News::find($id);
+        if (!$news) {
+            return response()->json(['error' => 'Không tìm thấy tin tức'], 404);
+        }
+
+        return view('admin.index', compact('news'));
     }
+
+    
+    public function update(Request $request, $id)
+    {
+        $newsItem = News::findOrFail($id);
+    
+        $data = $request->validate([
+            'title' => 'required|string|max:255',
+            'image' => 'nullable|image|max:2048',
+            'content' => 'required|string',
+            'extra_content' => 'nullable|string',
+        ]);
+    
+        if ($request->hasFile('image')) {
+            // Storage::disk('public')->delete($newsItem->image);
+            $data['image'] = $request->file('image')->store('news_images', 'public');
+        }
+    
+        $newsItem->update($data);
+        return redirect()->back()->with('success', 'Cập nhật tin tức thành công!');
+    }
+    
+
+    
 }

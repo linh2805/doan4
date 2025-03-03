@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Training\CollegeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ContactController;
@@ -8,6 +9,10 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IntroController;
+use App\Http\Controllers\Training\ConnectionController;
+use App\Http\Controllers\Training\IntermediateController;
+use App\Http\Controllers\Training\UniversityController;
+use App\Http\Controllers\NewsController;
 
 
 
@@ -24,15 +29,49 @@ Route::get('/university', function () {
     return view('user.training.university-connection.University'); // Đường dẫn đến view
 });
 
+Route::get('/ad-university', function () {
+    return view('admin.training.university'); // Đường dẫn đến view
+});
+
+Route::get('/ad-university-edit', function () {
+    return view('admin.training.editUniversity'); // Đường dẫn đến view
+});
+
+
 Route::get('/intermediate', function () {
     return view('user.training.preschool-intermediate.Intermediate'); // Đường dẫn đến view
 });
+Route::get('/ad-intermediate', function () {
+    return view('admin.training.intermediate'); // Đường dẫn đến view
+});
+Route::get('/ad-intermediate-edit', function () {
+    return view('admin.training.editIntermediate'); // Đường dẫn đến view
+});
+
 Route::get('/college', function () {
     return view('user.training.preschool-college.PreschoolCollege'); // Đường dẫn đến view
 });
+Route::get('/ad-college', function () {
+    return view('admin.training.college'); // Đường dẫn đến view
+});
+Route::get('/ad-college-edit', function () {
+    return view('admin.training.editCollege'); // Đường dẫn đến view
+});
+
+
+
+
 Route::get('/connection', function () {
     return view('user.training.college-connection.CollegeConnection'); // Đường dẫn đến view
 });
+
+Route::get('/ad-connection', function () {
+    return view('admin.training.connection'); // Đường dẫn đến view
+});
+Route::get('/ad-connection-edit', function () {
+    return view('admin.training.editConnection'); // Đường dẫn đến view
+});
+
 
 Route::get('/scholarship', function () {
     return view('user.scholarship.index'); // Đường dẫn đến view
@@ -133,3 +172,48 @@ Route::post('/ad-home-edit/{id}', [AdminController::class, 'update'])->name('hom
 Route::get('/ad-home-edit-photo/{id}', [AdminController::class, 'editPhoto'])->name('admin.editPhoto');
 Route::post('/ad-home-edit-photo/{id}', [AdminController::class, 'updatePhoto'])->name('school_photo.update');
 Route::get('/user', [AdminController::class, 'showHomeUser'])->name('user.index');
+
+// training 
+// college 
+Route::get('/ad-college', [CollegeController::class, 'index'])->name('admin.index');
+Route::get('/ad-college-edit/{id}', [CollegeController::class, 'editCollege'])->name('college.edit');
+Route::post('/ad-college-edit/{id}', [CollegeController::class, 'updateCollege'])->name('college.update');Route::get('/user', [AdminController::class, 'showHomeUser'])->name('user.index');
+// Route::get('/college', [CollegeController::class, 'showHomeCollege'])->name('user.college');
+Route::get('/college', [CollegeController::class, 'showCollegeAndComments'])->name('user.college');
+
+
+// university
+Route::get('/ad-university', [UniversityController::class, 'index'])->name('admin.index');
+Route::get('/ad-university-edit/{id}', [UniversityController::class, 'editUniversity'])->name('university.edit');
+Route::post('/ad-university-edit/{id}', [UniversityController::class, 'updateUniversity'])->name('university.update');Route::get('/user', [AdminController::class, 'showHomeUser'])->name('user.index');
+Route::get('/university', [UniversityController::class, 'showHomeUniversity'])->name('user.university');
+
+
+// intermediate
+Route::get('/ad-intermediate', [IntermediateController::class, 'index'])->name('admin.index');
+Route::get('/ad-intermediate-edit/{id}', [IntermediateController::class, 'editIntermediate'])->name('intermediate.edit');
+Route::post('/ad-intermediate-edit/{id}', [IntermediateController::class, 'updateIntermediate'])->name('intermediate.update');Route::get('/user', [AdminController::class, 'showHomeUser'])->name('user.index');
+Route::get('/intermediate', [IntermediateController::class, 'showHomeIntermediate'])->name('user.intermediate');
+
+// connection
+Route::get('/ad-connection', [ConnectionController::class, 'index'])->name('admin.index');
+Route::get('/ad-connection-edit/{id}', [ConnectionController::class, 'editConnection'])->name('connection.edit');
+Route::post('/ad-connection-edit/{id}', [ConnectionController::class, 'updateConnection'])->name('connection.update');Route::get('/user', [AdminController::class, 'showHomeUser'])->name('user.index');
+Route::get('/connection', [ConnectionController::class, 'showHomeConnection'])->name('user.connection');
+
+//tintuctuc
+Route::prefix('admin')->group(function () {
+    Route::get('/ad-news', [NewsController::class, 'index'])->name('admin.ad-news.index');
+    Route::get('/ad-news/{id}', [NewsController::class, 'show'])->name('ad-news.show');
+    Route::get('/ad-news/create', [NewsController::class, 'create'])->name('ad-news.create');
+    Route::post('/ad-news', [NewsController::class, 'store'])->name('ad-news.store');    // Đây là route cần kiểm tra
+    Route::get('/ad-news/{id}/edit', [NewsController::class, 'edit'])->name('ad-news.edit');
+    Route::put('/ad-news/{id}', [NewsController::class, 'update'])->name('ad-news.update');
+    Route::delete('/ad-news/{id}', [NewsController::class, 'destroy'])->name('ad-news.delete');
+    
+});
+Route::get('/ad-news', [NewsController::class, 'index'])->name('ad-news.index');
+Route::get('/news', [NewsController::class, 'list'])->name('user.news.index');
+Route::get('/news/{id}', [NewsController::class, 'show'])->name('user.news.show');
+
+// comment 4

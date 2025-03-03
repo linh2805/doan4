@@ -30,14 +30,14 @@
         <section class="training-section">
             <h5>Chương trình đào tạo</h5>
             <!-- <select class="form-select mb-3" onchange="loadContent(this.value)"> -->
-            <select class="form-select mb-3">
+            <select class="form-select mb-3" id="collegeSelect">
 
                 <option value=""><a href="">Chọn ngành đào tạo</a></option>
-                <option value="cao-dang-mam-non"><a href="">Cao đẳng mầm non</a></option>
-                <option value="trung-cap-mam-non"><a href=""></a>Trung cấp mầm non</option>
-                <option value="lien-thong-dai-hoc-mam-non"><a href="">Liên thông đại học mầm non</a></option>
-                <option value="lien-thong-cao-dang-mam-non"><a href="">Liên thông cao đẳng mầm non</a></option>
-            </select>
+                <option value="cao-dang-mam-non">Cao đẳng mầm non</option>
+                <option value="trung-cap-mam-non">Trung cấp mầm non</option>
+                <option value="lien-thong-dai-hoc-mam-non">Liên thông đại học mầm non</option>
+                <option value="lien-thong-cao-dang-mam-non">Liên thông cao đẳng mầm non</option>
+                </select>
         </section>
 
         <h5>Quản lý khác</h5>
@@ -144,6 +144,44 @@
 
     </div>
 </body>
+<script>
+   $(document).ready(function () {
+    $('#collegeSelect').change(function () {
+        var selectedValue = $(this).val();
+        var url = '';
+        
+        switch (selectedValue) {
+            case 'cao-dang-mam-non':
+                url = '/ad-college'; // Đường dẫn cho Cao đẳng mầm non
+                break;
+            case 'trung-cap-mam-non':
+                url = '/ad-intermediate'; // Đường dẫn cho Trung cấp mầm non
+                break;
+            case 'lien-thong-dai-hoc-mam-non':
+                url = '/ad-university'; // Đường dẫn cho Liên thông đại học mầm non
+                break;
+            case 'lien-thong-cao-dang-mam-non':
+                url = '/ad-connection'; // Đường dẫn cho Liên thông cao đẳng mầm non
+                break;
+            default:
+                url = ''; // Không có đường dẫn
+                break;
+        }
+
+        if (url) {
+            $('#content').load(url, function (response, status, xhr) {
+                if (status === "error") {
+                    console.log("Error: " + xhr.status + " " + xhr.statusText); // Kiểm tra lỗi
+                } else {
+                    console.log("Content loaded successfully"); // Kiểm tra nội dung đã tải
+                }
+            });
+        } else {
+            $('#content').empty(); // Xóa nội dung nếu không có lựa chọn
+        }
+    });
+});
+</script>
 
 
 <script>

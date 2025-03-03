@@ -94,143 +94,21 @@
 
 <body>
     <div class="container mt-5" style="padding-top:100px;">
-        <h2 class="text-center animated-title" >Thông báo của ngành</h2>
-        <div class="row" id="infoContainer">
-            <div class="col-md-3">
-                <div class="info-card">
-                    <img src="/source/images/1.jfif" alt="Thông tin 1">
-                    <h5>Lịch Làm Việc</h5>
-                    <p>Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="info-card">
-                    <img src="/source/images/1.png" alt="Thông tin 2">
-                    <h5>Lịch Nghỉ Tết 2024</h5>
-                    <p>Lịch nghỉ Tết Dương lịch năm 2024 sẽ được thông báo đến Hà Nội.</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="info-card">
-                    <img src="/source/images/1.png" alt="Thông tin 3">
-                    <h5>Thông Báo</h5>
-                    <p>Thông báo xét duyệt ngân sách năm học 2024-2025.</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="info-card">
-                    <img src="/source/images/1.png" alt="Thông tin 4">
-                    <h5>Văn Bản Chỉ Đạo</h5>
-                    <p>Văn bản chỉ đạo về công tác phòng chống dịch bệnh cho năm học 2023-2024.</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="info-card">
-                    <img src="/source/images/1.jfif" alt="Thông tin 1">
-                    <h5>Lịch Làm Việc</h5>
-                    <p>Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="info-card">
-                    <img src="/source/images/1.jfif" alt="Thông tin 1">
-                    <h5>Lịch Làm Việc</h5>
-                    <p>Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="info-card">
-                    <img src="/source/images/1.jfif" alt="Thông tin 1">
-                    <h5>Lịch Làm Việc</h5>
-                    <p>Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="info-card">
-                    <img src="/source/images/1.jfif" alt="Thông tin 1">
-                    <h5>Lịch Làm Việc</h5>
-                    <p>Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="info-card">
-                    <img src="/source/images/1.jfif" alt="Thông tin 1">
-                    <h5>Lịch Làm Việc</h5>
-                    <p>Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).</p>
-                </div>
-            </div>
-
-        </div>
-        <div class="number-div" id="numberDiv"></div>
-        <nav aria-label="Page navigation" style="display: flex; justify-content: center; align-items: center;">
-            <ul class="pagination" id="pagination"></ul>
-        </nav>
-
-        <h2 class="text-center animated-title" >Thông báo của trường</h2>
+        
+        <h2 class="text-center animated-title">Thông báo của trường</h2>
         <div class="row">
+            @foreach($news as $item)
             <div class="col-md-3">
                 <div class="info-card">
-                    <img src="/source/images/1.jfif" alt="Thông tin 1">
-                    <h5>Lịch Làm Việc</h5>
-                    <p>Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).</p>
+                    <a href="{{ route('user.news.show', ['id' => $item->id]) }}">
+                        <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}">
+                        <h5>{{ $item->title }}</h5>
+                        <p>{!! nl2br(e(Str::limit($item->content, 100))) !!}</p> <!-- Giới hạn nội dung -->
+
+                    </a>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="info-card">
-                    <img src="/source/images/1.png" alt="Thông tin 2">
-                    <h5>Lịch Nghỉ Tết 2024</h5>
-                    <p>Lịch nghỉ Tết Dương lịch năm 2024 sẽ được thông báo đến Hà Nội.</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="info-card">
-                    <img src="/source/images/1.png" alt="Thông tin 3">
-                    <h5>Thông Báo</h5>
-                    <p>Thông báo xét duyệt ngân sách năm học 2024-2025.</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="info-card">
-                    <img src="/source/images/1.png" alt="Thông tin 4">
-                    <h5>Văn Bản Chỉ Đạo</h5>
-                    <p>Văn bản chỉ đạo về công tác phòng chống dịch bệnh cho năm học 2023-2024.</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="info-card">
-                    <img src="/source/images/1.jfif" alt="Thông tin 1">
-                    <h5>Lịch Làm Việc</h5>
-                    <p>Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="info-card">
-                    <img src="/source/images/1.jfif" alt="Thông tin 1">
-                    <h5>Lịch Làm Việc</h5>
-                    <p>Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="info-card">
-                    <img src="/source/images/1.jfif" alt="Thông tin 1">
-                    <h5>Lịch Làm Việc</h5>
-                    <p>Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="info-card">
-                    <img src="/source/images/1.jfif" alt="Thông tin 1">
-                    <h5>Lịch Làm Việc</h5>
-                    <p>Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="info-card">
-                    <img src="/source/images/1.jfif" alt="Thông tin 1">
-                    <h5>Lịch Làm Việc</h5>
-                    <p>Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).</p>
-                </div>
-            </div>
+            @endforeach
 
         </div>
         <div class="number-div" id="numberDiv"></div>
@@ -239,103 +117,5 @@
         </nav>
     </div>
 </body>
-<script>
-const infoContainer = document.getElementById('infoContainer');
-const numberDiv = document.getElementById('numberDiv');
-const pagination = document.getElementById('pagination');
-
-const items = [{
-        img: '/source/images/1.jfif',
-        title: 'Lịch Làm Việc',
-        description: 'Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).'
-    },
-    {
-        img: '/source/images/1.png',
-        title: 'Lịch Nghỉ Tết 2024',
-        description: 'Lịch nghỉ Tết Dương lịch năm 2024 sẽ được thông báo đến Hà Nội.'
-    },
-    {
-        img: '/source/images/1.png',
-        title: 'Thông Báo',
-        description: 'Thông báo xét duyệt ngân sách năm học 2024-2025.'
-    },
-    {
-        img: '/source/images/1.png',
-        title: 'Văn Bản Chỉ Đạo',
-        description: 'Văn bản chỉ đạo về công tác phòng chống dịch bệnh cho năm học 2023-2024.'
-    },
-    {
-        img: '/source/images/1.jfif',
-        title: 'Lịch Làm Việc',
-        description: 'Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).'
-    },
-    {
-        img: '/source/images/1.jfif',
-        title: 'Lịch Làm Việc',
-        description: 'Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).'
-    },
-    {
-        img: '/source/images/1.jfif',
-        title: 'Lịch Làm Việc',
-        description: 'Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).'
-    },
-    {
-        img: '/source/images/1.jfif',
-        title: 'Lịch Làm Việc',
-        description: 'Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).'
-    },
-    {
-        img: '/source/images/1.jfif',
-        title: 'Lịch Làm Việc',
-        description: 'Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).'
-    },
-    {
-        img: '/source/images/1.jfif',
-        title: 'Lịch Làm Việc',
-        description: 'Lịch làm việc của Sở GD&ĐT Hà Nội (Tuần thứ 3).'
-    },
-];
-
-const itemsPerPage = 8;
-const pageCount = Math.ceil(items.length / itemsPerPage);
-
-function renderItems(page) {
-    infoContainer.innerHTML = '';
-    const start = (page - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    const paginatedItems = items.slice(start, end);
-
-    paginatedItems.forEach(item => {
-        const col = document.createElement('div');
-        col.className = 'col-md-3';
-        col.innerHTML = `
-                <div class="info-card">
-                    <img src="${item.img}" alt="${item.title}">
-                    <h5>${item.title}</h5>
-                    <p>${item.description}</p>
-                </div>
-            `;
-        infoContainer.appendChild(col);
-    });
-}
-
-function renderPagination() {
-    pagination.innerHTML = '';
-    for (let i = 1; i <= pageCount; i++) {
-        const li = document.createElement('li');
-        li.className = 'page-item';
-        li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
-        li.onclick = (e) => {
-            e.preventDefault();
-            renderItems(i);
-        };
-        pagination.appendChild(li);
-    }
-}
-
-// Render initial items and pagination
-renderItems(1);
-renderPagination();
-</script>
 
 @include('user.home.footer')
