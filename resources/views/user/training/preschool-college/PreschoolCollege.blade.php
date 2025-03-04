@@ -140,56 +140,30 @@
 <div class="faq-section">
     <h2 class="faq-title">Câu Hỏi Thường Gặp</h2>
     <div class="accordion" id="faqAccordion">
-        <div class="faq-card">
-            <div class="faq-card-header">
-                <h2>
-                    <div class="faq-question" data-toggle="collapse" data-target="#collapseOne">Câu Hỏi 1:
-                        Hồ sơ đăng ký học như thế nào?</div>
-                </h2>
-            </div>
-            <div id="collapseOne" class="collapse">
-                <div class="faq-card-body">
-                    <h2>Thông tin về hồ sơ đăng ký</h2>
-                    <p>Để đăng ký học, bạn cần chuẩn bị hồ sơ bao gồm bản sao công chứng học bạ, bằng tốt nghiệp
-                        và ảnh chân dung.</p>
+        @if($faqs->isEmpty())
+            <li>Không có câu hỏi thường gặp nào cho danh mục này.</li>
+        @else
+            @php $index = 1; @endphp
+            @foreach($faqs as $faq)
 
-                    <h3>Cách nộp hồ sơ</h3>
-                    <p><strong>Cách 1:</strong> Nộp hồ sơ trực tiếp tại văn phòng trường.</p>
-                    <p><strong>Cách 2:</strong> Gửi hồ sơ qua đường bưu điện đến địa chỉ của trường.</p>
-                </div>
-            </div>
-        </div>
-        <div class="faq-card">
-            <div class="faq-card-header">
-                <h2>
-                    <div class="faq-question" data-toggle="collapse" data-target="#collapseTwo">Câu Hỏi 2:Có
-                        những yêu cầu gì khi đăng ký học?</div>
-                </h2>
-                <div id="collapseTwo" class="collapse">
-                    <div class="faq-card-body">
-                        <p>Khi đăng ký học, thí sinh cần có bằng tốt nghiệp trung cấp hoặc cao đẳng trong lĩnh
-                            vực
-                            giáo dục hoặc ngành liên quan.</p>
+                <div class="faq-card">
+                    <div class="faq-card-header">
+                        <h2>
+                            <div class="faq-question" data-toggle="collapse" data-target="#collapse{{ $index }}">Câu Hỏi
+                                {{ $index }}: {{ $faq->question }}
+                            </div>
+                        </h2>
                     </div>
-                </div>
-            </div>
-            <div class="faq-card">
-                <div class="faq-card-header">
-                    <h2>
-                        <div class="faq-question" data-toggle="collapse" data-target="#collapseThree">Câu Hỏi
-                            3:Có
-                            cần chứng chỉ gì sau khi tốt nghiệp không?</div>
-                    </h2>
-                    <div id="collapseThree" class="collapse">
+                    <div id="collapse{{ $index }}" class="collapse">
                         <div class="faq-card-body">
-                            <p>Sau khi tốt nghiệp, sinh viên thường cần có chứng chỉ sư phạm để đủ điều kiện làm
-                                giáo viên mầm non.
-                            </p>
+                            <p>{{ $faq->answer }}</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+                @php $index++; @endphp
+            @endforeach
+        @endif
+
     </div>
 
     </section>

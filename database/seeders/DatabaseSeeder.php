@@ -13,6 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call([
+            AccountSeeder::class,
+            HomeQualitySeeder::class,
+
+            // Các seeder khác nếu có
+        ]);
         // User::factory(10)->create();
 
         User::factory()->create([

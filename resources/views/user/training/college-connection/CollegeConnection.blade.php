@@ -97,16 +97,16 @@
         <div class="prove ">
             <h2 class="fw-bold ">Những Lời Chứng Thực</h2>
             <div class="prove-slider">
-        @foreach ($comments as $index => $comment)
-            <div class="prove-item {{ $index === 0 ? 'active' : '' }}">
-                <div class="prove-content">
-                    <h5>Name: {{ $comment->name }}</h5>
-                    <h4>Comment: {{ $comment->comment }}</h4>
-                </div>
-            </div>
-        @endforeach
+                @foreach ($comments as $index => $comment)
+                    <div class="prove-item {{ $index === 0 ? 'active' : '' }}">
+                        <div class="prove-content">
+                            <h5>Name: {{ $comment->name }}</h5>
+                            <h4>Comment: {{ $comment->comment }}</h4>
+                        </div>
+                    </div>
+                @endforeach
 
-    </div>
+            </div>
 
 
             <!-- Navigation Dots -->
@@ -120,54 +120,29 @@
         <div class="faq-section">
             <h2 class="faq-title">Câu Hỏi Thường Gặp</h2>
             <div class="accordion" id="faqAccordion">
-                <div class="faq-card">
-                    <div class="faq-card-header">
-                        <h2>
-                            <div class="faq-question" data-toggle="collapse" data-target="#collapseOne">Câu Hỏi 1:
-                                Học cao đẳng mầm non có những môn học gì?</div>
-                        </h2>
-                    </div>
-                    <div id="collapseOne" class="collapse">
-                        <div class="faq-card-body">
-                            <p>Chương trình học tại cao đẳng mầm non thường bao gồm các môn như tâm lý học trẻ em,
-                                phương pháp giáo dục mầm non, phát triển ngôn ngữ, giáo dục thể chất, và nghệ thuật
-                                trong giáo dục. Sinh viên cũng sẽ học về dinh dưỡng và sức khỏe cho trẻ.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq-card">
-                    <div class="faq-card-header">
-                        <h2>
-                            <div class="faq-question" data-toggle="collapse" data-target="#collapseTwo">Câu Hỏi 2: Sau
-                                khi tốt nghiệp có thể làm việc ở đâu?</div>
-                        </h2>
-                        <div id="collapseTwo" class="collapse">
-                            <div class="faq-card-body">
-                                <p> Sau khi tốt nghiệp, sinh viên có thể làm giáo viên mầm non tại các trường học, trung
-                                    tâm
-                                    giáo dục mầm non, hoặc làm việc trong các tổ chức phi chính phủ liên quan đến giáo
-                                    dục
-                                    trẻ em.</p>
+                @if($faqs->isEmpty())
+                    <li>Không có câu hỏi thường gặp nào cho danh mục này.</li>
+                @else
+                    @php $index = 1; @endphp
+                    @foreach($faqs as $faq)
+
+                        <div class="faq-card">
+                            <div class="faq-card-header">
+                                <h2>
+                                    <div class="faq-question" data-toggle="collapse" data-target="#collapse{{ $index }}">Câu Hỏi
+                                        {{ $index }}: {{ $faq->question }}</div>
+                                </h2>
                             </div>
-                        </div>
-                    </div>
-                    <div class="faq-card">
-                        <div class="faq-card-header">
-                            <h2>
-                                <div class="faq-question" data-toggle="collapse" data-target="#collapseThree">Câu Hỏi
-                                    3:Có
-                                    cần chứng chỉ gì sau khi tốt nghiệp không?</div>
-                            </h2>
-                            <div id="collapseThree" class="collapse">
+                            <div id="collapse{{ $index }}" class="collapse">
                                 <div class="faq-card-body">
-                                    <p>Sau khi tốt nghiệp, sinh viên thường cần có chứng chỉ sư phạm để đủ điều kiện làm
-                                        giáo viên mầm non.
-                                    </p>
+                                    <p>{{ $faq->answer }}</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                        @php $index++; @endphp
+                    @endforeach
+                @endif
+
             </div>
 
             <!-- Contact Form -->

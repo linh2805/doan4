@@ -11,42 +11,33 @@ use Illuminate\Support\Facades\Hash; // Để kiểm tra mật khẩu
 class LoginController extends Controller
 {
     public function showLoginForm()
-{
-    return view('auth.login'); // Kiểm tra file này có tồn tại không
-}
-
-
-    public function someFunction()
     {
-        $account = Auth::user();
-        // Xử lý thông tin người dùng
-    }    
+        return view('auth.login'); // Đảm bảo rằng bạn có view này
+    }
+
+    // Xử lý đăng nhập
     public function login(Request $request)
     {
         $request->validate([
-            'username' => 'required|string', // Thay 'username' bằng 'email' nếu bạn dùng email
+            'username' => 'required|string',
             'password' => 'required|string',
         ]);
 
-        // Tìm tài khoản trong bảng accounts
-        $account = Accounts::where('username', $request->username)->first(); // Hoặc 'email'
-        
-        if ($account && Hash::check($request->password, $account->password)) {
-            Auth::login($account);
-            $user = Auth::user(); 
-// dd($user);
-
-            return redirect()->route('admin.index')->with('success', 'Tài khoản đã được chấp nhận!');
-            
-           }
-
-        // Đăng nhập thất bại
-        return redirect()->back()->with('error', 'Thông tin đăng nhập không chính xác.');
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+            // Đăng nhập thành công
+            return redirect()->intended('admin')->with('success', 'Đăng nhập thành công!');
         }
 
-    public function logout()
+        return back()->withErrors([
+            'username' => 'Thông tin đăng nhập không chính xác.',
+        ]);
+    }
+
+    // Xử lý đăng xuất
+    public function logout(Request $request)
     {
         Auth::logout();
-        return redirect()->route('login')->with('success', 'Đăng xuất thành công!');
+        // Chỉ cần chuyển hướng về trang đăng nhập
+        return redirect('/login')->with('success', 'Bạn đã đăng xuất thành công.');
     }
-    }
+}

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Connection;
 use App\Models\Comment;
+use App\Models\FrequentlyAQ;
+
 
 
 
@@ -14,7 +16,7 @@ class ConnectionController extends Controller
     public function index()
     {
         // Lấy tất cả bản ghi
-        $connections = Connection::all(); // Lấy dữ liệu từ bảng college
+        $connections = Connection::all();
 
         // Kiểm tra nếu bảng rỗng và thêm bản ghi mặc định
         if ($connections->isEmpty()) {
@@ -71,7 +73,7 @@ class ConnectionController extends Controller
                 // Cập nhật đường dẫn ảnh
                 $connection->introductory_photo = 'source/images/' . $fileName; // Cập nhật đường dẫn ảnh
             }
-            
+
             // Cập nhật các thông tin khác
             $connection->introduce = $request->input('introduce');
             $connection->time = $request->input('time');
@@ -90,10 +92,12 @@ class ConnectionController extends Controller
         }
     }
     public function showHomeConnection()
-{
-    $comments = Comment::orderBy('created_at', 'desc')->get(); // Get all comments
-    $connections = Connection::all(); // Retrieve all connections
-    // Return the view and pass the data
-    return view('user.training.college-connection.CollegeConnection', compact('connections', 'comments'));
-}
+    {
+        $comments = Comment::orderBy('created_at', 'desc')->get(); // Lấy tất cả bình luận
+        $connections = Connection::all(); // Lấy tất cả kết nối
+        $faqs = FrequentlyAQ::all(); // Lấy tất cả câu hỏi thường gặp
+
+        // Trả về view và truyền dữ liệu
+        return view('user.training.college-connection.CollegeConnection', compact('connections', 'comments', 'faqs'));
+    }
 }

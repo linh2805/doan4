@@ -37,7 +37,7 @@
                 <option value="trung-cap-mam-non">Trung cấp mầm non</option>
                 <option value="lien-thong-dai-hoc-mam-non">Liên thông đại học mầm non</option>
                 <option value="lien-thong-cao-dang-mam-non">Liên thông cao đẳng mầm non</option>
-                </select>
+            </select>
         </section>
 
         <h5>Quản lý khác</h5>
@@ -52,6 +52,7 @@
         <a href="" id="registerLink4"><i class="fas fa-user-edit"></i>Giới thiệu</a>
         <a href="" id="registerLink3"><i class="fas fa-user-edit"></i>Bình luận</a>
 
+        <a href="" id="registerLink6"><i class="fas fa-user-edit"></i>Câu hỏi thường gặp</a>
 
         <a href="" id="registerLink1"><i class="fas fa-user-edit"></i>Liên hệ tư vấn</a>
 
@@ -60,7 +61,10 @@
 
         <div class="settings">
             <h5>Cài đặt</h5>
-            <a {{ url('/logout') }}><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
+            <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                @csrf
+                <button type="submit">Đăng Xuất</button>
+            </form>
         </div>
     </div>
 
@@ -116,10 +120,10 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach($schoolPhotos as $schoolPhoto)
+                @foreach($schoolPhotos as $schoolPhoto)
 
-                <tr>
-                <td> <img src="{{ asset($schoolPhoto->image1) }}" alt="Ảnh 1" style="max-width: 100px;">
+                    <tr>
+                        <td> <img src="{{ asset($schoolPhoto->image1) }}" alt="Ảnh 1" style="max-width: 100px;">
                         </td>
                         <td> <img src="{{ asset($schoolPhoto->image2) }}" alt="Ảnh 2" style="max-width: 100px;">
                         </td>
@@ -133,10 +137,10 @@
                         </td>
                         <td> <img src="{{ asset($schoolPhoto->image7) }}" alt="Ảnh 7" style="max-width: 100px;">
                         </td>
-<td>                            <button onclick="editPhoto({{ $schoolPhoto->id }})">Sửa</button>
-</td>
-                </tr>
-@endforeach
+                        <td> <button onclick="editPhoto({{ $schoolPhoto->id }})">Sửa</button>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         <div id="editContent"></div>
@@ -145,42 +149,42 @@
     </div>
 </body>
 <script>
-   $(document).ready(function () {
-    $('#collegeSelect').change(function () {
-        var selectedValue = $(this).val();
-        var url = '';
-        
-        switch (selectedValue) {
-            case 'cao-dang-mam-non':
-                url = '/ad-college'; // Đường dẫn cho Cao đẳng mầm non
-                break;
-            case 'trung-cap-mam-non':
-                url = '/ad-intermediate'; // Đường dẫn cho Trung cấp mầm non
-                break;
-            case 'lien-thong-dai-hoc-mam-non':
-                url = '/ad-university'; // Đường dẫn cho Liên thông đại học mầm non
-                break;
-            case 'lien-thong-cao-dang-mam-non':
-                url = '/ad-connection'; // Đường dẫn cho Liên thông cao đẳng mầm non
-                break;
-            default:
-                url = ''; // Không có đường dẫn
-                break;
-        }
+    $(document).ready(function () {
+        $('#collegeSelect').change(function () {
+            var selectedValue = $(this).val();
+            var url = '';
 
-        if (url) {
-            $('#content').load(url, function (response, status, xhr) {
-                if (status === "error") {
-                    console.log("Error: " + xhr.status + " " + xhr.statusText); // Kiểm tra lỗi
-                } else {
-                    console.log("Content loaded successfully"); // Kiểm tra nội dung đã tải
-                }
-            });
-        } else {
-            $('#content').empty(); // Xóa nội dung nếu không có lựa chọn
-        }
+            switch (selectedValue) {
+                case 'cao-dang-mam-non':
+                    url = '/ad-college'; // Đường dẫn cho Cao đẳng mầm non
+                    break;
+                case 'trung-cap-mam-non':
+                    url = '/ad-intermediate'; // Đường dẫn cho Trung cấp mầm non
+                    break;
+                case 'lien-thong-dai-hoc-mam-non':
+                    url = '/ad-university'; // Đường dẫn cho Liên thông đại học mầm non
+                    break;
+                case 'lien-thong-cao-dang-mam-non':
+                    url = '/ad-connection'; // Đường dẫn cho Liên thông cao đẳng mầm non
+                    break;
+                default:
+                    url = ''; // Không có đường dẫn
+                    break;
+            }
+
+            if (url) {
+                $('#content').load(url, function (response, status, xhr) {
+                    if (status === "error") {
+                        console.log("Error: " + xhr.status + " " + xhr.statusText); // Kiểm tra lỗi
+                    } else {
+                        console.log("Content loaded successfully"); // Kiểm tra nội dung đã tải
+                    }
+                });
+            } else {
+                $('#content').empty(); // Xóa nội dung nếu không có lựa chọn
+            }
+        });
     });
-});
 </script>
 
 
@@ -213,6 +217,14 @@
         $('#registerLink5').click(function (e) {
             e.preventDefault(); // Ngăn chặn hành động mặc định
             $('#content').load('/ad-news'); // Tải nội dung từ /ad-contact vào div content
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#registerLink6').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-frequentlyAQ'); // Tải nội dung từ /ad-contact vào div content
         });
     });
 </script>

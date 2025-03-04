@@ -3,6 +3,10 @@ namespace App\Http\Controllers;
 
 use App\Models\HomeQuality;
 use App\Models\SchoolPhoto;
+use App\Models\College;
+use App\Models\Connection;
+use App\Models\Intermediate;
+use App\Models\University;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -97,6 +101,7 @@ class AdminController extends Controller
 
                     // Lưu đường dẫn vào mảng
                     $imagePaths[$imageField] = 'source/images/' . $fileName;
+                    
                 }
             }
 
@@ -175,12 +180,16 @@ class AdminController extends Controller
     }
 
     public function showHomeUser()
-    {
-        // Lấy dữ liệu từ bảng home_quality và school_photo
-        $homeQualities = HomeQuality::all();
-        $schoolPhotos = SchoolPhoto::all();
+{
+    // Lấy dữ liệu từ các bảng
+    $homeQualities = HomeQuality::all();
+    $schoolPhotos = SchoolPhoto::all();
+    $colleges = College::all();
+    $connections = Connection::all(); 
+    $intermediates = Intermediate::all();
+    $universitys = University::all(); 
 
-        // Trả về view và truyền dữ liệu
-        return view('user.home.index', compact('homeQualities', 'schoolPhotos'));
-    }
+    // Trả về view và truyền dữ liệu
+    return view('user.home.index', compact('homeQualities', 'schoolPhotos', 'colleges', 'connections', 'intermediates', 'universitys'));
+}
 }

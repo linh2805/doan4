@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up()
 {
-    Schema::create('registrations', function (Blueprint $table) {
+    Schema::create('frequently_a_qs', function (Blueprint $table) {
         $table->id();
-        $table->string('full_name');
-        $table->string('phone_number');
-        $table->string('email');
-        $table->string('school');
-        $table->string('residence');
-        $table->string('major');
+        $table->string('question');
+        $table->text('answer');
         $table->timestamps();
     });
 }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('registrations');
+        Schema::dropIfExists('_frequently_a_qs');
     }
 };

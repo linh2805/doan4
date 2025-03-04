@@ -7,20 +7,19 @@
     <section class="banner-section">
         <div class="content">
             <h1>Tuyển sinh cao đẳng mầm non</h1>
-            <p>
-                Chào mừng bạn đến với chương trình đào tạo cao đẳng mầm non! Chúng tôi tự hào cung cấp một môi
-                trường học tập thân thiện và sáng tạo, nơi mà các bạn sinh viên có thể phát triển kỹ năng và kiến
-                thức cần thiết để trở thành những giáo viên mầm non xuất sắc.
-            </p>
-            <p>
-                Tham gia vào chương trình đào tạo của chúng tôi không chỉ giúp bạn có được kiến thức chuyên môn mà
-                còn tạo ra nhiều cơ hội nghề nghiệp trong tương lai. Hãy cùng chúng tôi khám phá những điều thú vị
-                trong thế giới giáo dục mầm non!
-            </p>
+            @foreach($colleges as $college)
+                <p>{{ $college->introduce }}</p>
+            @endforeach
+
             <button class="btn-header"><a href="#training-program">Tìm hiểu thêm</a></button>
         </div>
         <div class="image">
-            <img src="/source/images/tre.jpg" alt="Nhà trẻ">
+            @foreach($colleges as $college)
+                <div class="col-lg-6 p-0">
+                    <img src="{{ asset($college->introductory_photo) }}" alt="Giới thiệu" class="img-fluid"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            @endforeach
         </div>
     </section>
     <section class="awe-section-5" id="training-program">
@@ -38,10 +37,9 @@
                                     style="width: 75px; height: 75px; color:#ffffff; padding-top: 17px;"></i>
                             </div>
                             <h3>CAO ĐẲNG MẦM NON</h3>
-                            <p>Chương trình đào tạo trình độ cao đẳng sư phạm mầm non, trang bị kiến thức và kỹ năng
-                                giảng dạy, chăm sóc trẻ trong môi trường giáo dục mầm non. Sinh viên tốt nghiệp được cấp
-                                bằng cử nhân cao đẳng, đủ điều kiện giảng dạy tại các trường mầm non công lập và tư
-                                thục.</p>
+                            @foreach($colleges as $college)
+                                <p>{{ $college->introduce }}</p>
+                            @endforeach
                             <a href="{{ url('/college') }}" title="Xem thêm">xem thêm</a>
                         </div>
                     </div>
@@ -52,10 +50,9 @@
                                     style="width: 75px; height: 75px; color:#ffffff; padding-top: 17px;"></i>
                             </div>
                             <h3>TRUNG CẤP MẦM NON</h3>
-                            <p>Chương trình đào tạo trình độ trung cấp chuyên nghiệp, tập trung vào kỹ năng sư phạm,
-                                chăm sóc và nuôi dạy trẻ nhỏ. Thời gian học ngắn, phù hợp với người muốn nhanh chóng ra
-                                trường và làm việc trong lĩnh vực giáo dục mầm non.
-                            </p>
+                            @foreach($intermediates as $intermediate)
+                                <p>{{ $intermediate->introduce }}</p>
+                            @endforeach
                             <a href="{{ url('/intermediate') }}" title="Xem thêm">xem thêm</a>
                         </div>
                     </div>
@@ -66,9 +63,9 @@
                                     style="width: 75px; height: 75px; color:#ffffff; padding-top: 17px;"></i>
                             </div>
                             <h3>LIÊN THÔNG CAO ĐẲNG</h3>
-                            <p>Chương trình đào tạo dành cho người đã tốt nghiệp trung cấp mầm non muốn nâng cao trình
-                                độ lên bậc cao đẳng. Khóa học giúp mở rộng kiến thức chuyên ngành và tăng cơ hội thăng
-                                tiến trong sự nghiệp giảng dạy.</p>
+                            @foreach($connections as $connection)
+                                <p>{{ $connection->introduce }}</p>
+                            @endforeach
                             <a href="{{ url('/connection') }}" title="Xem thêm">xem thêm</a>
                         </div>
                     </div>
@@ -79,10 +76,9 @@
                                     style="width: 75px; height: 75px; color:#ffffff; padding-top: 17px;"></i>
                             </div>
                             <h3>LIÊN THÔNG ĐẠI HỌC</h3>
-                            <p>Chương trình đào tạo dành cho người đã tốt nghiệp cao đẳng sư phạm mầm non muốn hoàn
-                                thiện bằng cử nhân đại học. Khóa học tập trung vào nâng cao kiến thức chuyên sâu và kỹ
-                                năng giảng dạy, đồng thời đáp ứng yêu cầu chuẩn hóa trình độ giáo viên theo quy định
-                                ngành giáo dục.</p>
+                            @foreach($universitys as $university)
+                                <p>{{ $university->introduce }}</p>
+                            @endforeach
                             <a href="{{ url('/university') }}" title="Xem thêm">xem thêm</a>
                         </div>
                     </div>
@@ -133,35 +129,35 @@
     <!-- HTML -->
     @foreach ($homeQualities as $homeQuality)
 
-    <section class="container py-5 facility-section">
-        <div class="facility">
-            <h1 class="facility-title">CHẤT LƯỢNG TRƯỜNG HỌC</h1>
-            <div class="section">
-                <div class="left-column">
-                    <div class="card">
-                        <h2>Hệ thống lớp học</h2>
-                        <p>{{ $homeQuality->classroom_system }}</p>
+        <section class="container py-5 facility-section">
+            <div class="facility">
+                <h1 class="facility-title">CHẤT LƯỢNG TRƯỜNG HỌC</h1>
+                <div class="section">
+                    <div class="left-column">
+                        <div class="card">
+                            <h2>Hệ thống lớp học</h2>
+                            <p>{{ $homeQuality->classroom_system }}</p>
+                        </div>
+                    </div>
+                    <div class="right-column img-container">
+                        <img src="{{ asset($homeQuality->image1) }}" alt="Hệ thống lớp học">
+                        <img src="{{ asset($homeQuality->image2) }}" alt="Hệ thống lớp học">
                     </div>
                 </div>
-                <div class="right-column img-container">
-                    <img src="{{ asset($homeQuality->image1) }}" alt="Hệ thống lớp học">
-                    <img src="{{ asset($homeQuality->image2) }}" alt="Hệ thống lớp học">
-                </div>
-            </div>
-            <div class="section">
-                <div class="left-column img-container">
-                    <img src="{{ asset($homeQuality->image3) }}" alt="Giáo dục thể chất">
-                    <img src="{{ asset($homeQuality->image4) }}" alt="Hệ thống lớp học">
-                </div>
-                <div class="right-column">
-                    <div class="card">
-                        <h2>Hệ thống phòng thực hành</h2>
-                        <p>{{ $homeQuality->lab_system }}</p>
+                <div class="section">
+                    <div class="left-column img-container">
+                        <img src="{{ asset($homeQuality->image3) }}" alt="Giáo dục thể chất">
+                        <img src="{{ asset($homeQuality->image4) }}" alt="Hệ thống lớp học">
+                    </div>
+                    <div class="right-column">
+                        <div class="card">
+                            <h2>Hệ thống phòng thực hành</h2>
+                            <p>{{ $homeQuality->lab_system }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     @endforeach
 
     <section>
@@ -213,45 +209,45 @@
     </section>
     @foreach ($schoolPhotos as $schoolPhoto)
 
-    <section class="content-wrapper">
-        <div class="gallery-container">
-            <!-- Row 1 -->
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="{{ asset($schoolPhoto->image1) }}" alt="Students sitting" class="gallery-img">
+        <section class="content-wrapper">
+            <div class="gallery-container">
+                <!-- Row 1 -->
+                <div class="gallery-row">
+                    <div class="gallery-item">
+                        <img src="{{ asset($schoolPhoto->image1) }}" alt="Students sitting" class="gallery-img">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{{ asset($schoolPhoto->image2) }}" alt="Students at desk" class="gallery-img">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{{ asset($schoolPhoto->image3) }}" alt="Stage performance" class="gallery-img">
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="{{ asset($schoolPhoto->image2) }}" alt="Students at desk" class="gallery-img">
+                <div class="gallery-row">
+                    <div class="gallery-item">
+                        <img src="{{ asset($schoolPhoto->image4) }}" alt="School building" class="gallery-img">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{{ asset($schoolPhoto->image5) }}" alt="Students outside" class="gallery-img">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{{ asset($schoolPhoto->image6) }}" alt="Stage performance" class="gallery-img">
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="{{ asset($schoolPhoto->image3) }}" alt="Stage performance" class="gallery-img">
-                </div>
-            </div>
-            <div class="gallery-row">
-                <div class="gallery-item">
-                    <img src="{{ asset($schoolPhoto->image4) }}" alt="School building" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="{{ asset($schoolPhoto->image5) }}" alt="Students outside" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="{{ asset($schoolPhoto->image6) }}" alt="Stage performance" class="gallery-img">
-                </div>
-            </div>
 
-        </div>
-    </section>
+            </div>
+        </section>
     @endforeach
 
     <div class="main-container" id="contact">
         <section class="contact-section mt-5">
             <div class="row">
                 <div class="col-md-6 mb-4">
-                @foreach ($schoolPhotos as $schoolPhoto)
+                    @foreach ($schoolPhotos as $schoolPhoto)
 
-                    <div class="contact-image">
-                        <img src="{{ asset($schoolPhoto->image7) }}" alt="Sinh viên tham gia lớp học">
-                    </div>
+                        <div class="contact-image">
+                            <img src="{{ asset($schoolPhoto->image7) }}" alt="Sinh viên tham gia lớp học">
+                        </div>
                     @endforeach
 
                 </div>

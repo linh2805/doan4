@@ -97,16 +97,16 @@
         <div class="prove ">
             <h2 class="fw-bold ">Những Lời Chứng Thực</h2>
             <div class="prove-slider">
-        @foreach ($comments as $index => $comment)
-            <div class="prove-item {{ $index === 0 ? 'active' : '' }}">
-                <div class="prove-content">
-                    <h5>Name: {{ $comment->name }}</h5>
-                    <h4>Comment: {{ $comment->comment }}</h4>
-                </div>
-            </div>
-        @endforeach
+                @foreach ($comments as $index => $comment)
+                    <div class="prove-item {{ $index === 0 ? 'active' : '' }}">
+                        <div class="prove-content">
+                            <h5>Name: {{ $comment->name }}</h5>
+                            <h4>Comment: {{ $comment->comment }}</h4>
+                        </div>
+                    </div>
+                @endforeach
 
-    </div>
+            </div>
 
 
             <!-- Navigation Dots -->
@@ -120,370 +120,32 @@
         <div class="faq-section">
             <h2 class="faq-title">Câu Hỏi Thường Gặp</h2>
             <div class="accordion" id="faqAccordion">
-                <div class="faq-card">
-                    <div class="faq-card-header">
-                        <h2>
-                            <div class="faq-question" data-toggle="collapse" data-target="#collapseOne">Câu Hỏi 1: Hồ sơ
-                                tuyển sinh Cao đẳng mầm non như thế nào?</div>
-                        </h2>
-                    </div>
-                    <div id="collapseOne" class="collapse">
-                        <div class="faq-card-body">
-                            <h3>Hồ sơ tuyển sinh Cao đẳng Mầm non</h3>
-                            <ul>
-                                <li>01 bản photo công chứng học bạ THPT.</li>
-                                <li>01 bản photo công chứng giấy chứng nhận tốt nghiệp tạm thời hoặc bằng tốt nghiệp.
-                                </li>
-                                <li>02 ảnh 3x4 (ghi rõ họ tên, ngày sinh phía sau ảnh).</li>
-                                <li>02 phong bì (ghi rõ họ tên, địa chỉ người nhận để nhận giấy báo nhập học).</li>
-                                <li>Giấy tờ ưu tiên (nếu có).</li>
-                            </ul>
+                @if($faqs->isEmpty())
+                    <li>Không có câu hỏi thường gặp nào cho danh mục này.</li>
+                @else
+                    @php $index = 1; @endphp
+                    @foreach($faqs as $faq)
 
-                            <h3>Cách thức nộp hồ sơ</h3>
-                            <p><strong>Cách 1:</strong> Nộp hồ sơ trực tiếp hoặc gửi qua đường bưu điện đến:</p>
-                            <p><em>Cơ sở đào tạo Trường Cao đẳng Sư phạm Trung Ương</em></p>
-                            <p><em>Địa chỉ: Số 212 Hoàng Quốc Việt, Cầu Giấy, Hà Nội</em></p>
-
-                            <p><strong>Cách 2:</strong> Đăng ký trực tuyến qua đường link sau: <a href="#">[Link đăng
-                                    ký]</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq-card">
-                    <div class="faq-card-header">
-                        <h2>
-                            <div class="faq-question" data-toggle="collapse" data-target="#collapseTwo">Câu Hỏi 2: Điểm
-                                Chuẩn Ngành Sư Phạm Những Năm Gần Đây</div>
-                        </h2>
-                        <div id="collapseTwo" class="collapse">
-                            <div class="faq-card-body">
-                                <h2>Điểm chuẩn ngành Sư phạm Mầm non</h2>
-
-                                <h3>1. Trường Đại học Sư phạm Hà Nội (Mã: SPH)</h3>
-                                <table>
-                                    <caption>Hệ Đại học</caption>
-                                    <tr>
-                                        <th>Năm</th>
-                                        <th>Điểm</th>
-                                    </tr>
-                                    <tr>
-                                        <td>2014</td>
-                                        <td>21.5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2015</td>
-                                        <td>22</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2016</td>
-                                        <td>21.25</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2017</td>
-                                        <td>22.25</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2018</td>
-                                        <td>21.15</td>
-                                    </tr>
-                                </table>
-
-                                <h3>2. Trường Đại học Thủ đô (Mã: HNM)</h3>
-                                <table>
-                                    <caption>Hệ Đại học</caption>
-                                    <tr>
-                                        <th>Năm</th>
-                                        <th>Điểm</th>
-                                    </tr>
-                                    <tr>
-                                        <td>2012</td>
-                                        <td>22</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2013</td>
-                                        <td>23</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2014</td>
-                                        <td>26</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2015</td>
-                                        <td>20</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2016</td>
-                                        <td>25</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2017</td>
-                                        <td>36.75</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2018</td>
-                                        <td>37.58</td>
-                                    </tr>
-                                </table>
-                                <table>
-                                    <caption>Hệ Cao đẳng</caption>
-                                    <tr>
-                                        <th>Điểm</th>
-                                    </tr>
-                                    <tr>
-                                        <td>29.52</td>
-                                    </tr>
-                                </table>
-
-                                <h3>3. Cao đẳng Sư phạm Trung ương (Mã: CM1)</h3>
-                                <table>
-                                    <caption>Hệ Cao đẳng</caption>
-                                    <tr>
-                                        <th>Năm</th>
-                                        <th>Điểm</th>
-                                    </tr>
-                                    <tr>
-                                        <td>2014</td>
-                                        <td>22</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2015</td>
-                                        <td>20.75</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hệ nhu cầu xã hội</td>
-                                        <td>14</td>
-                                    </tr>
-                                </table>
-
-                                <h4>Năm 2016 - Giáo dục Mầm non</h4>
-                                <table>
-                                    <caption>Xét bằng điểm thi THPT Quốc gia</caption>
-                                    <tr>
-                                        <th>Hệ</th>
-                                        <th>Điểm</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Chất lượng cao</td>
-                                        <td>21</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nhu cầu xã hội</td>
-                                        <td>15</td>
-                                    </tr>
-                                </table>
-                                <table>
-                                    <caption>Xét bằng học bạ THPT</caption>
-                                    <tr>
-                                        <th>Hệ</th>
-                                        <th>Điểm</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Chất lượng cao</td>
-                                        <td>23</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nhu cầu xã hội</td>
-                                        <td>21</td>
-                                    </tr>
-                                </table>
-
-                                <h4>Năm 2017</h4>
-                                <p>Trường chấp nhận kết quả thi năng khiếu khối M từ các trường đại học công lập trên cả
-                                    nước.</p>
-
-                                <h4>Năm 2018 - Giáo dục Mầm non</h4>
-                                <table>
-                                    <caption>Xét bằng điểm thi THPT Quốc gia</caption>
-                                    <tr>
-                                        <th>Hệ</th>
-                                        <th>Điểm</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Chất lượng cao</td>
-                                        <td>19</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nhu cầu xã hội</td>
-                                        <td>18.25</td>
-                                    </tr>
-                                </table>
-                                <table>
-                                    <caption>Xét bằng học bạ THPT</caption>
-                                    <tr>
-                                        <th>Hệ</th>
-                                        <th>Điểm</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Nhu cầu xã hội</td>
-                                        <td>19.5</td>
-                                    </tr>
-                                </table>
-                                <h2>Điểm chuẩn ngành Sư phạm Mầm non</h2>
-
-                                <h3>1. Trường Đại học Sư phạm Hà Nội (Mã: SPH)</h3>
-                                <table>
-                                    <caption>Hệ Đại học</caption>
-                                    <tr>
-                                        <th>Năm</th>
-                                        <th>Điểm</th>
-                                    </tr>
-                                    <tr>
-                                        <td>2014</td>
-                                        <td>21.5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2015</td>
-                                        <td>22</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2016</td>
-                                        <td>21.25</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2017</td>
-                                        <td>22.25</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2018</td>
-                                        <td>21.15</td>
-                                    </tr>
-                                </table>
-
-                                <h3>2. Trường Đại học Thủ đô (Mã: HNM)</h3>
-                                <table>
-                                    <caption>Hệ Đại học</caption>
-                                    <tr>
-                                        <th>Năm</th>
-                                        <th>Điểm</th>
-                                    </tr>
-                                    <tr>
-                                        <td>2012</td>
-                                        <td>22</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2013</td>
-                                        <td>23</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2014</td>
-                                        <td>26</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2015</td>
-                                        <td>20</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2016</td>
-                                        <td>25</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2017</td>
-                                        <td>36.75</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2018</td>
-                                        <td>37.58</td>
-                                    </tr>
-                                </table>
-                                <table>
-                                    <caption>Hệ Cao đẳng</caption>
-                                    <tr>
-                                        <th>Điểm</th>
-                                    </tr>
-                                    <tr>
-                                        <td>29.52</td>
-                                    </tr>
-                                </table>
-
-                                <h3>3. Cao đẳng Sư phạm Trung ương (Mã: CM1)</h3>
-                                <table>
-                                    <caption>Hệ Cao đẳng</caption>
-                                    <tr>
-                                        <th>Năm</th>
-                                        <th>Điểm</th>
-                                    </tr>
-                                    <tr>
-                                        <td>2014</td>
-                                        <td>22</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2015</td>
-                                        <td>20.75</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hệ nhu cầu xã hội</td>
-                                        <td>14</td>
-                                    </tr>
-                                </table>
-
-                                <h4>Năm 2016 - Giáo dục Mầm non</h4>
-                                <table>
-                                    <caption>Xét bằng điểm thi THPT Quốc gia</caption>
-                                    <tr>
-                                        <th>Hệ</th>
-                                        <th>Điểm</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Chất lượng cao</td>
-                                        <td>21</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nhu cầu xã hội</td>
-                                        <td>15</td>
-                                    </tr>
-                                </table>
-                                <table>
-                                    <caption>Xét bằng học bạ THPT</caption>
-                                    <tr>
-                                        <th>Hệ</th>
-                                        <th>Điểm</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Chất lượng cao</td>
-                                        <td>23</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nhu cầu xã hội</td>
-                                        <td>21</td>
-                                    </tr>
-                                </table>
-
-                                <h4>Năm 2017</h4>
-                                <p>Trường chấp nhận kết quả thi năng khiếu khối M từ các trường đại học công lập trên cả
-                                    nước.</p>
-
-                                <h4>Năm 2018 - Giáo dục Mầm non</h4>
-                                <table>
-                                    <caption>Xét bằng điểm thi THPT Quốc gia</caption>
-                                    <tr>
-                                        <th>Hệ</th>
-                                        <th>Điểm</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Chất lượng cao</td>
-                                        <td>19</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nhu cầu xã hội</td>
-                                        <td>18.25</td>
-                                    </tr>
-                                </table>
-                                <table>
-                                    <caption>Xét bằng học bạ THPT</caption>
-                                    <tr>
-                                        <th>Hệ</th>
-                                        <th>Điểm</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Nhu cầu xã hội</td>
-                                        <td>19.5</td>
-                                    </tr>
-                                </table>
+                        <div class="faq-card">
+                            <div class="faq-card-header">
+                                <h2>
+                                    <div class="faq-question" data-toggle="collapse" data-target="#collapse{{ $index }}">Câu Hỏi
+                                        {{ $index }}: {{ $faq->question }}
+                                    </div>
+                                </h2>
+                            </div>
+                            <div id="collapse{{ $index }}" class="collapse">
+                                <div class="faq-card-body">
+                                    <p>{{ $faq->answer }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                        @php $index++; @endphp
+                    @endforeach
+                @endif
+
             </div>
+
         </div>
 
         <!-- Contact Form -->

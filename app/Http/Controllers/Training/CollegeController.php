@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\College;
 use App\Models\Comment;
+use App\Models\FrequentlyAQ;
+
+
 
 class CollegeController extends Controller
 {
@@ -86,13 +89,15 @@ class CollegeController extends Controller
             return response()->json(['error' => 'Đã xảy ra lỗi, vui lòng thử lại!'], 500);
         }
     }
-   
-    public function showCollegeAndComments()
-{
-    $comments = Comment::orderBy('created_at', 'desc')->get(); // Get all comments
-    $colleges = College::all();
 
-    return view('user.training.preschool-college.PreschoolCollege', compact( 'comments', 'colleges'));
-}
-    
+    public function showCollegeAndComments()
+    {
+        $comments = Comment::orderBy('created_at', 'desc')->get(); // Get all comments
+        $colleges = College::all();
+        $faqs = FrequentlyAQ::all(); // Lấy tất cả câu hỏi thường gặp
+
+
+        return view('user.training.preschool-college.PreschoolCollege', compact('comments', 'colleges', 'faqs'));
+    }
+
 }

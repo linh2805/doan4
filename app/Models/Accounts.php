@@ -9,16 +9,11 @@ class Accounts extends Authenticatable
     protected $table = 'accounts'; // Đảm bảo chỉ định bảng đúng
 
     protected $fillable = [
-        'fullname',
-        'email',
-        'phone',
         'username',
         'password',
-        'role',
+        'password_hash',
     ];
-    protected $casts = [
-        'role' => 'string',
-    ];
+    
     // Nếu bạn muốn sử dụng username để xác thực
     
 }

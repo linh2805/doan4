@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\University;
 use App\Models\Comment;
+use App\Models\FrequentlyAQ;
 
 
 
@@ -14,8 +15,7 @@ class UniversityController extends Controller
     public function index()
     {
         // Lấy tất cả bản ghi
-        $universitys = University::all(); // Lấy dữ liệu từ bảng college
-
+        $universitys = University::all();
         // Kiểm tra nếu bảng rỗng và thêm bản ghi mặc định
         if ($universitys->isEmpty()) {
             University::create([
@@ -90,11 +90,11 @@ class UniversityController extends Controller
     }
     public function showHomeUniversity()
     {
-        $comments = Comment::orderBy('created_at', 'desc')->get(); // Get all comments
-
-        $universitys = University::all(); // Lấy dữ liệu từ bảng college
+        $comments = Comment::orderBy('created_at', 'desc')->get(); // Lấy tất cả bình luận
+        $universitys  = University::all(); // Lấy tất cả dữ liệu đại học
+        $faqs = FrequentlyAQ::all(); // Lấy tất cả câu hỏi thường gặp
 
         // Trả về view và truyền dữ liệu
-        return view('user.training.university-connection.University', compact('comments','universitys'));
+        return view('user.training.university-connection.University', compact('comments', 'universitys', 'faqs'));
     }
 }

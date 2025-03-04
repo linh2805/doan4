@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Training\CollegeController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Auth\AccountController;
 use App\Http\Controllers\Auth\LoginController;
@@ -13,8 +13,16 @@ use App\Http\Controllers\Training\ConnectionController;
 use App\Http\Controllers\Training\IntermediateController;
 use App\Http\Controllers\Training\UniversityController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\FrequentlyAQController;
 
 
+Route::get('/', function () {
+    return redirect()->route('login');
+});
+
+Route::get('/change-password', function () {
+    return view('auth.change-password');
+});
 
 Route::get('/comments', function () {
     return view('admin.comment.index');
@@ -138,18 +146,6 @@ Route::get('/ad-contact', action: [ContactController::class, 'showContact'])->na
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::delete('/contacts/{id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
-// get, post đky user 
-Route::get('/ad-register', [RegistrationController::class, 'showRegistrations'])->name('registrations.index');
-Route::post('/register', [RegistrationController::class, 'store'])->name('register');
-
-// đăng ký tk admin 
-Route::post('/registerAd', [AccountController::class, 'registerAd'])->name('registerAd');
-Route::get('/account', [AccountController::class, 'index'])->name('account.index');
-
-// đăng nhập 
-Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // giới thiệu 
 Route::get('/ad-intro', [IntroController::class, 'index'])->name('intros.index'); // Hiển thị danh sách tất cả bản ghi
@@ -177,28 +173,31 @@ Route::get('/user', [AdminController::class, 'showHomeUser'])->name('user.index'
 // college 
 Route::get('/ad-college', [CollegeController::class, 'index'])->name('admin.index');
 Route::get('/ad-college-edit/{id}', [CollegeController::class, 'editCollege'])->name('college.edit');
-Route::post('/ad-college-edit/{id}', [CollegeController::class, 'updateCollege'])->name('college.update');Route::get('/user', [AdminController::class, 'showHomeUser'])->name('user.index');
-// Route::get('/college', [CollegeController::class, 'showHomeCollege'])->name('user.college');
+Route::post('/ad-college-edit/{id}', [CollegeController::class, 'updateCollege'])->name('college.update');
+Route::get('/user', [AdminController::class, 'showHomeUser'])->name('user.index');
 Route::get('/college', [CollegeController::class, 'showCollegeAndComments'])->name('user.college');
 
 
 // university
 Route::get('/ad-university', [UniversityController::class, 'index'])->name('admin.index');
 Route::get('/ad-university-edit/{id}', [UniversityController::class, 'editUniversity'])->name('university.edit');
-Route::post('/ad-university-edit/{id}', [UniversityController::class, 'updateUniversity'])->name('university.update');Route::get('/user', [AdminController::class, 'showHomeUser'])->name('user.index');
+Route::post('/ad-university-edit/{id}', [UniversityController::class, 'updateUniversity'])->name('university.update');
+Route::get('/user', [AdminController::class, 'showHomeUser'])->name('user.index');
 Route::get('/university', [UniversityController::class, 'showHomeUniversity'])->name('user.university');
 
 
 // intermediate
 Route::get('/ad-intermediate', [IntermediateController::class, 'index'])->name('admin.index');
 Route::get('/ad-intermediate-edit/{id}', [IntermediateController::class, 'editIntermediate'])->name('intermediate.edit');
-Route::post('/ad-intermediate-edit/{id}', [IntermediateController::class, 'updateIntermediate'])->name('intermediate.update');Route::get('/user', [AdminController::class, 'showHomeUser'])->name('user.index');
+Route::post('/ad-intermediate-edit/{id}', [IntermediateController::class, 'updateIntermediate'])->name('intermediate.update');
+Route::get('/user', [AdminController::class, 'showHomeUser'])->name('user.index');
 Route::get('/intermediate', [IntermediateController::class, 'showHomeIntermediate'])->name('user.intermediate');
 
 // connection
 Route::get('/ad-connection', [ConnectionController::class, 'index'])->name('admin.index');
 Route::get('/ad-connection-edit/{id}', [ConnectionController::class, 'editConnection'])->name('connection.edit');
-Route::post('/ad-connection-edit/{id}', [ConnectionController::class, 'updateConnection'])->name('connection.update');Route::get('/user', [AdminController::class, 'showHomeUser'])->name('user.index');
+Route::post('/ad-connection-edit/{id}', [ConnectionController::class, 'updateConnection'])->name('connection.update');
+Route::get('/user', [AdminController::class, 'showHomeUser'])->name('user.index');
 Route::get('/connection', [ConnectionController::class, 'showHomeConnection'])->name('user.connection');
 
 //tintuctuc
@@ -217,3 +216,27 @@ Route::get('/news', [NewsController::class, 'list'])->name('user.news.index');
 Route::get('/news/{id}', [NewsController::class, 'show'])->name('user.news.show');
 
 // comment 4
+Route::get('/user', [AdminController::class, 'showHomeUser'])->name('user.index');
+
+// câu hỏi thường gặp 
+Route::get('/ad-frequentlyAQ', function () {
+    return view('admin.frequentlyAQ.index'); // Thay 'register' bằng tên tệp blade của bạn
+});
+Route::get('/ad-frequentlyAQ-create', function () {
+    return view('admin.frequentlyAQ.create'); // Thay 'register' bằng tên tệp blade của bạn
+});
+Route::get('/ad-frequentlyAQ-edit', function () {
+    return view('admin.frequentlyAQ.edit'); // Thay 'register' bằng tên tệp blade của bạn
+});
+Route::post('/ad-frequentlyAQ', [FrequentlyAQController::class, 'store'])->name('FrequentlyAQ.store');
+Route::get('/ad-frequentlyAQ', [FrequentlyAQController::class, 'index'])->name('FrequentlyAQ.index');
+Route::get('/ad-frequentlyAQ-edit/{id}', [FrequentlyAQController::class, 'edit'])->name('FrequentlyAQ.edit');
+Route::put('/frequentlyAQ/{id}', [FrequentlyAQController::class, 'update'])->name('FrequentlyAQ.update');
+Route::delete('/frequentlyAQ/{id}', [FrequentlyAQController::class, 'destroy'])->name('FrequentlyAQ.destroy');
+
+// đăng nhập 
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login'); // Route cho hiển thị form đăng nhập
+Route::post('/login', [LoginController::class, 'login'])->name('login.submit'); // Route xử lý đăng nhập
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/change-password', [ChangePasswordController::class, 'showChangePasswordForm'])->name('change.password');
+Route::post('/change-password', [ChangePasswordController::class, 'changePassword'])->name('change.password.submit');

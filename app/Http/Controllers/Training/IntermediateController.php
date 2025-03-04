@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Intermediate;
 use App\Models\Comment;
+use App\Models\FrequentlyAQ;
 
 
 
@@ -14,7 +15,7 @@ class IntermediateController extends Controller
     public function index()
     {
         // Lấy tất cả bản ghi
-        $intermediates = Intermediate::all(); // Lấy dữ liệu từ bảng college
+        $intermediates = Intermediate::all();
 
         // Kiểm tra nếu bảng rỗng và thêm bản ghi mặc định
         if ($intermediates->isEmpty()) {
@@ -90,11 +91,11 @@ class IntermediateController extends Controller
     }
     public function showHomeIntermediate()
     {
-        $comments = Comment::orderBy('created_at', 'desc')->get(); // Get all comments
-
-        $intermediates = Intermediate::all(); // Lấy dữ liệu từ bảng college
+        $comments = Comment::orderBy('created_at', 'desc')->get(); // Lấy tất cả bình luận
+        $intermediates = Intermediate::all(); // Lấy tất cả dữ liệu trung gian
+        $faqs = FrequentlyAQ::all(); // Lấy tất cả câu hỏi thường gặp
 
         // Trả về view và truyền dữ liệu
-        return view('user.training.preschool-intermediate.Intermediate', compact('comments','intermediates'));
+        return view('user.training.preschool-intermediate.Intermediate', compact('comments', 'intermediates', 'faqs'));
     }
 }

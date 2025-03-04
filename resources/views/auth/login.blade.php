@@ -13,18 +13,20 @@
     @endif
 
     <form action="{{ route('login.submit') }}" method="POST">
-        @csrf
-        <div>
-            <label for="username">Tên người dùng:</label>
-            <input type="text" name="username" id="username" required>
-        </div>
+    @csrf
+    <div>
+        <label for="username">Tên người dùng:</label>
+        <input type="text" name="username" id="username" required>
+    </div>
 
-        <div>
-            <label for="password">Mật khẩu:</label>
-            <input type="password" name="password" id="password" required>
-        </div>
+    <div>
+        <label for="password">Mật khẩu:</label>
+        <input type="password" name="password" id="password" required>
+    </div>
 
-        <button type="submit">Đăng Nhập</button>
-    </form>
+    <button type="submit">Đăng Nhập</button>
+    <button type="submit"><a href="{{ route('change.password') }}">Đổi mật khẩu</a></button>
+
+</form>
 </body>
 </html>
