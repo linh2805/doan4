@@ -7,6 +7,7 @@ use App\Models\College;
 use App\Models\Connection;
 use App\Models\Intermediate;
 use App\Models\University;
+use App\Models\Scholarship;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -188,8 +189,9 @@ class AdminController extends Controller
     $connections = Connection::all(); 
     $intermediates = Intermediate::all();
     $universitys = University::all(); 
+    $scholarships = Scholarship::all();
 
     // Trả về view và truyền dữ liệu
-    return view('user.home.index', compact('homeQualities', 'schoolPhotos', 'colleges', 'connections', 'intermediates', 'universitys'));
+    return view('user.home.index', compact('homeQualities', 'schoolPhotos', 'colleges', 'connections', 'intermediates', 'universitys', 'scholarships'));
 }
 }

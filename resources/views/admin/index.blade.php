@@ -48,7 +48,7 @@
         <!-- <a href="" id=""><i class="fas fa-user-edit"></i>Học bổng</a> -->
         <a href="" id="registerLink5"><i class="fas fa-user-edit"></i>Tin tức</a>
 
-        <!-- <a href="" id="registerLink"><i class="fas fa-user-edit"></i>Đăng ký của sinh viên</a> -->
+        <a href="" id="registerLink7"><i class="fas fa-user-edit"></i>Học bổng</a>
         <a href="" id="registerLink4"><i class="fas fa-user-edit"></i>Giới thiệu</a>
         <a href="" id="registerLink3"><i class="fas fa-user-edit"></i>Bình luận</a>
 
@@ -219,6 +219,7 @@
             $('#content').load('/ad-news'); // Tải nội dung từ /ad-contact vào div content
         });
     });
+    
 </script>
 <script>
     $(document).ready(function () {
@@ -227,6 +228,25 @@
             $('#content').load('/ad-frequentlyAQ'); // Tải nội dung từ /ad-contact vào div content
         });
     });
+</script>
+<script>
+$(document).ready(function() {
+    $('#registerLink7').click(function(e) {
+        e.preventDefault(); // Ngăn chặn hành động mặc định
+
+        // Gửi yêu cầu AJAX để tải nội dung của trang tin tức
+        $.ajax({
+            url: '/admin/ad-hb',// Đường dẫn tới phương thức để lấy nội dung
+            type: "GET",
+            success: function(response) {
+                $("#content").html(response); // Chèn nội dung vào div content
+            },
+            error: function() {
+                alert("Không thể tải trang quản lý học bổng!"); // Thông báo lỗi
+            }
+        });
+    });
+});
 </script>
 <script>
     function editIntro(introId) {

@@ -4,7 +4,7 @@ use App\Http\Controllers\Training\CollegeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\Auth\AccountController;
+use App\Http\Controllers\ScholarshipController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AdminController;
@@ -141,10 +141,13 @@ Route::get('/ad-news', function () {
     return view('admin.ad-news.index'); // Thay 'register' bằng tên tệp blade của bạn
 });
 
+
+
 // get, post liên hệ user 
 Route::get('/ad-contact', action: [ContactController::class, 'showContact'])->name('contacts.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::delete('/contacts/{id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
+Route::delete('/ad-contact', [ContactController::class, 'deleteAll'])->name('contacts.deleteAll');
 
 
 // giới thiệu 
@@ -209,7 +212,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/ad-news/{id}/edit', [NewsController::class, 'edit'])->name('ad-news.edit');
     Route::put('/ad-news/{id}', [NewsController::class, 'update'])->name('ad-news.update');
     Route::delete('/ad-news/{id}', [NewsController::class, 'destroy'])->name('ad-news.delete');
-    
+
 });
 Route::get('/ad-news', [NewsController::class, 'index'])->name('ad-news.index');
 Route::get('/news', [NewsController::class, 'list'])->name('user.news.index');
@@ -240,3 +243,21 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.submit'); 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/change-password', [ChangePasswordController::class, 'showChangePasswordForm'])->name('change.password');
 Route::post('/change-password', [ChangePasswordController::class, 'changePassword'])->name('change.password.submit');
+
+// học bổng 
+Route::get('/admin/ad-hb/edit', function () {
+    return view('admin.ad-hb.edit'); // Thay 'register' bằng tên tệp blade của bạn
+});
+Route::prefix('admin')->group(function () {
+    Route::get('/ad-hb', [ScholarshipController::class, 'index'])->name('admin.ad-hb.index');
+    Route::get('/ad-hb/edit/{id}', [ScholarshipController::class, 'edit'])->name('ad-hb.edit');
+    Route::post('/ad-hb/store', [ScholarshipController::class, 'store'])->name('ad-hb.store');
+    Route::put('/ad-hb/{id}', [ScholarshipController::class, 'update'])->name('ad-hb.update');
+    Route::delete('/ad-hb/{id}', [ScholarshipController::class, 'destroy'])->name('ad-hb.delete');
+});
+
+// Route cho User (chỉ có thể xem)
+Route::get('/scholarship', [ScholarshipController::class, 'Index2'])->name('user.scholarship.index');
+
+// tìm kiếm 
+Route::get('/ad-news', [NewsController::class, 'search'])->name('search');

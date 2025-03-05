@@ -11,7 +11,7 @@ class NewsController extends Controller
         $news = News::all();
         return view('admin.ad-news.index', compact('news'));
     }
-    
+
     public function list()
     {
         $news = News::paginate(10); // Phân trang 10 bài mỗi trang
@@ -37,16 +37,16 @@ class NewsController extends Controller
             'image' => 'nullable|image|max:2048',
             'extra_content' => 'nullable|string',
         ]);
-    
+
         $imagePath = $request->hasFile('image') ? $request->file('image')->store('news_images', 'public') : null;
-    
+
         News::create([
             'title' => $request->title,
             'content' => $request->content,
             'extra_content' => $request->extra_content,
             'image' => $imagePath
         ]);
-    
+
         // Chuyển hướng về trang admin.index sau khi thêm thành công
         return redirect()->route('admin.index')->with('success', 'Tin tức đã được thêm!');
     }
@@ -56,9 +56,9 @@ class NewsController extends Controller
         $newsItem = News::find($id);
         if ($newsItem) {
             $newsItem->delete();
-            return response()->json(['success' => 'Xóa thành công!']);
+            return redirect()->route('admin.index')->with('success', 'Xóa thành công!');
         }
-        return response()->json(['error' => 'Không tìm thấy mục!'], 404);
+        return redirect()->route('admin.index')->with('error', 'Không tìm thấy mục!');
     }
 
     public function edit($id)
@@ -71,27 +71,41 @@ class NewsController extends Controller
         return view('admin.index', compact('news'));
     }
 
-    
+
     public function update(Request $request, $id)
     {
         $newsItem = News::findOrFail($id);
-    
+
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'image' => 'nullable|image|max:2048',
             'content' => 'required|string',
             'extra_content' => 'nullable|string',
         ]);
-    
+
         if ($request->hasFile('image')) {
             // Storage::disk('public')->delete($newsItem->image);
             $data['image'] = $request->file('image')->store('news_images', 'public');
         }
-    
+
         $newsItem->update($data);
         return redirect()->back()->with('success', 'Cập nhật tin tức thành công!');
     }
-    
 
+    public function search(Request $request)
+{
+    $query = $request->input('query');
     
+    if ($query) {
+        // Nếu có truy vấn, tìm kiếm
+        $items = News::where('title', 'LIKE', "%{$query}%")->get();
+    } else {
+        // Nếu không có truy vấn, lấy tất cả các mục
+        $items = News::all();
+    }
+
+    return view('admin.ad-news.index', ['items' => $items, 'query' => $query]);
+
+}
+
 }
