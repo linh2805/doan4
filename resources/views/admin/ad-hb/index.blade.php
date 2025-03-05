@@ -56,8 +56,7 @@
             </tr>
         </thead>
         <tbody>
-        @if(isset($news) && count($news) > 0)
-
+            
             @foreach ($scholarships as $scholarship)
                 <tr>
                     <td>{{ $scholarship->title }}</td>
@@ -75,11 +74,6 @@
                     </td>
                 </tr>
             @endforeach
-            @else
-            <tr>
-                <td colspan="6" class="text-center">Chưa có tin tức nào hoặc không tìm thấy dữ liệu phù hợp.</td>
-            </tr>
-        @endif
 
         </tbody>
     </table>

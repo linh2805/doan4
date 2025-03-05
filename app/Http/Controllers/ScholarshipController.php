@@ -92,7 +92,7 @@ class ScholarshipController extends Controller
             return response()->json(['success' => 'Học bổng đã được thêm!', 'scholarship' => $scholarship]);
         }
     
-        return redirect()->route('admin.ad-hb.index')->with('success', 'Học bổng đã được thêm!');
+        return redirect()->route('admin.index')->with('success', 'Học bổng đã được thêm!');
     }
     
     
