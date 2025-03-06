@@ -260,4 +260,8 @@ Route::prefix('admin')->group(function () {
 Route::get('/scholarship', [ScholarshipController::class, 'Index2'])->name('user.scholarship.index');
 
 // tìm kiếm 
-Route::get('/ad-news', [NewsController::class, 'search'])->name('search');
+Route::get('/ad-news/search', function () {
+    return view('admin.ad-news.search'); // Thay 'register' bằng tên tệp blade của bạn
+});
+
+Route::get('/ad-news/search', [NewsController::class, 'search'])->name('ad-news.search');

@@ -12,19 +12,46 @@
     <div class="header-container" style="display: flex; align-items: center; justify-content: space-between;">
         <h2 style="padding-bottom: 10px; white-space: nowrap;">Quản lý tin tức</h2>
         <div class="input-group" style="position: relative; width: 30%; display:flex;">
-            <form action="{{ route('search') }}" method="GET"> <input type="text" name="query" id="search-content"
-                    class="search-input" placeholder="Tìm kiếm nội dung" style="
+    <form id="search-form" method="GET">
+        <input type="text" name="query" id="search-content" class="search-input" placeholder="Tìm kiếm nội dung" style="
             border-radius: 27px;
             width: 100%;
             padding: 10px 40px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             border: 1px solid #ccc;
             height: 40px;">
-                <button type="submit">Tìm</button>
-            </form>
-        </div>
+        <button type="submit">Tìm</button>
+    </form>
+</div>
     </div>
+    <div id="showFind"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Tải nội dung ad-news vào div #content
+        $('#registerLink5').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-news'); // Tải nội dung từ /ad-news vào div content
+        });
 
+        // Tìm kiếm
+        $('#search-form').on('submit', function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+
+            $.ajax({
+                url: "{{ route('ad-news.search') }}", // Đường dẫn tới route tìm kiếm
+                method: "GET",
+                data: $(this).serialize(), // Gửi dữ liệu từ form
+                success: function (data) {
+                    $('#showFind').html(data); // Cập nhật div với kết quả tìm kiếm
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText); // Xử lý lỗi nếu có
+                }
+            });
+        });
+    });
+</script>
     <!-- Nút Thêm -->
     <button class="btn btn-primary mt-3"
         onclick="document.getElementById('addForm').style.display='block'">Thêm</button>
@@ -67,41 +94,35 @@
             </tr>
         </thead>
         <tbody>
-            @if(isset($items) && count($items) > 0)
-                @foreach ($items as $index => $item)
+        @foreach($news as $index => $new)
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td><a href="#">{{ $item->title }}</a></td>
+                        <td><a href="#">{{ $new->title }}</a></td>
                         <td>
-                            @if($item->image)
-                                <img src="{{ asset('storage/' . $item->image) }}" width="100">
+                            @if($new->image)
+                                <img src="{{ asset('storage/' . $new->image) }}" width="100">
                             @else
                                 <img src="/source/images/1.jpg" width="100">
                             @endif
                         </td>
-                        <td>{{ Str::limit($item->content, 50) }}</td>
-                        <td>{{ $item->extra_content }}</td>
+                        <td>{{ Str::limit($new->content, 50) }}</td>
+                        <td>{{ $new->extra_content }}</td>
                         <td>
-                            <button class="btn btn-warning edit-btn" data-id="{{ $item->id }}" data-title="{{ $item->title }}"
-                                data-image="{{ asset('storage/' . $item->image) }}"
-                                data-content="{{ $item->content }}">Sửa</button>
-                            <form action="{{ route('ad-news.delete', $item->id) }}" method="POST" style="display:inline;"
+                            <button class="btn btn-warning edit-btn" data-id="{{ $new->id }}" data-title="{{ $new->title }}"
+                                data-image="{{ asset('storage/' . $new->image) }}"
+                                data-content="{{ $new->content }}">Sửa</button>
+                            <form action="{{ route('ad-news.delete', $new->id) }}" method="POST" style="display:inline;"
                                 class="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" class="btn btn-danger delete-btn" data-id="{{ $item->id }}">Xóa</button>
+                                <button type="button" class="btn btn-danger delete-btn" data-id="{{ $new->id }}">Xóa</button>
                             </form>
                         </td>
                     </tr>
                 @endforeach
-            @else
-                <tr>
-                    <td colspan="6" class="text-center">Không tìm thấy tin tức nào.</td>
-                </tr>
-            @endif
+            
         </tbody>
     </table>
-    <div id="showFind"></div>
     <!-- Edit Form -->
     <div id="editFormContainer" style="display: none; margin-top: 20px;">
         <form id="editForm" action="{{ route('ad-news.update', 'placeholder') }}" method="POST"

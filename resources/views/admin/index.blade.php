@@ -212,6 +212,19 @@
         });
     });
 </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Tải nội dung ad-news vào div #content
+        $('#registerLink5').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-news'); // Tải nội dung từ /ad-news vào div content
+        });
+
+        // Tìm kiếm
+       
+    });
+</script>
 <script>
     $(document).ready(function () {
         $('#registerLink5').click(function (e) {
