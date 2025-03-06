@@ -93,19 +93,19 @@ class NewsController extends Controller
     }
 
     public function search(Request $request)
-{
-    $query = $request->input('query');
-    
-    if ($query) {
-        // Tìm kiếm bằng bất kỳ trường nào trong 'title', 'content' hoặc 'extra_content'
-        $news = News::where('title', 'LIKE', "%{$query}%")
-                    ->orWhere('content', 'LIKE', "%{$query}%")
-                    ->orWhere('extra_content', 'LIKE', "%{$query}%")
-                    ->get();
-    } else {
-        $news = News::all();
-    }
+    {
+        $query = $request->input('query');
 
-    return view('admin.ad-news.search', ['news' => $news]);
-}
+        if ($query) {
+            // Tìm kiếm bằng bất kỳ trường nào trong 'title', 'content' hoặc 'extra_content'
+            $news = News::where('title', 'LIKE', "%{$query}%")
+                ->orWhere('content', 'LIKE', "%{$query}%")
+                ->orWhere('extra_content', 'LIKE', "%{$query}%")
+                ->get();
+        } else {
+            $news = News::all();
+        }
+
+        return view('admin.ad-news.search', ['news' => $news]);
+    }
 }

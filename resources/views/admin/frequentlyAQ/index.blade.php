@@ -1,20 +1,46 @@
 <div class="header-container" style="display: flex; align-items: center; justify-content: space-between; ">
     <h2 style="padding-bottom: 10px; white-space: nowrap;">Câu hỏi thường gặp</h2>
     <div class="input-group" style="position: relative; width: 30%;">
-        <input type="text" id="search-content" class="search-input" placeholder="Tìm kiếm nội dung"
-            oninput="searchContent()" style="
-        border-radius: 27px;
-        width: 100%;
-        padding: 10px 40px; /* Giữ padding phía trái và phải cho đều */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        border: 1px solid #ccc;
-        height: 40px; /* Chiều cao đồng nhất */
-        ">
-        <!-- <i class="fas fa-search search-icon"
-        style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); font-size: 18px;"></i> -->
-
+    <form id="search-form" method="GET">
+        <input type="text" name="query" id="search-content" class="search-input" placeholder="Tìm kiếm nội dung" style="
+            border-radius: 27px;
+            width: 100%;
+            padding: 10px 40px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+            height: 40px;">
+        <button type="submit">Tìm</button>
+    </form>
+        </div>
     </div>
-</div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Tải nội dung ad-news vào div #content
+        $('#registerLink6').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-frequentlyAQ'); // Tải nội dung từ /ad-news vào div content
+        });
+
+        // Tìm kiếm
+        $('#search-form').on('submit', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: "{{ route('ad-frequentlyAQ.search') }}", // Đường dẫn tới route tìm kiếm
+                method: "GET",
+                data: $(this).serialize(), // Gửi dữ liệu từ form
+                success: function (data) {
+                    // Thay thế nội dung bảng bằng kết quả tìm kiếm
+                    $('table tbody').html(data); // Cập nhật tbody của bảng
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText); // Xử lý lỗi nếu có
+                }
+            });
+        });
+    });
+</script>
 <button id="addButton" type="button">Thêm</button>
 <table class="table table-bordered table-hover mt-3">
     <thead class="table-dark">

@@ -24,10 +24,6 @@ Route::get('/change-password', function () {
     return view('auth.change-password');
 });
 
-Route::get('/comments', function () {
-    return view('admin.comment.index');
-});
-
 // routes/web.php
 Route::get('/user', function () {
     return view('user.home.index');
@@ -141,6 +137,9 @@ Route::get('/ad-news', function () {
     return view('admin.ad-news.index'); // Thay 'register' bằng tên tệp blade của bạn
 });
 
+Route::get('/ad-comment', function () {
+    return view('admin.comment.index'); // Thay 'register' bằng tên tệp blade của bạn
+});
 
 
 // get, post liên hệ user 
@@ -159,10 +158,10 @@ Route::post('/admin', [IntroController::class, 'store'])->name('intros.store');
 Route::get('/intro', [IntroController::class, 'showIntroUser'])->name('user.introduce.index');
 
 // bình luận
-Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
-Route::get('/comments', action: [CommentController::class, 'showComment'])->name('comments.index');
+Route::post('/ad-comment', [CommentController::class, 'store'])->name('comments.store');
+Route::get('/ad-comment', action: [CommentController::class, 'showComment'])->name('comments.index');
 Route::get('/user', action: [CommentController::class, 'showCommentUser'])->name('home');
-Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
+Route::delete('/ad-comment/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 // admin home
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
@@ -245,11 +244,15 @@ Route::get('/change-password', [ChangePasswordController::class, 'showChangePass
 Route::post('/change-password', [ChangePasswordController::class, 'changePassword'])->name('change.password.submit');
 
 // học bổng 
+Route::get('/ad-hb', function () {
+    return view('admin.ad-hb.index'); // Thay 'register' bằng tên tệp blade của bạn
+});
+Route::get('/ad-hb', [ScholarshipController::class, 'index'])->name('admin.ad-hb.index');
 Route::get('/admin/ad-hb/edit', function () {
     return view('admin.ad-hb.edit'); // Thay 'register' bằng tên tệp blade của bạn
 });
 Route::prefix('admin')->group(function () {
-    Route::get('/ad-hb', [ScholarshipController::class, 'index'])->name('admin.ad-hb.index');
+    
     Route::get('/ad-hb/edit/{id}', [ScholarshipController::class, 'edit'])->name('ad-hb.edit');
     Route::post('/ad-hb/store', [ScholarshipController::class, 'store'])->name('ad-hb.store');
     Route::put('/ad-hb/{id}', [ScholarshipController::class, 'update'])->name('ad-hb.update');
@@ -265,3 +268,28 @@ Route::get('/ad-news/search', function () {
 });
 
 Route::get('/ad-news/search', [NewsController::class, 'search'])->name('ad-news.search');
+
+Route::get('/ad-hb/search', function () {
+    return view('admin.ad-hb.search'); // Thay 'register' bằng tên tệp blade của bạn
+});
+
+Route::get('/ad-hb/search', [ScholarshipController::class, 'search'])->name('ad-hb.search');
+
+Route::get('/ad-contact/search', function () {
+    return view('admin.ad-contact.search'); // Thay 'register' bằng tên tệp blade của bạn
+});
+
+Route::get('/ad-contact/search', [ContactController::class, 'search'])->name('ad-contact.search');
+
+
+Route::get('/ad-comment/search', function () {
+    return view('admin.ad-comment.search'); // Thay 'register' bằng tên tệp blade của bạn
+});
+
+Route::get('/ad-comment/search', [CommentController::class, 'search'])->name('ad-comment.search');
+
+Route::get('/ad-frequentlyAQ/search', function () {
+    return view('admin.ad-frequentlyAQ.search'); // Thay 'register' bằng tên tệp blade của bạn
+});
+
+Route::get('/ad-frequentlyAQ/search', [FrequentlyAQController::class, 'search'])->name('ad-frequentlyAQ.search');

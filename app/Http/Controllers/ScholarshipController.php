@@ -26,18 +26,18 @@ class ScholarshipController extends Controller
         $scholarships = Scholarship::all();
         return view('admin.ad-hb.index', compact('scholarships'));
     }
-    
-    public function edit($id)
-{
-    $scholarship = Scholarship::findOrFail($id);    
-    return view('admin.ad-hb.edit', compact('scholarship'));
-}
 
-    
+    public function edit($id)
+    {
+        $scholarship = Scholarship::findOrFail($id);
+        return view('admin.ad-hb.edit', compact('scholarship'));
+    }
+
+
     public function update(Request $request, $id)
     {
         $scholarship = Scholarship::find($id);
-        
+
         if (!$scholarship) {
             return redirect()->back()->with('error', 'Không tìm thấy học bổng!');
         }
@@ -60,17 +60,17 @@ class ScholarshipController extends Controller
     //     return redirect()->route('admin.ad-hb.index')->with('success', 'Học bổng đã bị xóa.');
 
     // }
-   
+
     public function destroy($id)
-{
-    $scholarship = Scholarship::find($id);
-    if ($scholarship) {
-        $scholarship->delete();
-        return redirect()->route('admin.index')->with('success', 'Xóa thành công!');
+    {
+        $scholarship = Scholarship::find($id);
+        if ($scholarship) {
+            $scholarship->delete();
+            return redirect()->route('admin.index')->with('success', 'Xóa thành công!');
+        }
+        return redirect()->route('admin.index')->with('error', 'Không tìm thấy mục!');
     }
-    return redirect()->route('admin.index')->with('error', 'Không tìm thấy mục!');
-}
-    
+
     public function store(Request $request)
     {
         $request->validate([
@@ -79,21 +79,36 @@ class ScholarshipController extends Controller
             'criteria' => 'nullable|string',
             'type' => 'nullable|string',
         ]);
-    
+
         $scholarship = Scholarship::create([
             'title' => $request->title,
             'description' => $request->description,
             'criteria' => $request->criteria,
             'type' => $request->type ?? 'general',
         ]);
-    
+
         // Kiểm tra nếu là AJAX request
         if ($request->ajax()) {
             return response()->json(['success' => 'Học bổng đã được thêm!', 'scholarship' => $scholarship]);
         }
-    
+
         return redirect()->route('admin.index')->with('success', 'Học bổng đã được thêm!');
     }
-    
-    
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        if ($query) {
+            // Tìm kiếm bằng bất kỳ trường nào trong 'title', 'content' hoặc 'extra_content'
+            $scholarships = Scholarship::where('title', 'LIKE', "%{$query}%")
+                ->orWhere('description', 'LIKE', "%{$query}%")
+                ->orWhere('criteria', 'LIKE', "%{$query}%")
+                ->get();
+        } else {
+            $scholarships = Scholarship::all();
+        }
+
+        return view('admin.ad-hb.search', ['scholarships' => $scholarships]);
+    }
+
 }

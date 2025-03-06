@@ -37,8 +37,26 @@ class ContactController extends Controller
         return redirect()->back()->with('success', 'Contact đã được xóa thành công!'); // Chuyển hướng với thông báo
     }
     public function deleteAll()
-{
-    Contact::truncate(); // Xóa tất cả bản ghi trong bảng contacts
-    return redirect()->back()->with('success', 'Contact đã được xóa thành công!'); // Chuyển hướng với thông báo
-}
+    {
+        Contact::truncate(); // Xóa tất cả bản ghi trong bảng contacts
+        return redirect()->back()->with('success', 'Contact đã được xóa thành công!'); // Chuyển hướng với thông báo
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        if ($query) {
+            // Tìm kiếm bằng bất kỳ trường nào trong 'title', 'content' hoặc 'extra_content'
+            $contacts = Contact::where('fullname', 'LIKE', "%{$query}%")
+                ->orWhere('phone', 'LIKE', "%{$query}%")
+                ->orWhere('email', 'LIKE', "%{$query}%")
+                ->orWhere('message', 'LIKE', "%{$query}%")
+                ->get();
+        } else {
+            $contacts = Contact::all();
+        }
+
+        return view('admin.contact.search', ['contacts' => $contacts]);
+    }
 }

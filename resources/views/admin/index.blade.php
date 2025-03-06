@@ -18,11 +18,7 @@
 <body>
     <div class="sidebar">
         <h4>Quản lý Admin</h4>
-        <div class="input-group mb-3">
-            <input type="text" id="search-content" class="search-input" placeholder="Tìm kiếm nội dung"
-                oninput="searchContent()" style="border-radius: 27px;">
-            <!-- <i class="fas fa-search search-icon"></i> -->
-        </div>
+       
         <!-- <a onclick="loadContent('home')"><i class="fas fa-home"></i>Home</a> -->
         <a href="{{ url('/admin') }}"><i class="fas fa-home"></i>Home</a>
 
@@ -200,7 +196,7 @@
     $(document).ready(function () {
         $('#registerLink3').click(function (e) {
             e.preventDefault(); // Ngăn chặn hành động mặc định
-            $('#content').load('/comments'); // Tải nội dung từ /ad-contact vào div content
+            $('#content').load('/ad-comment'); // Tải nội dung từ /ad-contact vào div content
         });
     });
 </script>
@@ -222,7 +218,21 @@
         });
 
         // Tìm kiếm
-       
+        $('#search-form').on('submit', function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+
+            $.ajax({
+                url: "{{ route('ad-news.search') }}", // Đường dẫn tới route tìm kiếm
+                method: "GET",
+                data: $(this).serialize(), // Gửi dữ liệu từ form
+                success: function (data) {
+                    $('#content').html(data); // Cập nhật div với kết quả tìm kiếm
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText); // Xử lý lỗi nếu có
+                }
+            });
+        });
     });
 </script>
 <script>
@@ -243,23 +253,38 @@
     });
 </script>
 <script>
-$(document).ready(function() {
-    $('#registerLink7').click(function(e) {
-        e.preventDefault(); // Ngăn chặn hành động mặc định
-
-        // Gửi yêu cầu AJAX để tải nội dung của trang tin tức
-        $.ajax({
-            url: '/admin/ad-hb',// Đường dẫn tới phương thức để lấy nội dung
-            type: "GET",
-            success: function(response) {
-                $("#content").html(response); // Chèn nội dung vào div content
-            },
-            error: function() {
-                alert("Không thể tải trang quản lý học bổng!"); // Thông báo lỗi
-            }
+$(document).ready(function () {
+        $('#registerLink7').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-hb'); // Tải nội dung từ /ad-contact vào div content
         });
     });
-});
+</script>
+<script>
+    $(document).ready(function () {
+        // Tải nội dung ad-news vào div #content
+        $('#registerLink7').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-hb'); // Tải nội dung từ /ad-news vào div content
+        });
+
+        // Tìm kiếm
+        $('#search-form').on('submit', function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+
+            $.ajax({
+                url: "{{ route('ad-hb.search') }}", // Đường dẫn tới route tìm kiếm
+                method: "GET",
+                data: $(this).serialize(), // Gửi dữ liệu từ form
+                success: function (data) {
+                    $('#content').html(data); // Cập nhật div với kết quả tìm kiếm
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText); // Xử lý lỗi nếu có
+                }
+            });
+        });
+    });
 </script>
 <script>
     function editIntro(introId) {
@@ -300,6 +325,87 @@ $(document).ready(function() {
     }
 
 
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Tải nội dung ad-news vào div #content
+        $('#registerLink1').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-contact'); // Tải nội dung từ /ad-news vào div content
+        });
+
+        // Tìm kiếm
+        $('#search-form').on('submit', function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+
+            $.ajax({
+                url: "{{ route('ad-contact.search') }}", // Đường dẫn tới route tìm kiếm
+                method: "GET",
+                data: $(this).serialize(), // Gửi dữ liệu từ form
+                success: function (data) {
+                    $('#content').html(data); // Cập nhật div với kết quả tìm kiếm
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText); // Xử lý lỗi nếu có
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Tải nội dung ad-news vào div #content
+        $('#registerLink3').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-comment'); // Tải nội dung từ /ad-news vào div content
+        });
+
+        // Tìm kiếm
+        $('#search-form').on('submit', function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+
+            $.ajax({
+                url: "{{ route('ad-comment.search') }}", // Đường dẫn tới route tìm kiếm
+                method: "GET",
+                data: $(this).serialize(), // Gửi dữ liệu từ form
+                success: function (data) {
+                    $('#content').html(data); // Cập nhật div với kết quả tìm kiếm
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText); // Xử lý lỗi nếu có
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Tải nội dung ad-news vào div #content
+        $('#registerLink6').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-frequentlyAQ'); // Tải nội dung từ /ad-news vào div content
+        });
+
+        // Tìm kiếm
+        $('#search-form').on('submit', function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+
+            $.ajax({
+                url: "{{ route('ad-frequentlyAQ.search') }}", // Đường dẫn tới route tìm kiếm
+                method: "GET",
+                data: $(this).serialize(), // Gửi dữ liệu từ form
+                success: function (data) {
+                    $('#content').html(data); // Cập nhật div với kết quả tìm kiếm
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText); // Xử lý lỗi nếu có
+                }
+            });
+        });
+    });
 </script>
 
 </html>

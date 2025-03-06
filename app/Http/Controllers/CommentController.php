@@ -31,24 +31,33 @@ class CommentController extends Controller
     }
 
     public function showCommentUser()
-{
-    $comments = Comment::all(); 
-    // dd($comments);
-    return view('user.home.index', compact('comments')); // Truyền bình luận vào view
-}
+    {
+        $comments = Comment::all();
+        // dd($comments);
+        return view('user.home.index', compact('comments')); // Truyền bình luận vào view
+    }
 
 
     public function destroy($id)
-{
-    $comment = Comment::findOrFail($id);
-    $comment->delete();
+    {
+        $comment = Comment::findOrFail($id);
+        $comment->delete();
 
-    return redirect()->back()->with('success', 'Comment deleted successfully!');
-}
-public function showCommentCollege()
-{
-    $comments = Comment::all(); 
-    // dd($comments);
-    return view('user.training.preschool-college.PreschoolCollege', compact('comments')); // Truyền bình luận vào view
-}
+        return redirect()->back()->with('success', 'Comment deleted successfully!');
+    }
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        if ($query) {
+            // Tìm kiếm bằng bất kỳ trường nào trong 'title', 'content' hoặc 'extra_content'
+            $comments = Comment::where('comment', 'LIKE', "%{$query}%")
+                ->orWhere('name', 'LIKE', "%{$query}%")
+                ->get();
+        } else {
+            $comments = Comment::all();
+        }
+
+        return view('admin.comment.search', ['comments' => $comments]);
+    }
 }

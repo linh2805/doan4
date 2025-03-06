@@ -55,5 +55,19 @@ class FrequentlyAQController extends Controller
 
         return redirect()->back()->with('success', 'Câu hỏi thường gặp đã được xóa thành công!');
     }
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
 
+        if ($query) {
+            // Tìm kiếm bằng bất kỳ trường nào trong 'title', 'content' hoặc 'extra_content'
+            $faqs = FrequentlyAQ::where('question', 'LIKE', "%{$query}%")
+                ->orWhere('answer', 'LIKE', "%{$query}%")
+                ->get();
+        } else {
+            $faqs = FrequentlyAQ::all();
+        }
+
+        return view('admin.frequentlyAQ.search', ['faqs' => $faqs]);
+    }
 }

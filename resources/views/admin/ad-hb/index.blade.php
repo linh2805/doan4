@@ -13,15 +13,46 @@
     <div class="header-container" style="display: flex; align-items: center; justify-content: space-between;">
         <h2 style="padding-bottom: 10px; white-space: nowrap;">Quản lý học bổng</h2>
         <div class="input-group" style="position: relative; width: 30%;">
-            <input type="text" id="search-content" class="search-input" placeholder="Tìm kiếm nội dung" style="
-                border-radius: 27px;
-                width: 100%;
-                padding: 10px 40px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                border: 1px solid #ccc;
-                height: 40px;">
+        <form id="search-form" method="GET">
+        <input type="text" name="query" id="search-content" class="search-input" placeholder="Tìm kiếm nội dung" style="
+            border-radius: 27px;
+            width: 100%;
+            padding: 10px 40px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+            height: 40px;">
+        <button type="submit">Tìm</button>
+    </form>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Tải nội dung ad-news vào div #content
+        $('#registerLink7').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-hb'); // Tải nội dung từ /ad-news vào div content
+        });
+
+        // Tìm kiếm
+        $('#search-form').on('submit', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: "{{ route('ad-hb.search') }}", // Đường dẫn tới route tìm kiếm
+                method: "GET",
+                data: $(this).serialize(), // Gửi dữ liệu từ form
+                success: function (data) {
+                    // Thay thế nội dung bảng bằng kết quả tìm kiếm
+                    $('table tbody').html(data); // Cập nhật tbody của bảng
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText); // Xử lý lỗi nếu có
+                }
+            });
+        });
+    });
+</script>
     <!-- Nút Thêm -->
     <button id="showFormBtn" class="btn btn-primary mt-3"
         onclick="document.getElementById('addFormContainer').style.display='block'">THÊM</button>
