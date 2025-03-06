@@ -1,49 +1,35 @@
-<table class="table table-bordered mt-3">
-    <thead>
+@if($news->isEmpty())
+    <tr>
+        <td colspan="6" class="text-center">Không tìm thấy tin tức nào.</td>
+    </tr>
+@else
+    @foreach($news as $index => $new)
         <tr>
-            <th>STT</th>
-            <th>Tiêu đề</th>
-            <th>Ảnh</th>
-            <th>Nội dung</th>
-            <th>Nội dung mở rộng</th>
-            <th>Quản lý</th>
+            <td>{{ $index + 1 }}</td>
+            <td><a href="#">{{ $new->title }}</a></td>
+            <td>
+                @if($new->image)
+                    <img src="{{ asset('storage/' . $new->image) }}" width="100">
+                @else
+                    <img src="/source/images/1.jpg" width="100">
+                @endif
+            </td>
+            <td>{{ Str::limit($new->content, 50) }}</td>
+            <td>{{ $new->extra_content }}</td>
+            <td>
+                <button class="btn btn-warning edit-btn" data-id="{{ $new->id }}" data-title="{{ $new->title }}"
+                    data-image="{{ asset('storage/' . $new->image) }}"
+                    data-content="{{ $new->content }}">Sửa</button>
+                <form action="{{ route('ad-news.delete', $new->id) }}" method="POST" style="display:inline;"
+                    class="delete-form">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" class="btn btn-danger delete-btn" data-id="{{ $new->id }}">Xóa</button>
+                </form>
+            </td>
         </tr>
-    </thead>
-    <tbody>
-        @if(isset($items) && count($items) > 0)
-            @foreach ($items as $index => $item)
-                <tr>
-                    <td>{{ $index + 1 }}</td>
-                    <td><a href="#">{{ $item->title }}</a></td>
-                    <td>
-                        @if($item->image)
-                            <img src="{{ asset('storage/' . $item->image) }}" width="100">
-                        @else
-                            <img src="/source/images/1.jpg" width="100">
-                        @endif
-                    </td>
-                    <td>{{ Str::limit($item->content, 50) }}</td>
-                    <td>{{ $item->extra_content }}</td>
-                    <td>
-                        <button class="btn btn-warning edit-btn" data-id="{{ $item->id }}" data-title="{{ $item->title }}"
-                            data-image="{{ asset('storage/' . $item->image) }}"
-                            data-content="{{ $item->content }}">Sửa</button>
-                        <form action="{{ route('ad-news.delete', $item->id) }}" method="POST" style="display:inline;"
-                            class="delete-form">
-                            @csrf
-                            @method('DELETE')
-                            <button type="button" class="btn btn-danger delete-btn" data-id="{{ $item->id }}">Xóa</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        @else
-            <tr>
-                <td colspan="6" class="text-center">Không tìm thấy tin tức nào.</td>
-            </tr>
-        @endif
-    </tbody>
-</table>
+    @endforeach
+@endif
 <script>
         document.querySelectorAll('.edit-btn').forEach(button => {
             button.addEventListener('click', function () {

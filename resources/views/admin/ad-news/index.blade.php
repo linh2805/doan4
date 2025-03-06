@@ -43,7 +43,8 @@
                 method: "GET",
                 data: $(this).serialize(), // Gửi dữ liệu từ form
                 success: function (data) {
-                    $('#showFind').html(data); // Cập nhật div với kết quả tìm kiếm
+                    // Thay thế nội dung bảng bằng kết quả tìm kiếm
+                    $('table tbody').html(data); // Cập nhật tbody của bảng
                 },
                 error: function (xhr) {
                     console.log(xhr.responseText); // Xử lý lỗi nếu có
