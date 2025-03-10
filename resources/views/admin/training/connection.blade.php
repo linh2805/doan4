@@ -35,7 +35,7 @@
                 
                     <td>
                         
-                        <button id="ConnectionBtn" onclick="editConnection({{ $connection->id }})">Sửa</button>
+                        <button id="ConnectionBtn" onclick="editConnection({{ $connection->id }})" class="btn btn-warning edit-btn">Sửa</button>
                     </td>
                 </tr>
             @endforeach

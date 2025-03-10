@@ -3,34 +3,38 @@ body {
     display: flex;
     background: #f8f9fa;
 }
-
+/* 
 .sidebar {
     width: 280px;
-    /* height: 100vh; */
-    background: #343a40;
+    height: 100vh;
     color: white;
     padding: 20px;
-    margin-top: 0px !important;
-}
+} */
 
 .sidebar h4 {
-    padding-bottom: 10px;
+    font-size: 15px;
+    font-weight: 400;
 }
 
 .sidebar h5 {
-    margin-top: 20px;
+    margin-top: 19px;
+    font-size: 16px;
+    font-weight: 600;
     /* Add some spacing above section headings */
 }
 
 .sidebar a {
-    color: white;
+    color: white !important;
     text-decoration: none;
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 9px;
+    font-size: 18px !important;
+    font-weight: 600 !important;
     border-radius: 5px;
-    margin: 5px 0;
+    /* margin: 5px 0; */
     cursor: pointer;
+    font-size: 15px !important;
 }
 
 .sidebar a i {
@@ -38,18 +42,18 @@ body {
 }
 
 .sidebar a:hover {
-    background: #495057;
+    background: #063666;
 }
 
-.content {
+/* .content {
     flex-grow: 1;
     padding: 20px;
-}
+} */
 
-.settings {
+/* .settings {
     margin-top: 20px;
     padding-top: 10px;
-}
+} */
 
 .training-section {
     background: none;
@@ -103,4 +107,42 @@ body {
     /* Icon color */
     font-size: 16px;
     /* Adjust icon size */
+}
+
+.sidebar {
+    width: 290px;
+    background-color: rgb(37, 112, 129);
+    color: white;
+    /* position: fixed; */
+    height: 80%;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.content {
+    
+    padding: 20px; /* Add padding */
+    flex: 1; /* Take remaining space */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    height: 100vh; /* Full viewport height */
+}
+
+.training-section h5 {
+    font-size: 2rem; /* Increase font size */
+    margin-bottom: 10px; /* Space below the header */
+    color: #fff; /* Change color if needed */
+}
+
+.form-select {
+    font-size: 1.2rem; /* Larger font size for the dropdown */
+    border-radius: 0.5rem; /* Rounded corners */
+    padding: 10px; /* Add padding for better touch targets */
+    background-color: #fff; /* Background color */
+    border: 2px solid #007bff; /* Border color */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+.form-select:focus {
+    border-color: #0056b3; /* Change border color on focus */
+    outline: none; /* Remove default outline */
 }

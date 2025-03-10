@@ -9,14 +9,16 @@
                     <td>{{ $scholarship->description }}</td>
                     <td>{{ $scholarship->criteria }}</td>
                     <td>
-                        <button onclick="editHB({{ $scholarship->id }})">Sửa</button>
-                        <form action="{{ route('ad-hb.delete', $scholarship->id) }}" method="POST" style="display:inline;"
-                            class="delete-form">
-                            @csrf
-                            @method('DELETE')
-                            <button type="button" class="btn btn-danger delete-btn"
-                                data-id="{{ $scholarship->id }}">Xóa</button>
-                        </form>
+                        <div style="display:flex; gap:10px;">
+                            <button onclick="editHB({{ $scholarship->id }})" class="btn btn-warning edit-btn">Sửa</button>
+                            <form action="{{ route('ad-hb.delete', $scholarship->id) }}" method="POST"
+                                style="display:inline;" class="delete-form">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" class="btn btn-danger delete-btn"
+                                    data-id="{{ $scholarship->id }}">Xóa</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
     @endforeach

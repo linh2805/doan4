@@ -7,35 +7,25 @@
 </head>
 
 <body>
-@if($intros->isEmpty())
+    @if($intros->isEmpty())
     <!-- <p>Không có dữ liệu.</p> -->
     <h2>k có dl</h2>
-    <div><h2>k có dl</h2></div>
-@else
-@foreach($intros as $intro)
+    <div>
+        <h2>k có dl</h2>
+    </div>
+    @else
+    @foreach($intros as $intro)
     <div class="introduction mt-5" style="padding-top:50px;">
-        <section class="intro-section">
-            <div class="intro-text">
+        <section class="intro-section" style="display: flex;">
+            <div class="intro-text" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
                 <h1 class="title" style="font-size:36px;">Giới Thiệu Về Trường</h1>
-
-                <!-- <p>Chào mừng bạn đến với chương trình tuyển sinh của Trường Cao Đẳng XYZ – nơi xây dựng tương lai của
-                    bạn với nền tảng học vấn vững chắc và cơ hội nghề nghiệp rộng mở.</p>
-                <p>Cao đẳng Mầm non là các cơ sở đào tạo giáo viên mầm non trình độ cao đẳng, trang bị kiến thức và kỹ
-                    năng cần thiết trong việc chăm sóc, giáo dục trẻ từ 0 đến 6 tuổi. Sinh viên được học về tâm lý trẻ
-                    em, phương pháp giảng dạy, dinh dưỡng, kỹ năng sư phạm và thực hành tại các cơ sở mầm non. Sau khi
-                    tốt nghiệp, sinh viên có thể làm giáo viên mầm non tại các trường công lập, tư thục, quản lý nhóm
-                    trẻ hoặc tiếp tục học lên đại học. Điều kiện tuyển sinh thường là tốt nghiệp THPT và một số trường
-                    yêu cầu thêm bài kiểm tra năng khiếu.</p>
-                <p>Chúng tôi tự hào mang đến các chương trình đào tạo chất lượng cao, môi trường học tập hiện đại, và
-                    đội ngũ giảng viên tận tâm.</p> -->
-                    <p>{{ $intro->intro_school }}</p>
+                <p>{{ $intro->intro_school }}</p>
             </div>
-            <div class="intro-image">
+            <div class="intro-image" style="flex: 1; display: flex; align-items: center; justify-content: center;">
                 <img src="{{ $intro->image1 }}" alt="Tuyển sinh Cao Đẳng XYZ"
-                    class="w-full h-auto object-cover rounded-lg shadow-lg">
+                    style="max-height: 100%; width: 100%; object-fit: cover; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             </div>
         </section>
-
     </div>
     <div class="section-bao">
         <div class="bao">
@@ -103,16 +93,20 @@
 
                 <div class="co-hoi-anh row g-2">
                     <div class="col-6 col-md-3 mb-2">
-                        <img src="{{ $intro->image2 }}" alt="Dịch vụ chăm sóc học sinh 1" class="img-fluid rounded-circle">
+                        <img src="{{ $intro->image2 }}" alt="Dịch vụ chăm sóc học sinh 1"
+                            class="img-fluid rounded-circle">
                     </div>
                     <div class="col-6 col-md-3 mb-2">
-                        <img src="{{ $intro->image3 }}" alt="Dịch vụ chăm sóc học sinh 2" class="img-fluid rounded-circle">
+                        <img src="{{ $intro->image3 }}" alt="Dịch vụ chăm sóc học sinh 2"
+                            class="img-fluid rounded-circle">
                     </div>
                     <div class="col-6 col-md-3 mb-2">
-                        <img src="{{ $intro->image4 }}" alt="Dịch vụ chăm sóc học sinh 3" class="img-fluid rounded-circle">
+                        <img src="{{ $intro->image4 }}" alt="Dịch vụ chăm sóc học sinh 3"
+                            class="img-fluid rounded-circle">
                     </div>
                     <div class="col-6 col-md-3 mb-2">
-                        <img src="{{ $intro->image5 }}" alt="Dịch vụ chăm sóc học sinh 4" class="img-fluid rounded-circle">
+                        <img src="{{ $intro->image5 }}" alt="Dịch vụ chăm sóc học sinh 4"
+                            class="img-fluid rounded-circle">
                     </div>
                 </div>
             </section>
@@ -154,26 +148,25 @@
                 <div class="contact-form w-50 d-flex flex-column justify-content-center">
                     <h3 class="text-center mb-4 fw-bold">Liên Hệ để được tư vấn</h3>
                     <form id="contactForm" action="{{ route('contact.store') }}" method="POST">
-                            @csrf <!-- Thêm token CSRF để bảo mật -->
-                            <div class="form-group">
-                                <input type="text" name="fullname" class="form-control" placeholder="Họ và tên"
-                                    required>
-                            </div>
-                            <div class="form-group">
-                                <input type="tel" name="phone" class="form-control" placeholder="Số điện thoại"
-                                    required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" name="email" class="form-control" placeholder="Email" required>
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control" name="message" rows="4" placeholder="Tin nhắn"
-                                    required></textarea>
-                            </div>
-                            <div class="button-container">
-                                <button type="submit" class="btn-submit">Gửi yêu cầu</button>
-                            </div>
-                        </form>
+                        @csrf
+                        <!-- Thêm token CSRF để bảo mật -->
+                        <div class="form-group">
+                            <input type="text" name="fullname" class="form-control" placeholder="Họ và tên" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" class="form-control" placeholder="Số điện thoại" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="message" rows="4" placeholder="Tin nhắn"
+                                required></textarea>
+                        </div>
+                        <div class="button-container">
+                            <button type="submit" class="btn-submit">Gửi yêu cầu</button>
+                        </div>
+                    </form>
                 </div>
             </section>
         </div>

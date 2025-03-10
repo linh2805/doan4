@@ -3,10 +3,11 @@
     onsubmit="return saveIntro(event, {{ $intros->id }})">
     @csrf
     <label for="intro_school">Giới thiệu về trường:</label>
-    <input type="text" name="intro_school" id="intro_school" value="{{ $intros->intro_school }}" required><br><br>
+    <input type="textarea" name="intro_school" id="intro_school" value="{{ $intros->intro_school }}" required><br><br>
 
     <label for="job">Cơ hội việc làm:</label>
     <textarea name="job" id="job">{{ $intros->job }}</textarea><br><br>
+
     <label for="image1">Ảnh giới thiệu:</label>
     <img id="preview1" src="{{ asset($intros->image1) }}" alt="Ảnh 1"
         style="display: {{ $intros->image1 ? 'block' : 'none' }};">
@@ -33,46 +34,47 @@
     <input type="file" name="image5" id="image5" onchange="previewImage(event, 'preview5')"><br><br>
 
     <!-- Các trường khác tương tự -->
-
-    <button type="submit">Lưu</button>
-    <button type="button" onclick="cancelEdit({{ $intros->id }})">Hủy</button>
+    <div style="display:flex; gap:10px;">
+        <button type="submit" class="btn btn-success">Lưu</button>
+        <button type="button" onclick="cancelEdit({{ $intros->id }})" class="btn btn-danger delete-btn">Hủy</button>
+    <div>
 </form>
 <script>
-    function cancelEdit(introId) {
-        $('#row-' + introId).show(); // Hiển thị lại hàng
-        $('#editContent').empty(); // Xóa nội dung chỉnh sửa
+function cancelEdit(introId) {
+    $('#row-' + introId).show(); // Hiển thị lại hàng
+    $('#editContent').empty(); // Xóa nội dung chỉnh sửa
 
-        // Quay lại URL trước đó
-        history.back();
-    }
+    // Quay lại URL trước đó
+    history.back();
+}
 </script>
 <script>
-    function saveIntro(event, introId) {
-        event.preventDefault(); // Ngăn chặn hành vi mặc định của form
+function saveIntro(event, introId) {
+    event.preventDefault(); // Ngăn chặn hành vi mặc định của form
 
-        var formData = new FormData(document.getElementById('editForm')); // Tạo FormData từ form
+    var formData = new FormData(document.getElementById('editForm')); // Tạo FormData từ form
 
-        $.ajax({
-            url: "{{ route('intros.edit', ['id' => '__ID__']) }}".replace('__ID__', introId),
-            type: 'POST',
-            data: formData,
-            processData: false, // Không xử lý dữ liệu
-            contentType: false, // Không đặt content type
-            success: function (response) {
-                // Xử lý phản hồi thành công
-                $('#editContent').empty(); // Xóa nội dung chỉnh sửa
-                $('#row-' + introId).show(); // Hiển thị lại hàng trong bảng
+    $.ajax({
+        url: "{{ route('intros.edit', ['id' => '__ID__']) }}".replace('__ID__', introId),
+        type: 'POST',
+        data: formData,
+        processData: false, // Không xử lý dữ liệu
+        contentType: false, // Không đặt content type
+        success: function(response) {
+            // Xử lý phản hồi thành công
+            $('#editContent').empty(); // Xóa nội dung chỉnh sửa
+            $('#row-' + introId).show(); // Hiển thị lại hàng trong bảng
 
-                // Có thể cập nhật nội dung trong bảng nếu cần
-                // alert('Cập nhật thành công!');
-                window.location.href = '/admin'; // Thay đổi đường dẫn nếu cần
+            // Có thể cập nhật nội dung trong bảng nếu cần
+            // alert('Cập nhật thành công!');
+            window.location.href = '/admin'; // Thay đổi đường dẫn nếu cần
 
-            },
-            error: function (xhr) {
-                // Xử lý lỗi
-                var msg = "Lỗi: " + xhr.status + " " + xhr.statusText;
-                alert(msg);
-            }
-        });
-    }
+        },
+        error: function(xhr) {
+            // Xử lý lỗi
+            var msg = "Lỗi: " + xhr.status + " " + xhr.statusText;
+            alert(msg);
+        }
+    });
+}
 </script>

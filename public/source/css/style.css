@@ -8136,13 +8136,13 @@ button.button.continue:before {
 	display: block !important;
 
 }
-
+/* 
 .sidebar {
 	font-size: 14px;
 	font-family: 'Open Sans', sans-serif;
 	margin-top: 30px;
 
-}
+} */
 
 .sidebar .section-filter {
 	position: relative;
@@ -17217,11 +17217,15 @@ ul.header-info-right li a {
 }
 
 .section_service .services-box p {
+	overflow-y: scroll;
+    scrollbar-width: none;
+    height: 150px;
 	margin-bottom: 0;
 	-webkit-transition: 0.5s;
 	transition: 0.5s;
 	color: #777;
 	min-height: 95px
+	
 }
 
 @media (max-width: 991px) {

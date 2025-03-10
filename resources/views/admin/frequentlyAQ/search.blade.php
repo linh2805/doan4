@@ -10,14 +10,14 @@
             <td>{{ $faq->question }}</td>
             <td>{{ $faq->answer }}</td>
             <td>
-                <button onclick="editAQ({{ $faq->id }})">Sửa</button>
+                <button onclick="editAQ({{ $faq->id }})"  class="btn btn-warning edit-btn">Sửa</button>
             </td>
             <td>
                 <form action="{{ route('FrequentlyAQ.destroy', $faq->id) }}" method="POST"
                     onsubmit="return confirm('Bạn có chắc chắn muốn xoá?');">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn-danger">Xoá</button>
+                    <button type="submit" class="btn btn-danger delete-btn">Xoá</button>
                 </form>
             </td>
         </tr>

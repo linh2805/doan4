@@ -35,7 +35,7 @@
                 
                     <td>
                         
-                        <button id="IntermediateBtn" onclick="editIntermediate({{ $intermediate->id }})">Sửa</button>
+                        <button id="IntermediateBtn" onclick="editIntermediate({{ $intermediate->id }})" class="btn btn-warning edit-btn">Sửa</button>
                     </td>
                 </tr>
             @endforeach

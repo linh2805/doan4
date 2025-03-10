@@ -10,5 +10,5 @@
         <label for="answer">Câu trả lời:</label>
         <textarea id="answer" name="answer" required>{{ $faq->answer }}</textarea>
     </div>
-    <button type="submit">Cập nhật</button>
+    <button type="submit"  class="btn btn-success">Cập nhật</button>
 </form>

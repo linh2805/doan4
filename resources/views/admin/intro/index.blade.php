@@ -47,11 +47,18 @@
         /* Khoảng cách dưới ảnh */
     }
 </style>
-<div class="header-container" style="display: flex; align-items: center; justify-content: space-between; ">
-    <h2 style="padding-bottom: 10px; white-space: nowrap;">Quản lý trang giới thiệu</h2>
-    
-</div>
-<button id="addButton" type="button">Thêm</button>
+<div class="header-container" style="display: flex; align-items: center; justify-content: space-between;height:80px;background-color:rgb(236, 172, 52); border-radius:20px;">
+        <h2 style="padding-bottom: 10px; white-space: nowrap; padding-left: 10px;font-weight: bold;font-size: 34px;color: white;">Quản lý trang giới thiệu</h2>
+        <div class="input-group" style="position: relative; width: 30%; display:flex;">
+            <form id="search-form" method="GET" style="display: flex; align-items: center; margin: 20px; padding-top: 20px;">
+                <input type="text" name="query" id="search-content" class="search-input" placeholder="Tìm kiếm nội dung"
+                    style=" border-radius: 27px;width: 100%;padding: 10px 20px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);border: 1px solid #ccc;transition: border-color 0.3s;">
+                    <button type="submit" style="background-color: #40d946;color: white;border: none;border-radius: 27px;padding: 10px 20px;margin-left: 10px;cursor: pointer;  transition: background-color 0.3s;">Search</button>
+            </form>
+           
+        </div>
+    </div>
+<button id="addButton" type="button" class="btn btn-primary mt-3">Thêm</button>
 
 @if(session('success'))
     <div class="alert alert-success">
@@ -93,7 +100,7 @@
                     <img src="{{ asset($intro->image5) }}" alt="Ảnh 5" class="img-fluid" style="max-width: 100px;">
                 </td>
                 <td>
-                    <button type="button" onclick="editIntro({{ $intro->id }})">Sửa</button>
+                    <button type="button" onclick="editIntro({{ $intro->id }})" class="btn btn-warning edit-btn">Sửa</button>
                 </td>
             </tr>
         @endforeach

@@ -35,7 +35,7 @@
                 
                     <td>
                         
-                        <button id="UniversityBtn" onclick="editUniversity({{ $university->id }})">Sửa</button>
+                        <button id="UniversityBtn" onclick="editUniversity({{ $university->id }})" class="btn btn-warning edit-btn">Sửa</button>
                     </td>
                 </tr>
             @endforeach

@@ -6,53 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý tin tức</title>
     <link rel="stylesheet" href="{{ asset('source/css/bootstrap.min.css') }}">
+    <style>
+            .search-input:focus {
+                border-color: #4CAF50;
+                outline: none;
+            }
+
+            button:hover {
+                background-color: #45a049;
+            }
+            </style>
 </head>
 
 <body>
-    <div class="header-container" style="display: flex; align-items: center; justify-content: space-between;">
-        <h2 style="padding-bottom: 10px; white-space: nowrap;">Quản lý tin tức</h2>
+    <div class="header-container" style="display: flex; align-items: center; justify-content: space-between;height:80px;background-color:rgb(236, 172, 52); border-radius:20px;">
+        <h2 style="padding-bottom: 10px; white-space: nowrap; padding-left: 10px;font-weight: bold;font-size: 34px;color: white;">Quản lý tin tức</h2>
         <div class="input-group" style="position: relative; width: 30%; display:flex;">
-    <form id="search-form" method="GET">
-        <input type="text" name="query" id="search-content" class="search-input" placeholder="Tìm kiếm nội dung" style="
-            border-radius: 27px;
-            width: 100%;
-            padding: 10px 40px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border: 1px solid #ccc;
-            height: 40px;">
-        <button type="submit">Tìm</button>
-    </form>
-</div>
+            <form id="search-form" method="GET" style="display: flex; align-items: center; margin: 20px; padding-top: 20px;">
+                <input type="text" name="query" id="search-content" class="search-input" placeholder="Tìm kiếm nội dung"
+                    style=" border-radius: 27px;width: 100%;padding: 10px 20px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);border: 1px solid #ccc;transition: border-color 0.3s;">
+                <button type="submit" style="background-color: #40d946;color: white;border: none;border-radius: 27px;padding: 10px 20px;margin-left: 10px;cursor: pointer;  transition: background-color 0.3s;">Search</button>
+            </form>
+           
+        </div>
     </div>
     <div id="showFind"></div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
+    <script>
+    $(document).ready(function() {
         // Tải nội dung ad-news vào div #content
-        $('#registerLink5').click(function (e) {
+        $('#registerLink5').click(function(e) {
             e.preventDefault(); // Ngăn chặn hành động mặc định
             $('#content').load('/ad-news'); // Tải nội dung từ /ad-news vào div content
         });
 
         // Tìm kiếm
-        $('#search-form').on('submit', function (e) {
+        $('#search-form').on('submit', function(e) {
             e.preventDefault(); // Ngăn chặn hành động mặc định
 
             $.ajax({
                 url: "{{ route('ad-news.search') }}", // Đường dẫn tới route tìm kiếm
                 method: "GET",
                 data: $(this).serialize(), // Gửi dữ liệu từ form
-                success: function (data) {
+                success: function(data) {
                     // Thay thế nội dung bảng bằng kết quả tìm kiếm
                     $('table tbody').html(data); // Cập nhật tbody của bảng
                 },
-                error: function (xhr) {
+                error: function(xhr) {
                     console.log(xhr.responseText); // Xử lý lỗi nếu có
                 }
             });
         });
     });
-</script>
+    </script>
     <!-- Nút Thêm -->
     <button class="btn btn-primary mt-3"
         onclick="document.getElementById('addForm').style.display='block'">Thêm</button>
@@ -95,33 +101,36 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($news as $index => $new)
-                    <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td><a href="#">{{ $new->title }}</a></td>
-                        <td>
-                            @if($new->image)
-                                <img src="{{ asset('storage/' . $new->image) }}" width="100">
-                            @else
-                                <img src="/source/images/1.jpg" width="100">
-                            @endif
-                        </td>
-                        <td>{{ Str::limit($new->content, 50) }}</td>
-                        <td>{{ $new->extra_content }}</td>
-                        <td>
-                            <button class="btn btn-warning edit-btn" data-id="{{ $new->id }}" data-title="{{ $new->title }}"
-                                data-image="{{ asset('storage/' . $new->image) }}"
-                                data-content="{{ $new->content }}">Sửa</button>
-                            <form action="{{ route('ad-news.delete', $new->id) }}" method="POST" style="display:inline;"
-                                class="delete-form">
-                                @csrf
-                                @method('DELETE')
-                                <button type="button" class="btn btn-danger delete-btn" data-id="{{ $new->id }}">Xóa</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            
+            @foreach($news as $index => $new)
+            <tr>
+                <td>{{ $index + 1 }}</td>
+                <td><a href="#">{{ $new->title }}</a></td>
+                <td>
+                    @if($new->image)
+                    <img src="{{ asset('storage/' . $new->image) }}" width="100">
+                    @else
+                    <img src="/source/images/1.jpg" width="100">
+                    @endif
+                </td>
+                <td>{{ Str::limit($new->content, 50) }}</td>
+                <td>{{ $new->extra_content }}</td>
+                <td>
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn btn-warning edit-btn" data-id="{{ $new->id }}" data-title="{{ $new->title }}"
+                            data-image="{{ asset('storage/' . $new->image) }}"
+                            data-content="{{ $new->content }}">Sửa</button>
+                        <form action="{{ route('ad-news.delete', $new->id) }}" method="POST" style="display:inline;"
+                            class="delete-form">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" class="btn btn-danger delete-btn"
+                                data-id="{{ $new->id }}">Xóa</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            @endforeach
+
         </tbody>
     </table>
     <!-- Edit Form -->
@@ -152,71 +161,71 @@
     </div>
 
     <script>
-        document.querySelectorAll('.edit-btn').forEach(button => {
-            button.addEventListener('click', function () {
-                // Get data from button attributes
-                const id = this.getAttribute('data-id');
-                const title = this.getAttribute('data-title');
-                const image = this.getAttribute('data-image');
-                const content = this.getAttribute('data-content');
+    document.querySelectorAll('.edit-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            // Get data from button attributes
+            const id = this.getAttribute('data-id');
+            const title = this.getAttribute('data-title');
+            const image = this.getAttribute('data-image');
+            const content = this.getAttribute('data-content');
 
-                // Populate edit form
-                document.getElementById('editTitle').value = title;
-                document.getElementById('editContent').value = content;
-                const editImagePreview = document.getElementById('editImagePreview');
+            // Populate edit form
+            document.getElementById('editTitle').value = title;
+            document.getElementById('editContent').value = content;
+            const editImagePreview = document.getElementById('editImagePreview');
 
-                if (image) {
-                    editImagePreview.src = image;
-                    editImagePreview.style.display = 'block';
-                } else {
-                    editImagePreview.style.display = 'none';
-                }
+            if (image) {
+                editImagePreview.src = image;
+                editImagePreview.style.display = 'block';
+            } else {
+                editImagePreview.style.display = 'none';
+            }
 
-                // Update the form action
-                const form = document.getElementById('editForm');
-                form.action = form.action.replace('placeholder', id);
+            // Update the form action
+            const form = document.getElementById('editForm');
+            form.action = form.action.replace('placeholder', id);
 
-                // Show the edit form
-                document.getElementById('editFormContainer').style.display = 'block';
-            });
+            // Show the edit form
+            document.getElementById('editFormContainer').style.display = 'block';
         });
+    });
     </script>
     <script>
-        document.querySelectorAll('.delete-btn').forEach(button => {
-            button.addEventListener('click', function () {
-                if (confirm('Are you sure you want to delete?')) {
-                    this.closest('.delete-form').submit();
-                }
-            });
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            if (confirm('Are you sure you want to delete?')) {
+                this.closest('.delete-form').submit();
+            }
         });
+    });
     </script>
     <script>
-        document.querySelectorAll('.edit-btn').forEach(button => {
-            button.addEventListener('click', function () {
-                const id = this.getAttribute('data-id');
-                const title = this.getAttribute('data-title');
-                const image = this.getAttribute('data-image');
-                const content = this.getAttribute('data-content');
-                const extraContent = this.getAttribute('data-extra-content'); // Lấy nội dung mở rộng
+    document.querySelectorAll('.edit-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
+            const title = this.getAttribute('data-title');
+            const image = this.getAttribute('data-image');
+            const content = this.getAttribute('data-content');
+            const extraContent = this.getAttribute('data-extra-content'); // Lấy nội dung mở rộng
 
-                document.getElementById('editTitle').value = title;
-                document.getElementById('editContent').value = content;
-                document.getElementById('editExtraContent').value =
-                    extraContent; // Cập nhật nội dung mở rộng
+            document.getElementById('editTitle').value = title;
+            document.getElementById('editContent').value = content;
+            document.getElementById('editExtraContent').value =
+                extraContent; // Cập nhật nội dung mở rộng
 
-                const editImagePreview = document.getElementById('editImagePreview');
-                if (image) {
-                    editImagePreview.src = image;
-                    editImagePreview.style.display = 'block';
-                } else {
-                    editImagePreview.style.display = 'none';
-                }
+            const editImagePreview = document.getElementById('editImagePreview');
+            if (image) {
+                editImagePreview.src = image;
+                editImagePreview.style.display = 'block';
+            } else {
+                editImagePreview.style.display = 'none';
+            }
 
-                const form = document.getElementById('editForm');
-                form.action = form.action.replace('placeholder', id);
-                document.getElementById('editFormContainer').style.display = 'block';
-            });
+            const form = document.getElementById('editForm');
+            form.action = form.action.replace('placeholder', id);
+            document.getElementById('editFormContainer').style.display = 'block';
         });
+    });
     </script>
 </body>
 

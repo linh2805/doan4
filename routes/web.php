@@ -160,7 +160,7 @@ Route::get('/intro', [IntroController::class, 'showIntroUser'])->name('user.intr
 // bình luận
 Route::post('/ad-comment', [CommentController::class, 'store'])->name('comments.store');
 Route::get('/ad-comment', action: [CommentController::class, 'showComment'])->name('comments.index');
-Route::get('/user', action: [CommentController::class, 'showCommentUser'])->name('home');
+// Route::get('/user', action: [CommentController::class, 'showCommentUser'])->name('home');
 Route::delete('/ad-comment/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 // admin home

@@ -38,10 +38,10 @@
     </div>
 
     <!-- Thêm các trường ảnh khác tương tự -->
-
-    <button type="submit" >Cập nhật</button>
-    <button type="button" onclick="cancelEdit({{ $homeQuality->id }})">Hủy</button>
-
+    <div style="display:flex; gap:10px;">
+        <button type="submit" class="btn btn-success">Cập nhật</button>
+        <button type="button" onclick="cancelEdit({{ $homeQuality->id }})" class="btn btn-danger delete-btn">Hủy</button>
+    </div>
 </form>
 <script>
     function saveIntro(event, introId) {

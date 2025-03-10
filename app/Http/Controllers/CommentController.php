@@ -30,14 +30,6 @@ class CommentController extends Controller
         return view('admin.comment.index', compact('comments'));
     }
 
-    public function showCommentUser()
-    {
-        $comments = Comment::all();
-        // dd($comments);
-        return view('user.home.index', compact('comments')); // Truyền bình luận vào view
-    }
-
-
     public function destroy($id)
     {
         $comment = Comment::findOrFail($id);

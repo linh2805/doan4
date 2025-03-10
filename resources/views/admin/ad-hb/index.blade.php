@@ -10,49 +10,45 @@
 </head>
 
 <body>
-    <div class="header-container" style="display: flex; align-items: center; justify-content: space-between;">
-        <h2 style="padding-bottom: 10px; white-space: nowrap;">Quản lý học bổng</h2>
-        <div class="input-group" style="position: relative; width: 30%;">
-        <form id="search-form" method="GET">
-        <input type="text" name="query" id="search-content" class="search-input" placeholder="Tìm kiếm nội dung" style="
-            border-radius: 27px;
-            width: 100%;
-            padding: 10px 40px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border: 1px solid #ccc;
-            height: 40px;">
-        <button type="submit">Tìm</button>
-    </form>
+<div class="header-container" style="display: flex; align-items: center; justify-content: space-between;height:80px;background-color:rgb(236, 172, 52); border-radius:20px;">
+        <h2 style="padding-bottom: 10px; white-space: nowrap; padding-left: 10px;font-weight: bold;font-size: 34px;color: white;">Quản lý học bổng</h2>
+        <div class="input-group" style="position: relative; width: 30%; display:flex;">
+            <form id="search-form" method="GET" style="display: flex; align-items: center; margin: 20px; padding-top: 20px;">
+                <input type="text" name="query" id="search-content" class="search-input" placeholder="Tìm kiếm nội dung"
+                    style=" border-radius: 27px;width: 100%;padding: 10px 20px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);border: 1px solid #ccc;transition: border-color 0.3s;">
+                    <button type="submit" style="background-color: #40d946;color: white;border: none;border-radius: 27px;padding: 10px 20px;margin-left: 10px;cursor: pointer;  transition: background-color 0.3s;">Search</button>
+            </form>
+           
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
+    <script>
+    $(document).ready(function() {
         // Tải nội dung ad-news vào div #content
-        $('#registerLink7').click(function (e) {
+        $('#registerLink7').click(function(e) {
             e.preventDefault(); // Ngăn chặn hành động mặc định
             $('#content').load('/ad-hb'); // Tải nội dung từ /ad-news vào div content
         });
 
         // Tìm kiếm
-        $('#search-form').on('submit', function (e) {
+        $('#search-form').on('submit', function(e) {
             e.preventDefault();
 
             $.ajax({
                 url: "{{ route('ad-hb.search') }}", // Đường dẫn tới route tìm kiếm
                 method: "GET",
                 data: $(this).serialize(), // Gửi dữ liệu từ form
-                success: function (data) {
+                success: function(data) {
                     // Thay thế nội dung bảng bằng kết quả tìm kiếm
                     $('table tbody').html(data); // Cập nhật tbody của bảng
                 },
-                error: function (xhr) {
+                error: function(xhr) {
                     console.log(xhr.responseText); // Xử lý lỗi nếu có
                 }
             });
         });
     });
-</script>
+    </script>
     <!-- Nút Thêm -->
     <button id="showFormBtn" class="btn btn-primary mt-3"
         onclick="document.getElementById('addFormContainer').style.display='block'">THÊM</button>
@@ -87,23 +83,25 @@
             </tr>
         </thead>
         <tbody>
-            
+
             @foreach ($scholarships as $scholarship)
-                <tr>
-                    <td>{{ $scholarship->title }}</td>
-                    <td>{{ $scholarship->description }}</td>
-                    <td>{{ $scholarship->criteria }}</td>
-                    <td>
-                        <button onclick="editHB({{ $scholarship->id }})">Sửa</button>
-                        <form action="{{ route('ad-hb.delete', $scholarship->id) }}" method="POST" style="display:inline;"
-                            class="delete-form">
+            <tr>
+                <td>{{ $scholarship->title }}</td>
+                <td>{{ $scholarship->description }}</td>
+                <td>{{ $scholarship->criteria }}</td>
+                <td>
+                    <div style="display:flex; gap:10px;">
+                        <button onclick="editHB({{ $scholarship->id }})" class="btn btn-warning edit-btn">Sửa</button>
+                        <form action="{{ route('ad-hb.delete', $scholarship->id) }}" method="POST"
+                            style="display:inline;" class="delete-form">
                             @csrf
                             @method('DELETE')
                             <button type="button" class="btn btn-danger delete-btn"
                                 data-id="{{ $scholarship->id }}">Xóa</button>
                         </form>
-                    </td>
-                </tr>
+                    </div>
+                </td>
+            </tr>
             @endforeach
 
         </tbody>
@@ -117,49 +115,49 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
-        document.querySelectorAll('.delete-btn').forEach(button => {
-            button.addEventListener('click', function () {
-                if (confirm('Are you sure you want to delete this scholarship?')) {
-                    this.closest('.delete-form').submit();
-                }
-            });
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            if (confirm('Are you sure you want to delete this scholarship?')) {
+                this.closest('.delete-form').submit();
+            }
         });
+    });
     </script>
     <script>
-        function editHB(HBId) {
-            var url = '/admin/ad-hb/edit/' + HBId; // Tạo URL từ ID
+    function editHB(HBId) {
+        var url = '/admin/ad-hb/edit/' + HBId; // Tạo URL từ ID
 
-            $('#editFormContainer').load(url, function (response, status, xhr) {
-                if (status === "error") {
-                    var msg = "Lỗi: " + xhr.status + " " + xhr.statusText;
-                    $('#editFormContainer').html(msg); // Hiển thị thông báo lỗi
-                } else {
-                    // Cập nhật URL
-                    history.pushState(null, '', url);
-                }
-            });
+        $('#editFormContainer').load(url, function(response, status, xhr) {
+            if (status === "error") {
+                var msg = "Lỗi: " + xhr.status + " " + xhr.statusText;
+                $('#editFormContainer').html(msg); // Hiển thị thông báo lỗi
+            } else {
+                // Cập nhật URL
+                history.pushState(null, '', url);
+            }
+        });
 
-            // Ẩn hàng tương ứng trong bảng (tuỳ chọn)
-            $('#row-' + HBId).hide();
-        }
+        // Ẩn hàng tương ứng trong bảng (tuỳ chọn)
+        $('#row-' + HBId).hide();
+    }
     </script>
     <script>
-        $(document).ready(function () {
-            $("#addFormContainer form").on("submit", function (e) {
-                e.preventDefault(); // Prevent page reload
+    $(document).ready(function() {
+        $("#addFormContainer form").on("submit", function(e) {
+            e.preventDefault(); // Prevent page reload
 
-                let formData = new FormData(this);
+            let formData = new FormData(this);
 
-                $.ajax({
-                    url: "{{ route('ad-hb.store') }}",
-                    type: "POST",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (response) {
-                        alert(response.success);
+            $.ajax({
+                url: "{{ route('ad-hb.store') }}",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    alert(response.success);
 
-                        let newRow = `
+                    let newRow = `
                     <tr>
                         <td>${response.scholarship.title}</td>
                         <td>${response.scholarship.description}</td>
@@ -175,17 +173,17 @@
                     </tr>
                     `;
 
-                        $("table tbody").append(newRow); // Add new row to the table
+                    $("table tbody").append(newRow); // Add new row to the table
 
-                        $("#addFormContainer form")[0].reset(); // Reset form
-                        $("#addFormContainer").hide(); // Hide form
-                    },
-                    error: function () {
-                        alert("Lỗi khi thêm học bổng!");
-                    }
-                });
+                    $("#addFormContainer form")[0].reset(); // Reset form
+                    $("#addFormContainer").hide(); // Hide form
+                },
+                error: function() {
+                    alert("Lỗi khi thêm học bổng!");
+                }
             });
         });
+    });
     </script>
 
 

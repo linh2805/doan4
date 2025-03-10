@@ -9,7 +9,7 @@
         <label for="answer">Câu trả lời:</label>
         <textarea id="answer" name="answer" required></textarea>
     </div>
-    <button type="submit">Lưu</button>
+    <button type="submit"  class="btn btn-success">Lưu</button>
 </form>
 
 @if(session('success'))

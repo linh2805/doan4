@@ -24,7 +24,6 @@
 									<a href="#training-program">Chương trình đào tạo</a>
 									<a href="{{ url('/scholarship') }}">Học bổng</a>
 									<a href="{{ url('/news') }}">Tin tức</a>
-									<a href="{{ url('/contact') }}">Đăng kí</a>
 								</div>
 							</div>
 						</div>
