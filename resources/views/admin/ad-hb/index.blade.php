@@ -8,7 +8,34 @@
     <title>Quản lý học bổng</title>
     <link rel="stylesheet" href="{{ asset('source/css/bootstrap.min.css') }}">
 </head>
+<style>
+    table {
+        width: 100%;
+        /* Use full width */
+        border-collapse: collapse;
+        /* Optional for better styling */
+        table-layout: fixed;
+        /* Ensure equal distribution of widths */
+    }
 
+    th,
+    td {
+        text-align: center;
+        /* Center text in header and cells */
+        vertical-align: top;
+        /* Align content to the top */
+    }
+
+    .cell-content {
+        max-height: 300px;
+        /* Set desired height */
+        overflow-y: auto;
+        /* Enable vertical scrolling */
+        scrollbar-width: none;
+        vertical-align: top;
+        /* Align content to the top */
+    }
+</style>
 <body>
 <div class="header-container" style="display: flex; align-items: center; justify-content: space-between;height:80px;background-color:rgb(236, 172, 52); border-radius:20px;">
         <h2 style="padding-bottom: 10px; white-space: nowrap; padding-left: 10px;font-weight: bold;font-size: 34px;color: white;">Quản lý học bổng</h2>
@@ -86,9 +113,15 @@
 
             @foreach ($scholarships as $scholarship)
             <tr>
-                <td>{{ $scholarship->title }}</td>
-                <td>{{ $scholarship->description }}</td>
-                <td>{{ $scholarship->criteria }}</td>
+                <td><div class="cell-content">
+{{ $scholarship->title }}</div>
+</td>
+                <td><div class="cell-content">
+{{ $scholarship->description }}</div>
+</td>
+                <td><div class="cell-content">
+{{ $scholarship->criteria }}</div>
+</td>
                 <td>
                     <div style="display:flex; gap:10px;">
                         <button onclick="editHB({{ $scholarship->id }})" class="btn btn-warning edit-btn">Sửa</button>

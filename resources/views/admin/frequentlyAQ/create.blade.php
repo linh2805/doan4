@@ -3,11 +3,11 @@
     @csrf
     <div>
         <label for="question">Câu hỏi:</label>
-        <input type="text" id="question" name="question" required>
+        <input style="width: 400px;" type="text" id="question" name="question" required>
     </div>
     <div>
         <label for="answer">Câu trả lời:</label>
-        <textarea id="answer" name="answer" required></textarea>
+        <textarea style="height: 200px;" id="answer" name="answer" required></textarea>
     </div>
     <button type="submit"  class="btn btn-success">Lưu</button>
 </form>

@@ -16,6 +16,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\FrequentlyAQController;
 
 
+
 Route::get('/', function () {
     return redirect()->route('login');
 });
@@ -140,6 +141,8 @@ Route::get('/ad-news', function () {
 Route::get('/ad-comment', function () {
     return view('admin.comment.index'); // Thay 'register' bằng tên tệp blade của bạn
 });
+
+
 
 
 // get, post liên hệ user 
@@ -293,3 +296,4 @@ Route::get('/ad-frequentlyAQ/search', function () {
 });
 
 Route::get('/ad-frequentlyAQ/search', [FrequentlyAQController::class, 'search'])->name('ad-frequentlyAQ.search');
+

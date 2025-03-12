@@ -14,6 +14,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 </head>
+<style>
+    table {
+        width: 100%;
+        /* Adjust as needed */
+        border-collapse: collapse;
+        /* Optional for better styling */
+    }
+
+    td {
+        width: 50%;
+        /* Adjust based on your layout */
+    }
+
+    .cell-content {
+        max-height: 200px;
+        /* Set desired height */
+        overflow-y: auto;
+        /* Enable vertical scrolling */
+        scrollbar-width: none;
+        vertical-align: top;
+        /* Align content to the top */
+    }
+</style>
 
 <body>
     <div class="sidebar" style="background-color:rgb(37, 112, 129);">
@@ -80,22 +103,46 @@
             </thead>
             <tbody>
                 @foreach($homeQualities as $homeQuality)
-                <tr>
-                    <td style="text-align: center;">{{ $homeQuality->classroom_system }}</td>
-                    <td style="text-align: center;"><img src="{{ asset($homeQuality->image1) }}" alt="Ảnh 1"
-                            style="max-width: 80px; height: auto;"></td>
-                    <td style="text-align: center;"><img src="{{ asset($homeQuality->image2) }}" alt="Ảnh 2"
-                            style="max-width: 80px; height: auto;"></td>
-                    <td style="text-align: center;"><img src="{{ asset($homeQuality->image3) }}" alt="Ảnh 3"
-                            style="max-width: 80px; height: auto;"></td>
-                    <td style="text-align: center;"><img src="{{ asset($homeQuality->image4) }}" alt="Ảnh 4"
-                            style="max-width: 80px; height: auto;"></td>
-                    <td style="text-align: center;">{{ $homeQuality->lab_system }}</td>
-                    <td style="text-align: center;">
-                        <button id="HomeQualityBtn" onclick="editIntro({{ $homeQuality->id }})"
-                            class="btn btn-warning edit-btn">Sửa</button>
-                    </td>
-                </tr>
+                    <tr>
+                        <td style="text-align: center;">
+                            <div class="cell-content">
+                                {{ $homeQuality->classroom_system }}
+                            </div>
+                        </td>
+                        <td style="text-align: center;">
+                            <div class="cell-content">
+                                <img src="{{ asset($homeQuality->image1) }}" alt="Ảnh 1"
+                                    style="max-width: 80px; height: auto;">
+                            </div>
+                        </td>
+                        <td style="text-align: center;">
+                            <div class="cell-content">
+                                <img src="{{ asset($homeQuality->image2) }}" alt="Ảnh 2"
+                                    style="max-width: 80px; height: auto;">
+                            </div>
+                        </td>
+                        <td style="text-align: center;">
+                            <div class="cell-content">
+                                <img src="{{ asset($homeQuality->image3) }}" alt="Ảnh 3"
+                                    style="max-width: 80px; height: auto;">
+                            </div>
+                        </td>
+                        <td style="text-align: center;">
+                            <div class="cell-content">
+                                <img src="{{ asset($homeQuality->image4) }}" alt="Ảnh 4"
+                                    style="max-width: 80px; height: auto;">
+                            </div>
+                        </td>
+                        <td style="text-align: center;">
+                            <div class="cell-content">
+                                {{ $homeQuality->lab_system }}
+                            </div>
+                        </td>
+                        <td style="text-align: center;">
+                            <button id="HomeQualityBtn" onclick="editIntro({{ $homeQuality->id }})"
+                                class="btn btn-warning edit-btn">Sửa</button>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
@@ -117,25 +164,25 @@
             <tbody>
                 @foreach($schoolPhotos as $schoolPhoto)
 
-                <tr>
-                    <td> <img src="{{ asset($schoolPhoto->image1) }}" alt="Ảnh 1" style="max-width: 100px;">
-                    </td>
-                    <td> <img src="{{ asset($schoolPhoto->image2) }}" alt="Ảnh 2" style="max-width: 100px;">
-                    </td>
-                    <td> <img src="{{ asset($schoolPhoto->image3) }}" alt="Ảnh 3" style="max-width: 100px;">
-                    </td>
-                    <td> <img src="{{ asset($schoolPhoto->image4) }}" alt="Ảnh 4" style="max-width: 100px;">
-                    </td>
-                    <td> <img src="{{ asset($schoolPhoto->image5) }}" alt="Ảnh 5" style="max-width: 100px;">
-                    </td>
-                    <td> <img src="{{ asset($schoolPhoto->image6) }}" alt="Ảnh 6" style="max-width: 100px;">
-                    </td>
-                    <td> <img src="{{ asset($schoolPhoto->image7) }}" alt="Ảnh 7" style="max-width: 100px;">
-                    </td>
-                    <td> <button onclick="editPhoto({{ $schoolPhoto->id }})"
-                            class="btn btn-warning edit-btn">Sửa</button>
-                    </td>
-                </tr>
+                    <tr>
+                        <td> <img src="{{ asset($schoolPhoto->image1) }}" alt="Ảnh 1" style="max-width: 100px;">
+                        </td>
+                        <td> <img src="{{ asset($schoolPhoto->image2) }}" alt="Ảnh 2" style="max-width: 100px;">
+                        </td>
+                        <td> <img src="{{ asset($schoolPhoto->image3) }}" alt="Ảnh 3" style="max-width: 100px;">
+                        </td>
+                        <td> <img src="{{ asset($schoolPhoto->image4) }}" alt="Ảnh 4" style="max-width: 100px;">
+                        </td>
+                        <td> <img src="{{ asset($schoolPhoto->image5) }}" alt="Ảnh 5" style="max-width: 100px;">
+                        </td>
+                        <td> <img src="{{ asset($schoolPhoto->image6) }}" alt="Ảnh 6" style="max-width: 100px;">
+                        </td>
+                        <td> <img src="{{ asset($schoolPhoto->image7) }}" alt="Ảnh 7" style="max-width: 100px;">
+                        </td>
+                        <td> <button onclick="editPhoto({{ $schoolPhoto->id }})"
+                                class="btn btn-warning edit-btn">Sửa</button>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
@@ -145,262 +192,262 @@
     </div>
 </body>
 <script>
-$(document).ready(function() {
-    $('#collegeSelect').change(function() {
-        var selectedValue = $(this).val();
-        var url = '';
+    $(document).ready(function () {
+        $('#collegeSelect').change(function () {
+            var selectedValue = $(this).val();
+            var url = '';
 
-        switch (selectedValue) {
-            case 'cao-dang-mam-non':
-                url = '/ad-college'; // Đường dẫn cho Cao đẳng mầm non
-                break;
-            case 'trung-cap-mam-non':
-                url = '/ad-intermediate'; // Đường dẫn cho Trung cấp mầm non
-                break;
-            case 'lien-thong-dai-hoc-mam-non':
-                url = '/ad-university'; // Đường dẫn cho Liên thông đại học mầm non
-                break;
-            case 'lien-thong-cao-dang-mam-non':
-                url = '/ad-connection'; // Đường dẫn cho Liên thông cao đẳng mầm non
-                break;
-            default:
-                url = ''; // Không có đường dẫn
-                break;
-        }
+            switch (selectedValue) {
+                case 'cao-dang-mam-non':
+                    url = '/ad-college'; // Đường dẫn cho Cao đẳng mầm non
+                    break;
+                case 'trung-cap-mam-non':
+                    url = '/ad-intermediate'; // Đường dẫn cho Trung cấp mầm non
+                    break;
+                case 'lien-thong-dai-hoc-mam-non':
+                    url = '/ad-university'; // Đường dẫn cho Liên thông đại học mầm non
+                    break;
+                case 'lien-thong-cao-dang-mam-non':
+                    url = '/ad-connection'; // Đường dẫn cho Liên thông cao đẳng mầm non
+                    break;
+                default:
+                    url = ''; // Không có đường dẫn
+                    break;
+            }
 
-        if (url) {
-            $('#content').load(url, function(response, status, xhr) {
-                if (status === "error") {
-                    console.log("Error: " + xhr.status + " " + xhr.statusText); // Kiểm tra lỗi
-                } else {
-                    console.log("Content loaded successfully"); // Kiểm tra nội dung đã tải
-                }
-            });
-        } else {
-            $('#content').empty(); // Xóa nội dung nếu không có lựa chọn
-        }
+            if (url) {
+                $('#content').load(url, function (response, status, xhr) {
+                    if (status === "error") {
+                        console.log("Error: " + xhr.status + " " + xhr.statusText); // Kiểm tra lỗi
+                    } else {
+                        console.log("Content loaded successfully"); // Kiểm tra nội dung đã tải
+                    }
+                });
+            } else {
+                $('#content').empty(); // Xóa nội dung nếu không có lựa chọn
+            }
+        });
     });
-});
 </script>
 
 
 <script>
-$(document).ready(function() {
-    $('#registerLink1').click(function(e) {
-        e.preventDefault(); // Ngăn chặn hành động mặc định
-        $('#content').load('/ad-contact'); // Tải nội dung từ /ad-contact vào div content
+    $(document).ready(function () {
+        $('#registerLink1').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-contact'); // Tải nội dung từ /ad-contact vào div content
+        });
     });
-});
 </script>
 <script>
-$(document).ready(function() {
-    $('#registerLink3').click(function(e) {
-        e.preventDefault(); // Ngăn chặn hành động mặc định
-        $('#content').load('/ad-comment'); // Tải nội dung từ /ad-contact vào div content
+    $(document).ready(function () {
+        $('#registerLink3').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-comment'); // Tải nội dung từ /ad-contact vào div content
+        });
     });
-});
 </script>
 <script>
-$(document).ready(function() {
-    $('#registerLink4').click(function(e) {
-        e.preventDefault(); // Ngăn chặn hành động mặc định
-        $('#content').load('/ad-intro'); // Tải nội dung từ /ad-contact vào div content
+    $(document).ready(function () {
+        $('#registerLink4').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-intro'); // Tải nội dung từ /ad-contact vào div content
+        });
     });
-});
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-$(document).ready(function() {
-    // Tải nội dung ad-news vào div #content
-    $('#registerLink5').click(function(e) {
-        e.preventDefault(); // Ngăn chặn hành động mặc định
-        $('#content').load('/ad-news'); // Tải nội dung từ /ad-news vào div content
-    });
+    $(document).ready(function () {
+        // Tải nội dung ad-news vào div #content
+        $('#registerLink5').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-news'); // Tải nội dung từ /ad-news vào div content
+        });
 
-    // Tìm kiếm
-    $('#search-form').on('submit', function(e) {
-        e.preventDefault(); // Ngăn chặn hành động mặc định
+        // Tìm kiếm
+        $('#search-form').on('submit', function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
 
-        $.ajax({
-            url: "{{ route('ad-news.search') }}", // Đường dẫn tới route tìm kiếm
-            method: "GET",
-            data: $(this).serialize(), // Gửi dữ liệu từ form
-            success: function(data) {
-                $('#content').html(data); // Cập nhật div với kết quả tìm kiếm
-            },
-            error: function(xhr) {
-                console.log(xhr.responseText); // Xử lý lỗi nếu có
-            }
+            $.ajax({
+                url: "{{ route('ad-news.search') }}", // Đường dẫn tới route tìm kiếm
+                method: "GET",
+                data: $(this).serialize(), // Gửi dữ liệu từ form
+                success: function (data) {
+                    $('#content').html(data); // Cập nhật div với kết quả tìm kiếm
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText); // Xử lý lỗi nếu có
+                }
+            });
         });
     });
-});
 </script>
 <script>
-$(document).ready(function() {
-    $('#registerLink5').click(function(e) {
-        e.preventDefault(); // Ngăn chặn hành động mặc định
-        $('#content').load('/ad-news'); // Tải nội dung từ /ad-contact vào div content
-    });
-});
-</script>
-<script>
-$(document).ready(function() {
-    $('#registerLink6').click(function(e) {
-        e.preventDefault(); // Ngăn chặn hành động mặc định
-        $('#content').load('/ad-frequentlyAQ'); // Tải nội dung từ /ad-contact vào div content
-    });
-});
-</script>
-<script>
-$(document).ready(function() {
-    $('#registerLink7').click(function(e) {
-        e.preventDefault(); // Ngăn chặn hành động mặc định
-        $('#content').load('/ad-hb'); // Tải nội dung từ /ad-contact vào div content
-    });
-});
-</script>
-<script>
-$(document).ready(function() {
-    // Tải nội dung ad-news vào div #content
-    $('#registerLink7').click(function(e) {
-        e.preventDefault(); // Ngăn chặn hành động mặc định
-        $('#content').load('/ad-hb'); // Tải nội dung từ /ad-news vào div content
-    });
-
-    // Tìm kiếm
-    $('#search-form').on('submit', function(e) {
-        e.preventDefault(); // Ngăn chặn hành động mặc định
-
-        $.ajax({
-            url: "{{ route('ad-hb.search') }}", // Đường dẫn tới route tìm kiếm
-            method: "GET",
-            data: $(this).serialize(), // Gửi dữ liệu từ form
-            success: function(data) {
-                $('#content').html(data); // Cập nhật div với kết quả tìm kiếm
-            },
-            error: function(xhr) {
-                console.log(xhr.responseText); // Xử lý lỗi nếu có
-            }
+    $(document).ready(function () {
+        $('#registerLink5').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-news'); // Tải nội dung từ /ad-contact vào div content
         });
     });
-});
 </script>
 <script>
-function editIntro(introId) {
-    var url = '/ad-home-edit/' + introId; // Tạo URL từ ID
-
-    $('#editContent').load(url, function(response, status, xhr) {
-        if (status === "error") {
-            var msg = "Lỗi: " + xhr.status + " " + xhr.statusText;
-            $('#editContent').html(msg); // Hiển thị thông báo lỗi
-        } else {
-            // Cập nhật URL
-            history.pushState(null, '', url);
-        }
-    });
-
-    // Ẩn hàng tương ứng trong bảng (tuỳ chọn)
-    $('#row-' + introId).hide();
-}
-</script>
-<script>
-function editPhoto(introId) {
-    var url = '/ad-home-edit-photo/' + introId; // Tạo URL từ ID
-
-    $('#editContent').load(url, function(response, status, xhr) {
-        if (status === "error") {
-            var msg = "Lỗi: " + xhr.status + " " + xhr.statusText;
-            $('#editContent').html(msg); // Hiển thị thông báo lỗi
-        } else {
-            // Cập nhật URL
-            history.pushState(null, '', url);
-        }
-    });
-
-    // Ẩn hàng tương ứng trong bảng (tuỳ chọn)
-    $('#row-' + introId).hide();
-}
-</script>
-
-<script>
-$(document).ready(function() {
-    // Tải nội dung ad-news vào div #content
-    $('#registerLink1').click(function(e) {
-        e.preventDefault(); // Ngăn chặn hành động mặc định
-        $('#content').load('/ad-contact'); // Tải nội dung từ /ad-news vào div content
-    });
-
-    // Tìm kiếm
-    $('#search-form').on('submit', function(e) {
-        e.preventDefault(); // Ngăn chặn hành động mặc định
-
-        $.ajax({
-            url: "{{ route('ad-contact.search') }}", // Đường dẫn tới route tìm kiếm
-            method: "GET",
-            data: $(this).serialize(), // Gửi dữ liệu từ form
-            success: function(data) {
-                $('#content').html(data); // Cập nhật div với kết quả tìm kiếm
-            },
-            error: function(xhr) {
-                console.log(xhr.responseText); // Xử lý lỗi nếu có
-            }
+    $(document).ready(function () {
+        $('#registerLink6').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-frequentlyAQ'); // Tải nội dung từ /ad-contact vào div content
         });
     });
-});
+</script>
+<script>
+    $(document).ready(function () {
+        $('#registerLink7').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-hb'); // Tải nội dung từ /ad-contact vào div content
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        // Tải nội dung ad-news vào div #content
+        $('#registerLink7').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-hb'); // Tải nội dung từ /ad-news vào div content
+        });
+
+        // Tìm kiếm
+        $('#search-form').on('submit', function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+
+            $.ajax({
+                url: "{{ route('ad-hb.search') }}", // Đường dẫn tới route tìm kiếm
+                method: "GET",
+                data: $(this).serialize(), // Gửi dữ liệu từ form
+                success: function (data) {
+                    $('#content').html(data); // Cập nhật div với kết quả tìm kiếm
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText); // Xử lý lỗi nếu có
+                }
+            });
+        });
+    });
+</script>
+<script>
+    function editIntro(introId) {
+        var url = '/ad-home-edit/' + introId; // Tạo URL từ ID
+
+        $('#editContent').load(url, function (response, status, xhr) {
+            if (status === "error") {
+                var msg = "Lỗi: " + xhr.status + " " + xhr.statusText;
+                $('#editContent').html(msg); // Hiển thị thông báo lỗi
+            } else {
+                // Cập nhật URL
+                history.pushState(null, '', url);
+            }
+        });
+
+        // Ẩn hàng tương ứng trong bảng (tuỳ chọn)
+        $('#row-' + introId).hide();
+    }
+</script>
+<script>
+    function editPhoto(introId) {
+        var url = '/ad-home-edit-photo/' + introId; // Tạo URL từ ID
+
+        $('#editContent').load(url, function (response, status, xhr) {
+            if (status === "error") {
+                var msg = "Lỗi: " + xhr.status + " " + xhr.statusText;
+                $('#editContent').html(msg); // Hiển thị thông báo lỗi
+            } else {
+                // Cập nhật URL
+                history.pushState(null, '', url);
+            }
+        });
+
+        // Ẩn hàng tương ứng trong bảng (tuỳ chọn)
+        $('#row-' + introId).hide();
+    }
 </script>
 
 <script>
-$(document).ready(function() {
-    // Tải nội dung ad-news vào div #content
-    $('#registerLink3').click(function(e) {
-        e.preventDefault(); // Ngăn chặn hành động mặc định
-        $('#content').load('/ad-comment'); // Tải nội dung từ /ad-news vào div content
-    });
+    $(document).ready(function () {
+        // Tải nội dung ad-news vào div #content
+        $('#registerLink1').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-contact'); // Tải nội dung từ /ad-news vào div content
+        });
 
-    // Tìm kiếm
-    $('#search-form').on('submit', function(e) {
-        e.preventDefault(); // Ngăn chặn hành động mặc định
+        // Tìm kiếm
+        $('#search-form').on('submit', function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
 
-        $.ajax({
-            url: "{{ route('ad-comment.search') }}", // Đường dẫn tới route tìm kiếm
-            method: "GET",
-            data: $(this).serialize(), // Gửi dữ liệu từ form
-            success: function(data) {
-                $('#content').html(data); // Cập nhật div với kết quả tìm kiếm
-            },
-            error: function(xhr) {
-                console.log(xhr.responseText); // Xử lý lỗi nếu có
-            }
+            $.ajax({
+                url: "{{ route('ad-contact.search') }}", // Đường dẫn tới route tìm kiếm
+                method: "GET",
+                data: $(this).serialize(), // Gửi dữ liệu từ form
+                success: function (data) {
+                    $('#content').html(data); // Cập nhật div với kết quả tìm kiếm
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText); // Xử lý lỗi nếu có
+                }
+            });
         });
     });
-});
 </script>
 
 <script>
-$(document).ready(function() {
-    // Tải nội dung ad-news vào div #content
-    $('#registerLink6').click(function(e) {
-        e.preventDefault(); // Ngăn chặn hành động mặc định
-        $('#content').load('/ad-frequentlyAQ'); // Tải nội dung từ /ad-news vào div content
-    });
+    $(document).ready(function () {
+        // Tải nội dung ad-news vào div #content
+        $('#registerLink3').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-comment'); // Tải nội dung từ /ad-news vào div content
+        });
 
-    // Tìm kiếm
-    $('#search-form').on('submit', function(e) {
-        e.preventDefault(); // Ngăn chặn hành động mặc định
+        // Tìm kiếm
+        $('#search-form').on('submit', function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
 
-        $.ajax({
-            url: "{{ route('ad-frequentlyAQ.search') }}", // Đường dẫn tới route tìm kiếm
-            method: "GET",
-            data: $(this).serialize(), // Gửi dữ liệu từ form
-            success: function(data) {
-                $('#content').html(data); // Cập nhật div với kết quả tìm kiếm
-            },
-            error: function(xhr) {
-                console.log(xhr.responseText); // Xử lý lỗi nếu có
-            }
+            $.ajax({
+                url: "{{ route('ad-comment.search') }}", // Đường dẫn tới route tìm kiếm
+                method: "GET",
+                data: $(this).serialize(), // Gửi dữ liệu từ form
+                success: function (data) {
+                    $('#content').html(data); // Cập nhật div với kết quả tìm kiếm
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText); // Xử lý lỗi nếu có
+                }
+            });
         });
     });
-});
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Tải nội dung ad-news vào div #content
+        $('#registerLink6').click(function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+            $('#content').load('/ad-frequentlyAQ'); // Tải nội dung từ /ad-news vào div content
+        });
+
+        // Tìm kiếm
+        $('#search-form').on('submit', function (e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định
+
+            $.ajax({
+                url: "{{ route('ad-frequentlyAQ.search') }}", // Đường dẫn tới route tìm kiếm
+                method: "GET",
+                data: $(this).serialize(), // Gửi dữ liệu từ form
+                success: function (data) {
+                    $('#content').html(data); // Cập nhật div với kết quả tìm kiếm
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText); // Xử lý lỗi nếu có
+                }
+            });
+        });
+    });
 </script>
 
 </html>

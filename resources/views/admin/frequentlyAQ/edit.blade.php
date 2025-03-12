@@ -4,11 +4,11 @@
     @method('PUT')
     <div>
         <label for="question">Câu hỏi:</label>
-        <input type="text" id="question" name="question" value="{{ $faq->question }}" required>
+        <input style="width: 400px;" type="text" id="question" name="question" value="{{ $faq->question }}" required>
     </div>
     <div>
         <label for="answer">Câu trả lời:</label>
-        <textarea id="answer" name="answer" required>{{ $faq->answer }}</textarea>
+        <textarea style="height: 200px;" id="answer" name="answer" required>{{ $faq->answer }}</textarea>
     </div>
     <button type="submit"  class="btn btn-success">Cập nhật</button>
 </form>
