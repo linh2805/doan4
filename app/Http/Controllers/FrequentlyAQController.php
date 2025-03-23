@@ -21,7 +21,7 @@ class FrequentlyAQController extends Controller
         ]);
 
         // Chuyển hướng hoặc trả về phản hồi
-        return redirect()->back()->with('success', 'Câu hỏi thường gặp đã được lưu thành công!');
+        return redirect()->route('admin.index')->with('success', 'Câu hỏi đã được thêm!');
     }
     public function index()
     {
