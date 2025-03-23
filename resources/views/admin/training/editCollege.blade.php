@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Chỉnh sửa chương trình liên thông cao đẳng mầm non</h1>
+    <h1>Chỉnh sửa chương trình cao đẳng mầm non</h1>
 
     <form id="editForm" onsubmit="saveCollege(event, {{ $college->id }})" method="POST" enctype="multipart/form-data">
         @csrf

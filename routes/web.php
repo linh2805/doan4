@@ -116,10 +116,6 @@ Route::get('/ad-contact', function () {
     return view('admin.contact.index'); // Đường dẫn đến view
 });
 
-Route::get('/account', function () {
-    return view('admin.account.index'); // Đường dẫn đến view
-});
-
 Route::get('/regis-ad', function () {
     return view('admin.regis-ad'); // Thay 'register' bằng tên tệp blade của bạn
 });
