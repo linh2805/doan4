@@ -86,7 +86,10 @@
             elements.forEach(el => {
                 let text = el.textContent.trim().toLowerCase();
                 if (text.includes(keyword)) {
-                    suggestions.push({ text: el.textContent.substring(0, 50) + "...", element: el });
+                    suggestions.push({
+                        text: el.textContent.substring(0, 50) + "...",
+                        element: el
+                    });
                 }
             });
 
@@ -97,11 +100,19 @@
                     suggestionItem.innerHTML = `<span>${item.text}</span>`;
 
                     suggestionItem.addEventListener("click", function () {
-                        item.element.scrollIntoView({ behavior: "smooth", block: "center" });
-                        setTimeout(() => { item.element.style.backgroundColor = "transparent"; }, 2000);
+                        item.element.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center"
+                        });
+                        setTimeout(() => {
+                            item.element.style.backgroundColor = "transparent";
+                        }, 2000);
+
                         searchInput.value = ""; // Xóa nội dung tìm kiếm
+                        suggestionBox.innerHTML = ""; // Xóa các gợi ý
                         suggestionBox.style.display = "none"; // Ẩn hộp gợi ý
                     });
+
 
                     suggestionItem.dataset.index = index; // Lưu chỉ số
                     suggestionBox.appendChild(suggestionItem);
@@ -143,7 +154,8 @@
         }
 
         document.addEventListener("click", function (e) {
-            if (!searchInput.contains(e.target) && !suggestionBox.contains(e.target) && !searchIcon.contains(e.target)) {
+            if (!searchInput.contains(e.target) && !suggestionBox.contains(e.target) && !searchIcon
+                .contains(e.target)) {
                 suggestionBox.style.display = "none"; // Ẩn hộp gợi ý khi nhấp ra ngoài
             }
         });
